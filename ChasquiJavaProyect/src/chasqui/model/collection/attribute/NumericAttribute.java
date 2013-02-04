@@ -1,6 +1,5 @@
-package chasqui.model.collection.attribute.numeric;
+package chasqui.model.collection.attribute;
 
-import chasqui.model.collection.attribute.Attribute;
 
 public abstract class NumericAttribute extends Attribute{
 

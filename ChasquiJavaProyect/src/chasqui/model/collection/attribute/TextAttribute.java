@@ -1,6 +1,5 @@
-package chasqui.model.collection.attribute.text;
+package chasqui.model.collection.attribute;
 
-import chasqui.model.collection.attribute.Attribute;
 
 public abstract class TextAttribute  extends Attribute{
 

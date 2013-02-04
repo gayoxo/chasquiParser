@@ -16,6 +16,22 @@ public abstract class Attribute {
 		Father = father;
 		Sons=new ArrayList<Attribute>();
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public boolean isBrowseable() {
+		return Browseable;
+	}
+
+	public Attribute getFather() {
+		return Father;
+	}
+
+	public ArrayList<Attribute> getSons() {
+		return Sons;
+	}
 	
 	
 }

@@ -21,7 +21,7 @@ public class Tatributos_numericos_Cunits_ControlledAttribute extends
 
 	private void process_units() {
 		try {
-			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT distinct unidades FROM chasqui2.atributos_numericos WHERE categoria='"+ Father.getFather().getName() +"';");
+			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT distinct unidades FROM chasqui2.atributos_numericos WHERE categoria='"+ Father.getFather().getName() +"' ORDER BY unidades;");
 			if (rs!=null) 
 			{
 				while (rs.next()) {

@@ -20,7 +20,7 @@ ControlledAttribute implements ChasquiParseElement {
 
 	private void process_Vocabulary() {
 		try {
-			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT distinct nom_atrib FROM chasqui2.atributos_numericos WHERE categoria='" + Father.getName() +"';");
+			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT distinct nom_atrib FROM chasqui2.atributos_numericos WHERE categoria='" + Father.getName() +"' ORDER BY nom_atrib;");
 			if (rs!=null) 
 			{
 				while (rs.next()) {

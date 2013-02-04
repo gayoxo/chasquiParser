@@ -22,7 +22,7 @@ public class ChasquiImplementationCollection extends Collection implements Chasq
 	
 	private void process_atributos_texto() {
 		try {
-			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT distinct categoria FROM chasqui2.atributos_texto;");
+			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT distinct categoria FROM chasqui2.atributos_texto ORDER BY categoria;");
 			if (rs!=null) 
 			{
 				while (rs.next()) {

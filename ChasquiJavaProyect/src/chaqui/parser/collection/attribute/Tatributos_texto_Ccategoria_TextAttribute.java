@@ -1,8 +1,13 @@
 package chaqui.parser.collection.attribute;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import chaqui.parser.ChasquiParseElement;
+import chaqui.server.msqlconection.MySQLConnection;
 import chasqui.model.collection.attribute.Attribute;
 import chasqui.model.collection.attribute.TextAttribute;
+import chasqui.model.collection.attribute.controlled.Term;
 
 public class Tatributos_texto_Ccategoria_TextAttribute extends TextAttribute implements ChasquiParseElement{
 
@@ -34,10 +39,10 @@ public class Tatributos_texto_Ccategoria_TextAttribute extends TextAttribute imp
 
 	@Override
 	public void Process() {
-		Tatributos_texto_Cnom_atrib_ControlledAttribute ANNom_atrib=new Tatributos_texto_Cnom_atrib_ControlledAttribute("nom_atrib", true, this);
-		Sons.add(ANNom_atrib);
-		ANNom_atrib.Process();
-		Tatributos_numericos_Cvalor_NumericAttribute ANValor=new Tatributos_numericos_Cvalor_NumericAttribute("valor", true, this);
-		Sons.add(ANValor);
+		Tatributos_texto_Cnom_atrib_ControlledAttribute ATNom_atrib=new Tatributos_texto_Cnom_atrib_ControlledAttribute("nom_atrib", true, this);
+		Sons.add(ATNom_atrib);
+		ATNom_atrib.Process();
+		Tatributos_texto_Cvalor_NumericAttribute ATValor=new Tatributos_texto_Cvalor_NumericAttribute("valor", true, this);
+		Sons.add(ATValor);
 	}
 }

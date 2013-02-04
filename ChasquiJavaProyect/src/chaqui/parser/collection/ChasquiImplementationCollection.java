@@ -27,13 +27,12 @@ public class ChasquiImplementationCollection extends Collection implements Chasq
 			{
 				while (rs.next()) {
 					
-					//Proceso categoria
 					String Dato=rs.getObject("categoria").toString();
 					if (Dato!=null&&!Dato.isEmpty())
 						{
-						Tatributos_texto_Ccategoria_TextAttribute ANCategoria=new Tatributos_texto_Ccategoria_TextAttribute(Dato,true,null);
-						ANCategoria.Process();
-						Atributos.add(ANCategoria);
+						Tatributos_texto_Ccategoria_TextAttribute ATCategoria=new Tatributos_texto_Ccategoria_TextAttribute(Dato,true,null);
+						ATCategoria.Process();
+						Atributos.add(ATCategoria);
 						}
 					else System.out.println(Start.WARNING + CATEGORIAS_VACIAS);
 				}

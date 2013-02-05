@@ -32,7 +32,7 @@ public class ChasquiImplementationCollection extends Collection implements Chasq
 	@Override
 	public String toString(String prefix) {
 		StringBuffer SB=new StringBuffer();
-		for (Attribute hijos : Atributos) {
+		for (Attribute hijos : getAtributos()) {
 			SB.append(((ChasquiParseElement)hijos).toString("..."));
 		}
 		return SB.toString();
@@ -57,7 +57,7 @@ public class ChasquiImplementationCollection extends Collection implements Chasq
 						{
 						Tatributos_texto_Ccategoria_TextAttribute ATCategoria=new Tatributos_texto_Ccategoria_TextAttribute(Dato,true,null);
 						ATCategoria.Process();
-						Atributos.add(ATCategoria);
+						addAtributos(ATCategoria);
 						}
 					else System.out.println(Start.WARNING + CATEGORIAS_VACIAS);
 				}
@@ -82,7 +82,7 @@ public class ChasquiImplementationCollection extends Collection implements Chasq
 						{
 						Tatributos_numericos_Ccategoria_TextAttribute ANCategoria=new Tatributos_numericos_Ccategoria_TextAttribute(Dato,true,null);
 						ANCategoria.Process();
-						Atributos.add(ANCategoria);
+						addAtributos(ANCategoria);
 						}
 					else System.out.println(Start.WARNING + CATEGORIAS_VACIAS);
 				}
@@ -96,7 +96,7 @@ public class ChasquiImplementationCollection extends Collection implements Chasq
 	private void process_atributos_metadatos() {
 		Tatributos_metadatos_Ccategoria_TextAttribute AMCategoria = new Tatributos_metadatos_Ccategoria_TextAttribute("Metadatos",true,null);
 		AMCategoria.Process();
-		Atributos.add(AMCategoria);
+		addAtributos(AMCategoria);
 		
 	}
 }

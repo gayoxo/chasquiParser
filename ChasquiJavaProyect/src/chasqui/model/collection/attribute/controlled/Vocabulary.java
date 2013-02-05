@@ -18,7 +18,7 @@ public class Vocabulary {
 	{
 
 	int counter=0;
-	while (counter<list.size() && !list.get(counter).getClass().equals(term.getTerm()))
+	while (counter<list.size() && !list.get(counter).getTerm().equals(term.getTerm()))
 		counter++;
 	if (counter==list.size())
 		{

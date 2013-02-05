@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import chaqui.client.main.Start;
 import chaqui.parser.ChasquiParseElement;
+import chaqui.parser.collection.attribute.Tatributos_metadatos_Ccategoria_TextAttribute;
 import chaqui.parser.collection.attribute.Tatributos_numericos_Ccategoria_TextAttribute;
 import chaqui.parser.collection.attribute.Tatributos_texto_Ccategoria_TextAttribute;
 import chaqui.server.msqlconection.MySQLConnection;
@@ -20,6 +21,30 @@ public class ChasquiImplementationCollection extends Collection implements Chasq
 		
 	}
 	
+	
+	
+	@Override
+	public String toString() {
+		return toString("");
+		
+	}
+
+	@Override
+	public String toString(String prefix) {
+		StringBuffer SB=new StringBuffer();
+		for (Attribute hijos : Atributos) {
+			SB.append(((ChasquiParseElement)hijos).toString("..."));
+		}
+		return SB.toString();
+	}
+
+	@Override
+	public void Process() {
+		process_atributos_numericos();
+		process_atributos_texto();
+		process_atributos_metadatos();
+		
+	}
 	private void process_atributos_texto() {
 		try {
 			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT distinct categoria FROM chasqui2.atributos_texto ORDER BY categoria;");
@@ -68,26 +93,10 @@ public class ChasquiImplementationCollection extends Collection implements Chasq
 		}
 		
 	}
-	
-	@Override
-	public String toString() {
-		return toString("");
-		
-	}
-
-	@Override
-	public String toString(String prefix) {
-		StringBuffer SB=new StringBuffer();
-		for (Attribute hijos : Atributos) {
-			SB.append(((ChasquiParseElement)hijos).toString("..."));
-		}
-		return SB.toString();
-	}
-
-	@Override
-	public void Process() {
-		process_atributos_numericos();
-		process_atributos_texto();
+	private void process_atributos_metadatos() {
+		Tatributos_metadatos_Ccategoria_TextAttribute AMCategoria = new Tatributos_metadatos_Ccategoria_TextAttribute("Metadatos",true,null);
+		AMCategoria.Process();
+		Atributos.add(AMCategoria);
 		
 	}
 }

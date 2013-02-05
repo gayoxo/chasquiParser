@@ -4,10 +4,10 @@ import chaqui.parser.ChasquiParseElement;
 import chasqui.model.collection.attribute.Attribute;
 import chasqui.model.collection.attribute.TextAttribute;
 
-public class Tatributos_texto_Ccategoria_TextAttribute extends TextAttribute implements ChasquiParseElement{
+public class Tatributos_metadatos_Cdescripcion_TextAttribute extends TextAttribute implements ChasquiParseElement{
 
 
-	public Tatributos_texto_Ccategoria_TextAttribute(String name, boolean browseable,
+	public Tatributos_metadatos_Cdescripcion_TextAttribute(String name, boolean browseable,
 			Attribute father) {
 		super(name, browseable, father);
 
@@ -34,11 +34,7 @@ public class Tatributos_texto_Ccategoria_TextAttribute extends TextAttribute imp
 
 	@Override
 	public void Process() {
-		Tatributos_texto_Cnom_atrib_ControlledAttribute ATNom_atrib=new Tatributos_texto_Cnom_atrib_ControlledAttribute("nom_atrib", true, this);
-		Sons.add(ATNom_atrib);
-		ATNom_atrib.Process();
-		Tatributos_texto_Cvalor_NumericAttribute ATValor=new Tatributos_texto_Cvalor_NumericAttribute("valor", true, this);
-		Sons.add(ATValor);
-		ATNom_atrib.Process();
+	
+		
 	}
 }

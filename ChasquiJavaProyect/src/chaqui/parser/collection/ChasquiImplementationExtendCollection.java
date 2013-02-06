@@ -4,39 +4,24 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import chaqui.client.main.Start;
-import chaqui.parser.ChasquiParseElement;
+import chaqui.parser.collection.attribute.Atributos_texto_y_numerico_Categoria_ExtendTextAttribute.Tabla;
 import chaqui.parser.collection.attribute.Tatributos_metadatos_Ccategoria_TextAttribute;
-import chaqui.parser.collection.attribute.Tatributos_numericos_Ccategoria_TextAttribute;
-import chaqui.parser.collection.attribute.Tatributos_texto_Ccategoria_TextAttribute;
+import chaqui.parser.collection.attribute.Atributos_texto_y_numerico_Categoria_ExtendTextAttribute;
 import chaqui.server.msqlconection.MySQLConnection;
-import chasqui.model.collection.Collection;
-import chasqui.model.collection.attribute.Attribute;
+import chasqui.model.collection.attribute.TextAttribute;
 
-public class ChasquiImplementationCollection extends Collection implements ChasquiParseElement{
+public class ChasquiImplementationExtendCollection extends ExtendCollection{
 
 	private static final String CATEGORIAS_VACIAS = " Existen filas con categorias vacias";
 
-	public ChasquiImplementationCollection() {
+	public ChasquiImplementationExtendCollection() {
 		super();
 		
 	}
-	
-	
-	
-	@Override
-	public String toString() {
-		return toString("");
-		
-	}
-
-	@Override
-	public String toString(String prefix) {
-		StringBuffer SB=new StringBuffer();
-		for (Attribute hijos : getAtributos()) {
-			SB.append(((ChasquiParseElement)hijos).toString("..."));
-		}
-		return SB.toString();
-	}
+@Override
+public String toString() {
+	return super.toString("");
+}
 
 	@Override
 	public void Process() {
@@ -55,9 +40,10 @@ public class ChasquiImplementationCollection extends Collection implements Chasq
 					String Dato=rs.getObject("categoria").toString();
 					if (Dato!=null&&!Dato.isEmpty())
 						{
-						Tatributos_texto_Ccategoria_TextAttribute ATCategoria=new Tatributos_texto_Ccategoria_TextAttribute(Dato,true,null);
-						ATCategoria.Process();
-						addAtributos(ATCategoria);
+						Atributos_texto_y_numerico_Categoria_ExtendTextAttribute ATCategoria=new Atributos_texto_y_numerico_Categoria_ExtendTextAttribute(Dato,true,null);
+						ATCategoria=(Atributos_texto_y_numerico_Categoria_ExtendTextAttribute)((TextAttribute) addAtributos(ATCategoria));
+						ATCategoria.Process(Tabla.ATRIBUTOS_TEXTO);
+						
 						}
 					else System.out.println(Start.WARNING + CATEGORIAS_VACIAS);
 				}
@@ -68,6 +54,8 @@ public class ChasquiImplementationCollection extends Collection implements Chasq
 		}
 		
 	}
+
+
 
 	private void process_atributos_numericos() {
 		try {
@@ -80,9 +68,10 @@ public class ChasquiImplementationCollection extends Collection implements Chasq
 					String Dato=rs.getObject("categoria").toString();
 					if (Dato!=null&&!Dato.isEmpty())
 						{
-						Tatributos_numericos_Ccategoria_TextAttribute ANCategoria=new Tatributos_numericos_Ccategoria_TextAttribute(Dato,true,null);
-						ANCategoria.Process();
-						addAtributos(ANCategoria);
+						Atributos_texto_y_numerico_Categoria_ExtendTextAttribute ANCategoria=new Atributos_texto_y_numerico_Categoria_ExtendTextAttribute(Dato,true,null);
+						ANCategoria=(Atributos_texto_y_numerico_Categoria_ExtendTextAttribute) ((TextAttribute) addAtributos(ANCategoria));
+						ANCategoria.Process(Tabla.ATRIBUTOS_NUMERICOS);
+						
 						}
 					else System.out.println(Start.WARNING + CATEGORIAS_VACIAS);
 				}

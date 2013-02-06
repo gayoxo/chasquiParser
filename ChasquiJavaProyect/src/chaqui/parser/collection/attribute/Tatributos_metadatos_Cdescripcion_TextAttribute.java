@@ -4,7 +4,7 @@ import chaqui.parser.ChasquiParseElement;
 import chasqui.model.collection.attribute.Attribute;
 import chasqui.model.collection.attribute.TextAttribute;
 
-public class Tatributos_metadatos_Cdescripcion_TextAttribute extends TextAttribute implements ChasquiParseElement{
+public class Tatributos_metadatos_Cdescripcion_TextAttribute extends ExtendTextAttribute implements ChasquiParseElement{
 
 
 	public Tatributos_metadatos_Cdescripcion_TextAttribute(String name, boolean browseable,

@@ -31,7 +31,7 @@ public class Tatributos_numericos_Cvalor_NumericAttribute
 
 	@Override
 	public void Process() {
-		Tatributos_numericos_Cunits_ControlledAttribute ANUnits=new Tatributos_numericos_Cunits_ControlledAttribute("units", true, this);
+		Atributos_numericos_Categoria_Unidades_ExtendControlledAttribute ANUnits=new Atributos_numericos_Categoria_Unidades_ExtendControlledAttribute("units", true, this);
 		Sons.add(ANUnits);
 		ANUnits.Process();
 	}

@@ -10,10 +10,10 @@ import chasqui.model.collection.attribute.Attribute;
 import chasqui.model.collection.attribute.ControlledAttribute;
 import chasqui.model.collection.attribute.controlled.Term;
 
-public class Tatributos_texto_Cunits_ControlledAttribute extends
-		ControlledAttribute implements ChasquiParseElement {
+public class Atributos_numericos_Categoria_Unidades_ExtendControlledAttribute extends
+		ExtendControlledAttribute implements ChasquiParseElement {
 
-	public Tatributos_texto_Cunits_ControlledAttribute(String name,
+	public Atributos_numericos_Categoria_Unidades_ExtendControlledAttribute(String name,
 			boolean browseable, Attribute father) {
 		super(name, browseable, father);
 		
@@ -21,7 +21,7 @@ public class Tatributos_texto_Cunits_ControlledAttribute extends
 
 	private void process_units() {
 		try {
-			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT distinct unidades FROM chasqui2.atributos_texto WHERE categoria='"+ Father.getFather().getName() +"' ORDER BY unidades;");
+			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT distinct unidades FROM chasqui2.atributos_numericos WHERE categoria='"+ Father.getFather().getName() +"' AND nom_atrib='"+Father.getName()+"' ORDER BY unidades;");
 			if (rs!=null) 
 			{
 				while (rs.next()) {
@@ -30,7 +30,7 @@ public class Tatributos_texto_Cunits_ControlledAttribute extends
 					if (Dato!=null&&!Dato.isEmpty())
 						{
 						ImplementacionTerm TerminoCandidato=new ImplementacionTerm(Dato);
-						vocabulary.addTerm(TerminoCandidato);
+						addTerm(TerminoCandidato);
 						}
 					
 				}
@@ -42,20 +42,6 @@ public class Tatributos_texto_Cunits_ControlledAttribute extends
 		
 	}
 	
-	@Override
-	public String toString(String prefix) {
-		return prefix + 
-				ControlledAttribute.class.toString() +
-				"(Name: " + name + ")(Browseable: " + Browseable + ") \n" + processVocabulary(prefix+"...");
-	}
-
-	private String processVocabulary(String string) {
-		StringBuffer SB=new StringBuffer();
-		for (Term term : vocabulary.getList()) {
-			SB.append(((ImplementacionTerm)term).toString(string));
-		}
-		return SB.toString();
-	}
 
 	@Override
 	public void Process() {

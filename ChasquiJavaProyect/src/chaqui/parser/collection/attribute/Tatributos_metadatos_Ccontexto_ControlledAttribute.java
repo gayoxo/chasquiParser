@@ -11,7 +11,7 @@ import chasqui.model.collection.attribute.ControlledAttribute;
 import chasqui.model.collection.attribute.controlled.Term;
 
 public class Tatributos_metadatos_Ccontexto_ControlledAttribute extends
-ControlledAttribute implements ChasquiParseElement {
+ExtendControlledAttribute implements ChasquiParseElement {
 
 	public Tatributos_metadatos_Ccontexto_ControlledAttribute(
 			String name, boolean browseable, Attribute father) {
@@ -28,7 +28,7 @@ ControlledAttribute implements ChasquiParseElement {
 					if (Dato!=null&&!Dato.isEmpty())
 						{
 						ImplementacionTerm TerminoCandidato=new ImplementacionTerm(Dato);
-						vocabulary.addTerm(TerminoCandidato);
+						addTerm(TerminoCandidato);
 						}
 					
 				}
@@ -39,6 +39,8 @@ ControlledAttribute implements ChasquiParseElement {
 		}
 		
 	}
+
+	
 
 	@Override
 	public String toString(String prefix) {

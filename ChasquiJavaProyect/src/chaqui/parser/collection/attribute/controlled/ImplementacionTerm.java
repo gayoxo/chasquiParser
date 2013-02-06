@@ -13,9 +13,7 @@ public class ImplementacionTerm extends Term implements ChasquiParseElement{
 
 	@Override
 	public String toString(String prefix) {
-		return prefix + 
-				Vocabulary.class.toString() +
-				"(Term: " + term + ")\n";
+			return term;
 	}
 
 	@Override

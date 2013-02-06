@@ -23,14 +23,7 @@ public class Tatributos_metadatos_Cdescripcion_TextAttribute extends ExtendTextA
 		
 	}
 
-	private String processSons(String string) {
-		StringBuffer SB=new StringBuffer();
-		for (Attribute son : Sons) {
-			SB.append(((ChasquiParseElement)son).toString(string));
-		}
-		return SB.toString();
-	}
-
+	
 
 	@Override
 	public void Process() {

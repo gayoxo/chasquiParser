@@ -28,24 +28,26 @@ public abstract class ExtendControlledAttribute extends ControlledAttribute impl
 	
 	}
 	
-	@Override
-	public String toString(String prefix) {
-		return prefix + 
-				"ControlledAttribute(Name: " + name + ")(Browseable: " + Browseable + ") \n" + processVocabulary(prefix+"...");
-	}
+	
 
-	private String processVocabulary(String string) {
+	protected String processVocabulary(String string) {
 		StringBuffer SB=new StringBuffer();
 		SB.append(string);
-		SB.append("Vocabulary (");
+		SB.append("Vocabulary: (");
 		for (Term term : vocabulary.getList()) {
 			SB.append(((ImplementacionTerm)term).toString(string));
 			SB.append(",");
 		}
-		SB.deleteCharAt(SB.length()-1);
+		if ( vocabulary.getList().size()>0) SB.deleteCharAt(SB.length()-1);
 		SB.append(")");
 		SB.append("\n");
 		return SB.toString();
 	}
 
+	@Override
+	public String toString(String prefix) {
+		return prefix + 
+				"ControlledAttribute(Atributo: "+name+")(Browseable: " + Browseable + ") \n" + processVocabulary(prefix+"...");
+	}
+	
 }

@@ -50,13 +50,6 @@ ExtendControlledAttribute implements ChasquiParseElement {
 		
 	}
 
-	private String processVocabulary(String string) {
-		StringBuffer SB=new StringBuffer();
-		for (Term term : vocabulary.getList()) {
-			SB.append(((ImplementacionTerm)term).toString(string));
-		}
-		return SB.toString();
-	}
 
 	@Override
 	public void Process() {

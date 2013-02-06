@@ -20,5 +20,10 @@ ExtendNumericAttribute {
 		
 	}
 
+	public String toString(String prefix) {
+		return prefix + 
+		"NumericAttribute (Tipo: " + name + ")(Browseable: " + Browseable + ") \n"+processSons(prefix+"...");
+		
+	}
 	
 }

@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import chaqui.client.main.Start;
 import chaqui.parser.collection.attribute.Atributos_texto_y_numerico_Categoria_ExtendTextAttribute.Tabla;
-import chaqui.parser.collection.attribute.Tatributos_metadatos_Ccategoria_TextAttribute;
+import chaqui.parser.collection.attribute.Atributos_metadatos_Categoria_ExtendTextAttribute;
 import chaqui.parser.collection.attribute.Atributos_texto_y_numerico_Categoria_ExtendTextAttribute;
 import chaqui.server.msqlconection.MySQLConnection;
 import chasqui.model.collection.attribute.TextAttribute;
@@ -83,7 +83,7 @@ public String toString() {
 		
 	}
 	private void process_atributos_metadatos() {
-		Tatributos_metadatos_Ccategoria_TextAttribute AMCategoria = new Tatributos_metadatos_Ccategoria_TextAttribute("Metadatos",true,null);
+		Atributos_metadatos_Categoria_ExtendTextAttribute AMCategoria = new Atributos_metadatos_Categoria_ExtendTextAttribute("Metadatos",true,null);
 		AMCategoria.Process();
 		addAtributos(AMCategoria);
 		

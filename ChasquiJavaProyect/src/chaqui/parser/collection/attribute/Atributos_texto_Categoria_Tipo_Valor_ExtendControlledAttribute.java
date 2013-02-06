@@ -47,4 +47,5 @@ public class Atributos_texto_Categoria_Tipo_Valor_ExtendControlledAttribute exte
 		
 	}
 	
+	
 }

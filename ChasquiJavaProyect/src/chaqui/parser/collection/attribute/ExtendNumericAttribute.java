@@ -23,13 +23,8 @@ public abstract class ExtendNumericAttribute extends NumericAttribute  implement
 		else return Sons.get(counter);
 	}
 	
-	public String toString(String prefix) {
-		return prefix + 
-		"NumericAttribute (Name: " + name + ")(Browseable: " + Browseable + ") \n"+processSons(prefix+"...");
-		
-	}
 
-	private String processSons(String string) {
+	protected String processSons(String string) {
 		StringBuffer SB=new StringBuffer();
 		for (Attribute son : Sons) {
 			SB.append(((ChasquiParseElement)son).toString(string));

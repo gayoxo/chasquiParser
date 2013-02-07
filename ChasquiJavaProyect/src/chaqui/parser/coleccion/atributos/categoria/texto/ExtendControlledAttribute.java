@@ -1,6 +1,7 @@
-package chaqui.parser.collection.attribute;
+package chaqui.parser.coleccion.atributos.categoria.texto;
 
 import chaqui.parser.ChasquiParseElement;
+import chaqui.parser.coleccion.atributos.ExtendTerm;
 import chasqui.model.collection.attribute.Attribute;
 import chasqui.model.collection.attribute.ControlledAttribute;
 import chasqui.model.collection.attribute.controlled.Term;
@@ -49,4 +50,5 @@ public abstract class ExtendControlledAttribute extends ControlledAttribute impl
 				"ControlledAttribute(Atributo: "+name+")(Browseable: " + Browseable + ") \n" + processVocabulary(prefix+"...");
 	}
 	
+	protected abstract void process_Vocabulary();
 }

@@ -1,8 +1,9 @@
-package chaqui.parser.collection.attribute;
+package chaqui.parser.coleccion.atributos.categoria.texto;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import chaqui.parser.coleccion.atributos.ExtendTerm;
 import chaqui.server.msqlconection.MySQLConnection;
 import chasqui.model.collection.attribute.Attribute;
 
@@ -14,8 +15,16 @@ public class Atributos_texto_Categoria_Tipo_Valor_ExtendControlledAttribute exte
 		super(name, browseable, father);
 		
 	}
+	
 
-	private void process_units() {
+	@Override
+	public void Process() {
+		process_Vocabulary();
+		
+	}
+
+	@Override
+	public void process_Vocabulary() {
 		try {
 			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT distinct valor FROM chasqui2.atributos_texto WHERE categoria='"+ Father.getFather().getName() +"' AND nom_atrib='"+Father.getName() + "' ORDER BY valor;");
 			if (rs!=null) 
@@ -35,14 +44,6 @@ public class Atributos_texto_Categoria_Tipo_Valor_ExtendControlledAttribute exte
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-	}
-	
-	
-
-	@Override
-	public void Process() {
-		process_units();
 		
 	}
 	

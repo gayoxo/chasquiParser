@@ -1,8 +1,8 @@
-package chaqui.parser.collection.attribute;
+package chaqui.parser.coleccion.atributos.categoria.metadatos;
 
 import chaqui.parser.ChasquiParseElement;
+import chaqui.parser.coleccion.atributos.ExtendTextAttribute;
 import chasqui.model.collection.attribute.Attribute;
-import chasqui.model.collection.attribute.TextAttribute;
 
 public class Atributos_metadatos_Categoria_Description_ExtendTextAttribute extends ExtendTextAttribute implements ChasquiParseElement{
 

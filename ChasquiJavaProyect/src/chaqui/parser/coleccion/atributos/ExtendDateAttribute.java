@@ -1,12 +1,12 @@
-package chaqui.parser.collection.attribute;
+package chaqui.parser.coleccion.atributos;
 
 import chaqui.parser.ChasquiParseElement;
 import chasqui.model.collection.attribute.Attribute;
-import chasqui.model.collection.attribute.TextAttribute;
+import chasqui.model.collection.attribute.DateAttribute;
 
-public abstract class ExtendTextAttribute extends TextAttribute implements ChasquiParseElement{
+public abstract class ExtendDateAttribute extends DateAttribute  implements ChasquiParseElement{
 
-	public ExtendTextAttribute(String name, boolean browseable, Attribute father) {
+	public ExtendDateAttribute(String name, boolean browseable, Attribute father) {
 		super(name, browseable, father);
 	}
 
@@ -23,7 +23,6 @@ public abstract class ExtendTextAttribute extends TextAttribute implements Chasq
 	}
 	
 
-
 	protected String processSons(String string) {
 		StringBuffer SB=new StringBuffer();
 		for (Attribute son : Sons) {
@@ -35,7 +34,7 @@ public abstract class ExtendTextAttribute extends TextAttribute implements Chasq
 	@Override
 	public String toString(String prefix) {
 		return prefix + 
-		"TextAttribute (Atributo: " + name + ")(Browseable: " + Browseable + ") \n"+processSons(prefix+"...");
+		"DateAttribute (Atributo: " + name + ")(Browseable: " + Browseable + ") \n"+processSons(prefix+"...");
 		
 	}
 }

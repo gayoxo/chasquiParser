@@ -1,8 +1,11 @@
-package chaqui.parser.collection.attribute;
+package chaqui.parser.coleccion.atributos.categoria;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import chaqui.parser.coleccion.atributos.ExtendTextAttribute;
+import chaqui.parser.coleccion.atributos.categoria.numericos.Atributos_numericos_Categoria_Tipo_ExtendNumericAttribute;
+import chaqui.parser.coleccion.atributos.categoria.texto.Atributos_texto_Categoria_Tipo_ExtendTextAttribute;
 import chaqui.server.msqlconection.MySQLConnection;
 import chasqui.model.collection.attribute.Attribute;
 

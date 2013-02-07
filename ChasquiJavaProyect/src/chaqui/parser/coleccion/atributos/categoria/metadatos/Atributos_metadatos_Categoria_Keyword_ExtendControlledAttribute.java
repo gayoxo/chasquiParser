@@ -1,13 +1,13 @@
-package chaqui.parser.collection.attribute;
+package chaqui.parser.coleccion.atributos.categoria.metadatos;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import chaqui.parser.ChasquiParseElement;
+import chaqui.parser.coleccion.atributos.ExtendTerm;
+import chaqui.parser.coleccion.atributos.categoria.texto.ExtendControlledAttribute;
 import chaqui.server.msqlconection.MySQLConnection;
 import chasqui.model.collection.attribute.Attribute;
-import chasqui.model.collection.attribute.ControlledAttribute;
-import chasqui.model.collection.attribute.controlled.Term;
 
 public class Atributos_metadatos_Categoria_Keyword_ExtendControlledAttribute extends
 ExtendControlledAttribute implements ChasquiParseElement {
@@ -17,7 +17,7 @@ ExtendControlledAttribute implements ChasquiParseElement {
 		super(name, browseable, father);
 	}
 
-	private void process_Vocabulary() {
+	protected void process_Vocabulary() {
 		try {
 			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT distinct contenido FROM chasqui2.metadatos Where ruta = '/manifest/metadata/lom/general/coverage/langstring' ORDER BY contenido;");
 			if (rs!=null) 

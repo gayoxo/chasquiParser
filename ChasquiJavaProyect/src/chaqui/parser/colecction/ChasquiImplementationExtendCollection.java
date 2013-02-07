@@ -1,12 +1,12 @@
-package chaqui.parser.collection;
+package chaqui.parser.colecction;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import chaqui.client.main.Start;
-import chaqui.parser.collection.attribute.Atributos_texto_y_numerico_Categoria_ExtendTextAttribute.Tabla;
-import chaqui.parser.collection.attribute.Atributos_metadatos_Categoria_ExtendTextAttribute;
-import chaqui.parser.collection.attribute.Atributos_texto_y_numerico_Categoria_ExtendTextAttribute;
+import chaqui.parser.coleccion.atributos.categoria.Atributos_metadatos_Categoria_ExtendTextAttribute;
+import chaqui.parser.coleccion.atributos.categoria.Atributos_texto_y_numerico_Categoria_ExtendTextAttribute;
+import chaqui.parser.coleccion.atributos.categoria.Atributos_texto_y_numerico_Categoria_ExtendTextAttribute.Tabla;
 import chaqui.server.msqlconection.MySQLConnection;
 import chasqui.model.collection.attribute.TextAttribute;
 

@@ -1,4 +1,4 @@
-package chaqui.parser.collection;
+package chaqui.parser.colecction;
 
 import chaqui.parser.ChasquiParseElement;
 import chasqui.model.collection.Collection;

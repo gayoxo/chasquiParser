@@ -1,6 +1,6 @@
 package chaqui.client.main;
 
-import chaqui.parser.collection.ChasquiImplementationExtendCollection;
+import chaqui.parser.colecction.ChasquiImplementationExtendCollection;
 import chaqui.server.msqlconection.MySQLConnection;
 
 public class Start {

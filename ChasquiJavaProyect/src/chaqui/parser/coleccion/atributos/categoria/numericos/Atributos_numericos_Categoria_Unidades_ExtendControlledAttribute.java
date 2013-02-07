@@ -1,13 +1,13 @@
-package chaqui.parser.collection.attribute;
+package chaqui.parser.coleccion.atributos.categoria.numericos;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import chaqui.parser.ChasquiParseElement;
+import chaqui.parser.coleccion.atributos.ExtendTerm;
+import chaqui.parser.coleccion.atributos.categoria.texto.ExtendControlledAttribute;
 import chaqui.server.msqlconection.MySQLConnection;
 import chasqui.model.collection.attribute.Attribute;
-import chasqui.model.collection.attribute.ControlledAttribute;
-import chasqui.model.collection.attribute.controlled.Term;
 
 public class Atributos_numericos_Categoria_Unidades_ExtendControlledAttribute extends
 		ExtendControlledAttribute implements ChasquiParseElement {
@@ -18,7 +18,7 @@ public class Atributos_numericos_Categoria_Unidades_ExtendControlledAttribute ex
 		
 	}
 
-	private void process_units() {
+	protected void process_Vocabulary() {
 		try {
 			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT distinct unidades FROM chasqui2.atributos_numericos WHERE categoria='"+ Father.getFather().getName() +"' AND nom_atrib='"+Father.getName()+"' ORDER BY unidades;");
 			if (rs!=null) 
@@ -44,7 +44,7 @@ public class Atributos_numericos_Categoria_Unidades_ExtendControlledAttribute ex
 
 	@Override
 	public void Process() {
-		process_units();
+		process_Vocabulary();
 		
 	}
 	

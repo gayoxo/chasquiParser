@@ -1,13 +1,12 @@
-package chaqui.parser.collection.attribute;
+package chaqui.parser.coleccion.atributos;
 
 import chaqui.parser.ChasquiParseElement;
 import chasqui.model.collection.attribute.Attribute;
-import chasqui.model.collection.attribute.NumericAttribute;
 import chasqui.model.collection.attribute.TextAttribute;
 
-public abstract class ExtendNumericAttribute extends NumericAttribute  implements ChasquiParseElement{
+public abstract class ExtendTextAttribute extends TextAttribute implements ChasquiParseElement{
 
-	public ExtendNumericAttribute(String name, boolean browseable, Attribute father) {
+	public ExtendTextAttribute(String name, boolean browseable, Attribute father) {
 		super(name, browseable, father);
 	}
 
@@ -24,6 +23,7 @@ public abstract class ExtendNumericAttribute extends NumericAttribute  implement
 	}
 	
 
+
 	protected String processSons(String string) {
 		StringBuffer SB=new StringBuffer();
 		for (Attribute son : Sons) {
@@ -35,7 +35,7 @@ public abstract class ExtendNumericAttribute extends NumericAttribute  implement
 	@Override
 	public String toString(String prefix) {
 		return prefix + 
-		"NumericAttribute (Atributo: " + name + ")(Browseable: " + Browseable + ") \n"+processSons(prefix+"...");
+		"TextAttribute (Atributo: " + name + ")(Browseable: " + Browseable + ") \n"+processSons(prefix+"...");
 		
 	}
 }

@@ -1,6 +1,7 @@
-package chaqui.parser.collection.attribute;
+package chaqui.parser.coleccion.atributos.categoria.texto;
 
 import chaqui.parser.ChasquiParseElement;
+import chaqui.parser.coleccion.atributos.ExtendTextAttribute;
 import chasqui.model.collection.attribute.Attribute;
 
 public class Atributos_texto_Categoria_Tipo_ExtendTextAttribute extends

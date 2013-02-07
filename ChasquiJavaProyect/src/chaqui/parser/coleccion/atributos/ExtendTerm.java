@@ -1,8 +1,7 @@
-package chaqui.parser.collection.attribute;
+package chaqui.parser.coleccion.atributos;
 
 import chaqui.parser.ChasquiParseElement;
 import chasqui.model.collection.attribute.controlled.Term;
-import chasqui.model.collection.attribute.controlled.Vocabulary;
 
 
 public class ExtendTerm extends Term implements ChasquiParseElement{

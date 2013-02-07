@@ -1,5 +1,6 @@
-package chaqui.parser.collection.attribute;
+package chaqui.parser.coleccion.atributos.categoria.numericos;
 
+import chaqui.parser.coleccion.atributos.ExtendNumericAttribute;
 import chasqui.model.collection.attribute.Attribute;
 
 public class Atributos_numericos_Categoria_Tipo_ExtendNumericAttribute extends

@@ -1,5 +1,11 @@
-package chaqui.parser.collection.attribute;
+package chaqui.parser.coleccion.atributos.categoria;
 
+import chaqui.parser.coleccion.atributos.ExtendTextAttribute;
+import chaqui.parser.coleccion.atributos.categoria.metadatos.Atributos_metadatos_Categoria_Contexto_ExtendControlledAttribute;
+import chaqui.parser.coleccion.atributos.categoria.metadatos.Atributos_metadatos_Categoria_Contribucion_ExtendTextAttribute;
+import chaqui.parser.coleccion.atributos.categoria.metadatos.Atributos_metadatos_Categoria_Description_ExtendTextAttribute;
+import chaqui.parser.coleccion.atributos.categoria.metadatos.Atributos_metadatos_Categoria_Keyword_ExtendControlledAttribute;
+import chaqui.parser.coleccion.atributos.categoria.metadatos.catalogo.Atributos_metadatos_Categoria_Catalogos_ExtendTextAttribute;
 import chasqui.model.collection.attribute.Attribute;
 
 public class Atributos_metadatos_Categoria_ExtendTextAttribute extends ExtendTextAttribute{
@@ -32,6 +38,12 @@ public class Atributos_metadatos_Categoria_ExtendTextAttribute extends ExtendTex
 		Atributos_metadatos_Categoria_Description_ExtendTextAttribute AMdescripcion= new Atributos_metadatos_Categoria_Description_ExtendTextAttribute("Descripcion", true, this);
 		Sons.add(AMdescripcion);
 		AMdescripcion.Process();
+		Atributos_metadatos_Categoria_Contribucion_ExtendTextAttribute AMcontribucion= new Atributos_metadatos_Categoria_Contribucion_ExtendTextAttribute("Contribucion",true, this);
+		Sons.add(AMcontribucion);
+		AMcontribucion.Process();
+		Atributos_metadatos_Categoria_Catalogos_ExtendTextAttribute AMCatalogo= new Atributos_metadatos_Categoria_Catalogos_ExtendTextAttribute("Catalogos",true, this);
+		Sons.add(AMCatalogo);
+		AMCatalogo.Process();
 		
 	}
 }

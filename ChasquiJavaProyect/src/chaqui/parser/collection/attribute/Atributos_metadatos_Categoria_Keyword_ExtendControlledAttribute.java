@@ -4,16 +4,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import chaqui.parser.ChasquiParseElement;
-import chaqui.parser.collection.attribute.controlled.ImplementacionTerm;
 import chaqui.server.msqlconection.MySQLConnection;
 import chasqui.model.collection.attribute.Attribute;
 import chasqui.model.collection.attribute.ControlledAttribute;
 import chasqui.model.collection.attribute.controlled.Term;
 
-public class Tatributos_metadatos_Ckeyword_ControlledAttribute extends
+public class Atributos_metadatos_Categoria_Keyword_ExtendControlledAttribute extends
 ExtendControlledAttribute implements ChasquiParseElement {
 
-	public Tatributos_metadatos_Ckeyword_ControlledAttribute(
+	public Atributos_metadatos_Categoria_Keyword_ExtendControlledAttribute(
 			String name, boolean browseable, Attribute father) {
 		super(name, browseable, father);
 	}
@@ -27,7 +26,7 @@ ExtendControlledAttribute implements ChasquiParseElement {
 					String Dato=rs.getObject("contenido").toString();
 					if (Dato!=null&&!Dato.isEmpty())
 						{
-						ImplementacionTerm TerminoCandidato=new ImplementacionTerm(Dato);
+						ExtendTerm TerminoCandidato=new ExtendTerm(Dato);
 						addTerm(TerminoCandidato);
 						}
 					
@@ -37,14 +36,6 @@ ExtendControlledAttribute implements ChasquiParseElement {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-	}
-
-	@Override
-	public String toString(String prefix) {
-		return prefix + 
-		ControlledAttribute.class.toString() +
-		"(Name: " + name + ")(Browseable: " + Browseable + ") \n" + processVocabulary(prefix+"...");
 		
 	}
 

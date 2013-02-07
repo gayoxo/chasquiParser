@@ -19,10 +19,5 @@ ExtendTextAttribute implements ChasquiParseElement {
 		ATCTU.Process();
 	}
 
-	public String toString(String prefix) {
-		return prefix + 
-		"TextAttribute (Tipo: " + name + ")(Browseable: " + Browseable + ") \n"+processSons(prefix+"...");
-		
-	}
 	
 }

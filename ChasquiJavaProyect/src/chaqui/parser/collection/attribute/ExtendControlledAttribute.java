@@ -1,7 +1,6 @@
 package chaqui.parser.collection.attribute;
 
 import chaqui.parser.ChasquiParseElement;
-import chaqui.parser.collection.attribute.controlled.ImplementacionTerm;
 import chasqui.model.collection.attribute.Attribute;
 import chasqui.model.collection.attribute.ControlledAttribute;
 import chasqui.model.collection.attribute.controlled.Term;
@@ -35,7 +34,7 @@ public abstract class ExtendControlledAttribute extends ControlledAttribute impl
 		SB.append(string);
 		SB.append("Vocabulary: (");
 		for (Term term : vocabulary.getList()) {
-			SB.append(((ImplementacionTerm)term).toString(string));
+			SB.append(((ExtendTerm)term).toString(string));
 			SB.append(",");
 		}
 		if ( vocabulary.getList().size()>0) SB.deleteCharAt(SB.length()-1);

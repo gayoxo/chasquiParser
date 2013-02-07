@@ -31,4 +31,11 @@ public abstract class ExtendNumericAttribute extends NumericAttribute  implement
 		}
 		return SB.toString();
 	}
+	
+	@Override
+	public String toString(String prefix) {
+		return prefix + 
+		"NumericAttribute (Atributo: " + name + ")(Browseable: " + Browseable + ") \n"+processSons(prefix+"...");
+		
+	}
 }

@@ -3,7 +3,6 @@ package chaqui.parser.collection.attribute;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import chaqui.parser.collection.attribute.controlled.ImplementacionTerm;
 import chaqui.server.msqlconection.MySQLConnection;
 import chasqui.model.collection.attribute.Attribute;
 
@@ -26,7 +25,7 @@ public class Atributos_texto_Categoria_Tipo_Valor_ExtendControlledAttribute exte
 					String Dato=rs.getObject("valor").toString();
 					if (Dato!=null&&!Dato.isEmpty())
 						{
-						ImplementacionTerm TerminoCandidato=new ImplementacionTerm(Dato);
+						ExtendTerm TerminoCandidato=new ExtendTerm(Dato);
 						addTerm(TerminoCandidato);
 						}
 					

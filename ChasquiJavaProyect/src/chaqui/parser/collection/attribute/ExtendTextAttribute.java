@@ -31,4 +31,11 @@ public abstract class ExtendTextAttribute extends TextAttribute implements Chasq
 		}
 		return SB.toString();
 	}
+	
+	@Override
+	public String toString(String prefix) {
+		return prefix + 
+		"TextAttribute (Atributo: " + name + ")(Browseable: " + Browseable + ") \n"+processSons(prefix+"...");
+		
+	}
 }

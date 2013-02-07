@@ -1,13 +1,13 @@
-package chaqui.parser.collection.attribute.controlled;
+package chaqui.parser.collection.attribute;
 
 import chaqui.parser.ChasquiParseElement;
 import chasqui.model.collection.attribute.controlled.Term;
 import chasqui.model.collection.attribute.controlled.Vocabulary;
 
 
-public class ImplementacionTerm extends Term implements ChasquiParseElement{
+public class ExtendTerm extends Term implements ChasquiParseElement{
 
-	public ImplementacionTerm(String name) {
+	public ExtendTerm(String name) {
 		super(name);
 	}
 

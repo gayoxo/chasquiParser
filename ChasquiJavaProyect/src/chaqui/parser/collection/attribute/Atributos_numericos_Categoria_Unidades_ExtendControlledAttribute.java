@@ -4,7 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import chaqui.parser.ChasquiParseElement;
-import chaqui.parser.collection.attribute.controlled.ImplementacionTerm;
 import chaqui.server.msqlconection.MySQLConnection;
 import chasqui.model.collection.attribute.Attribute;
 import chasqui.model.collection.attribute.ControlledAttribute;
@@ -29,7 +28,7 @@ public class Atributos_numericos_Categoria_Unidades_ExtendControlledAttribute ex
 					String Dato=rs.getObject("unidades").toString();
 					if (Dato!=null&&!Dato.isEmpty())
 						{
-						ImplementacionTerm TerminoCandidato=new ImplementacionTerm(Dato);
+						ExtendTerm TerminoCandidato=new ExtendTerm(Dato);
 						addTerm(TerminoCandidato);
 						}
 					

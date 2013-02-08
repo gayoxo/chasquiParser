@@ -59,7 +59,7 @@ public class Atributos_metadatos_Categoria_Catalogos_Catalogo_ExtendControlledAt
 					String Contenido=rs.getObject("contenido").toString();
 					String[] DatosRutaCatalogo=datoNumRuta.split("\\.");
 					String[] DatosRutaEntry=Dato.split("\\.");
-					if (Dato!=null&&!Dato.isEmpty()&&DatosRutaCatalogo[4].equals(DatosRutaEntry[4]))
+					if (Dato!=null&&Contenido!=null&&!Contenido.isEmpty()&&!Dato.isEmpty()&&DatosRutaCatalogo[4].equals(DatosRutaEntry[4]))
 						{
 						ExtendTerm TerminoCandidato=new ExtendTerm(Contenido);
 						addTerm(TerminoCandidato);

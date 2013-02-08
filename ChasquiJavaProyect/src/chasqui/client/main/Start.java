@@ -6,7 +6,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
-import chasqui.parser.colecction.ChasquiImplementationExtendCollection;
+import chasqui.parser.coleccion.ChasquiImplementationExtendCollection;
 import chasqui.server.msqlconection.MySQLConnection;
 
 public class Start {

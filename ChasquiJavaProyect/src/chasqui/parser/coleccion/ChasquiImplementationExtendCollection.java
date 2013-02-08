@@ -1,4 +1,4 @@
-package chasqui.parser.colecction;
+package chasqui.parser.coleccion;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -17,6 +17,8 @@ public class MySQLConnection {
 	private static final String DBaseServer="jdbc:mysql://horchata.fdi.ucm.es:3306/chasqui2";
 	private static final String DBaseLocal="jdbc:mysql://localhost:3306/chasqui2";
 	
+	private static String DBSelected;
+	
 	private static final String DriverDatabase="com.mysql.jdbc.Driver";
 	private static final String ErrorMySQLConnection="Error en driver de conexion al mySQL";
 	private static final String ErrorCOnexionDB="Error en conexion a base de datos";
@@ -52,8 +54,10 @@ public class MySQLConnection {
 		switch (salida) {
 		case "1":
 			conexion = DriverManager.getConnection(DBaseServer, "ilsaserver", "platano");	
+			DBSelected=DBaseServer;
 			break;
 		case "2":
+			DBSelected=DBaseLocal;
 			conexion = DriverManager.getConnection(DBaseLocal, "ilsaserver", "platano");	
 			break;
 		default:
@@ -99,5 +103,7 @@ public class MySQLConnection {
 		}
 	}
 	 
-
+public static String getDBSelected() {
+	return DBSelected;
+}
 }

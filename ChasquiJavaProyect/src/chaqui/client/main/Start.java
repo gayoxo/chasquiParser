@@ -1,5 +1,8 @@
 package chaqui.client.main;
 
+import java.io.FileWriter;
+import java.io.PrintWriter;
+
 import chaqui.parser.colecction.ChasquiImplementationExtendCollection;
 import chaqui.server.msqlconection.MySQLConnection;
 
@@ -21,7 +24,24 @@ public class Start {
 		Chasqui.Process();
 		System.out.println("Collection:");
 		System.out.println(Chasqui.toString());
-		
+		 FileWriter fichero = null;
+	        PrintWriter pw = null;
+	        try
+	        {
+	            fichero = new FileWriter("prueba.txt");
+	            pw = new PrintWriter(fichero);
+	                pw.println(Chasqui.toString());
+
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        } finally {
+	           try {
+	           if (null != fichero)
+	              fichero.close();
+	           } catch (Exception e2) {
+	              e2.printStackTrace();
+	           }
+	        }
 		
 		
 	}

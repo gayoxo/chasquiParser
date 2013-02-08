@@ -3,6 +3,7 @@ package chaqui.parser.coleccion.atributos.categoria.texto;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import chaqui.parser.coleccion.atributos.ExtendControlledAttribute;
 import chaqui.parser.coleccion.atributos.ExtendTerm;
 import chaqui.server.msqlconection.MySQLConnection;
 import chasqui.model.collection.attribute.Attribute;

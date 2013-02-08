@@ -12,7 +12,7 @@ public abstract class ExtendTextAttribute extends TextAttribute implements Chasq
 
 	public Attribute addAtributos(Attribute atribute) {
 		int counter=0;
-		while (counter<Sons.size() && !Sons.get(counter).getName().equals(atribute.getName()))
+		while (counter<Sons.size() && !(remove1(Sons.get(counter).getName()).toLowerCase().equals(remove1(atribute.getName()).toLowerCase())))
 			counter++;
 		if (counter==Sons.size())
 			{
@@ -37,5 +37,16 @@ public abstract class ExtendTextAttribute extends TextAttribute implements Chasq
 		return prefix + 
 		"TextAttribute (Atributo: " + name + ")(Browseable: " + Browseable + ") \n"+processSons(prefix+"...");
 		
+	}
+	
+	public static String remove1(String input) {
+	    String original = "áàäéèëíìïóòöúùuñÁÀÄÉÈËÍÌÏÓÒÖÚÙÜÑçÇ";
+	    String ascii = "aaaeeeiiiooouuunAAAEEEIIIOOOUUUNcC";
+	    String output = input;
+	    for (int i=0; i<original.length(); i++) {
+
+	        output = output.replace(original.charAt(i), ascii.charAt(i));
+	    }
+	    return output;
 	}
 }

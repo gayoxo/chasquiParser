@@ -1,4 +1,4 @@
-package chaqui.parser.coleccion.atributos.categoria.metadatos.Taxonomias;
+package chaqui.parser.coleccion.atributos.categoria.metadatos.taxonomias;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,7 +25,7 @@ public class Atributos_metadatos_Categoria_Taxonomias_ExtendTextAttribute
 
 	private void processAllCategorias() {
 		try {
-			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT distinct idov,num_ruta FROM chasqui2.metadatos WHERE (ruta= '/manifest/metadata/lom/classification/taxonpath/source/langstring' AND contenido='sección/sección');");
+			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT distinct idov,num_ruta FROM chasqui2.metadatos WHERE (ruta= '/manifest/metadata/lom/classification/taxonpath/source/langstring' AND contenido='Sección/Sección');");
 			if (rs!=null) 
 			{
 				while (rs.next()) {
@@ -59,10 +59,10 @@ public class Atributos_metadatos_Categoria_Taxonomias_ExtendTextAttribute
 					String[] DatosRutaEntry=num_rutaValid.split("\\.");
 					if (contenido!=null&&num_rutaValid!=null&&!num_rutaValid.isEmpty()&&!contenido.isEmpty()&&DatosRutaSection[4].equals(DatosRutaEntry[4]))
 						{
-						Atributos_metadatos_Categoria_Taxonomias_Taxonomia_ExtendTextAttribute ATCUnidades=new Atributos_metadatos_Categoria_Taxonomias_Taxonomia_ExtendTextAttribute(contenido, true, this);
+						Atributos_metadatos_Categoria_Taxonomias_Taxonomia_ExtendTextAttribute ATCUnidades=new Atributos_metadatos_Categoria_Taxonomias_Taxonomia_ExtendTextAttribute(contenido, true, this,idov);
 						ATCUnidades=(Atributos_metadatos_Categoria_Taxonomias_Taxonomia_ExtendTextAttribute) addAtributos(ATCUnidades);
-						ATCUnidades.Process(idov);
-
+						ATCUnidades.setIdov(idov);
+						ATCUnidades.Process();
 						}
 					
 				}

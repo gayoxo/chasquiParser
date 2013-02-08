@@ -31,7 +31,7 @@ public enum Tabla {ATRIBUTOS_NUMERICOS,ATRIBUTOS_TEXTO};
 					if (Dato!=null&&!Dato.isEmpty())
 						{
 						Atributos_texto_Categoria_Tipo_ExtendTextAttribute ATCUnidades=new Atributos_texto_Categoria_Tipo_ExtendTextAttribute(Dato, true, this);
-						ATCUnidades=(Atributos_texto_Categoria_Tipo_ExtendTextAttribute) addAtributos(ATCUnidades);
+						Sons.add(ATCUnidades);
 						ATCUnidades.Process();
 
 						}
@@ -55,7 +55,7 @@ public enum Tabla {ATRIBUTOS_NUMERICOS,ATRIBUTOS_TEXTO};
 					if (Dato!=null&&!Dato.isEmpty())
 						{
 						Atributos_numericos_Categoria_Tipo_ExtendNumericAttribute ATCUnidades=new Atributos_numericos_Categoria_Tipo_ExtendNumericAttribute(Dato, true, this);
-						ATCUnidades=(Atributos_numericos_Categoria_Tipo_ExtendNumericAttribute) addAtributos(ATCUnidades);
+						Sons.add(ATCUnidades);
 						ATCUnidades.Process();
 
 						}

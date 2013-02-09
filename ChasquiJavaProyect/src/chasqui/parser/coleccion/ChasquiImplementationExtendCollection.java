@@ -3,7 +3,7 @@ package chasqui.parser.coleccion;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import chasqui.client.main.Start;
+import chasqui.client.main.Escritor;
 import chasqui.model.collection.attribute.TextAttribute;
 import chasqui.parser.coleccion.atributos.categoria.Atributos_metadatos_Categoria_ExtendTextAttribute;
 import chasqui.parser.coleccion.atributos.categoria.Atributos_texto_y_numerico_Categoria_ExtendTextAttribute;
@@ -45,7 +45,7 @@ public String toString() {
 						ATCategoria.Process(Tabla.ATRIBUTOS_TEXTO);
 						
 						}
-					else System.out.println(Start.WARNING + CATEGORIAS_VACIAS);
+					else System.out.println(Escritor.WARNING + CATEGORIAS_VACIAS);
 				}
 			rs.close();
 			}
@@ -73,7 +73,7 @@ public String toString() {
 						ANCategoria.Process(Tabla.ATRIBUTOS_NUMERICOS);
 						
 						}
-					else System.out.println(Start.WARNING + CATEGORIAS_VACIAS);
+					else System.out.println(Escritor.WARNING + CATEGORIAS_VACIAS);
 				}
 			rs.close();
 			}

@@ -1,9 +1,14 @@
 package chasqui.model.collection.attribute;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Attribute {
+public abstract class Attribute implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8247000451879876288L;
 	protected String name;
 	protected boolean Browseable;
 	protected Attribute Father;

@@ -1,7 +1,13 @@
 package chasqui.model.collection.attribute.controlled;
 
-public class Term {
+import java.io.Serializable;
 
+public class Term implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 407850953777136626L;
 	protected String term;
 	
 	public Term(String name) {

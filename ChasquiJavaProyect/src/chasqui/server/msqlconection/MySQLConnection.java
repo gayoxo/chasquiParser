@@ -12,6 +12,9 @@ import java.sql.Statement;
 
 public class MySQLConnection {
 	
+	
+	public enum DB {DBaseServer,DBaseLocal};
+	
 	private static MySQLConnection instance;
 	private Connection conexion;
 	private static final String DBaseServer="jdbc:mysql://horchata.fdi.ucm.es:3306/chasqui2";
@@ -41,6 +44,63 @@ public class MySQLConnection {
 			e.printStackTrace();
 			System.exit(1);
 		}
+		
+	}
+
+	public MySQLConnection(DB db) {
+		try {
+			Class.forName(DriverDatabase);
+			InicializacionSinPeticionDedatos(db); 
+		} catch (ClassNotFoundException e) {
+			System.err.println(ErrorMySQLConnection);
+			e.printStackTrace();
+			System.exit(1);
+		} catch (SQLException e) {
+			System.err.println(ErrorCOnexionDB);
+			e.printStackTrace();
+			System.exit(1);
+		}
+	}
+
+	public MySQLConnection(String dbNameIP,int Port, String user, String password) {
+		try {
+			Class.forName(DriverDatabase);
+			InicializacionAnonima(dbNameIP,Port,user,password); 
+		} catch (ClassNotFoundException e) {
+			System.err.println(ErrorMySQLConnection);
+			e.printStackTrace();
+			System.exit(1);
+		} catch (SQLException e) {
+			System.err.println(ErrorCOnexionDB);
+			e.printStackTrace();
+			System.exit(1);
+		}
+	}
+
+	private void InicializacionAnonima(String dbNameIP, int port, String user, String password) throws SQLException {
+		String[] Separacion= dbNameIP.split("////");
+		if (Separacion.length<2) throw new SQLException("dbName Incorrect");
+		StringBuffer SB=new StringBuffer();
+		for (int i = 0; i < Separacion.length-1; i++) {
+			SB.append(Separacion[i]);
+		}
+		conexion = DriverManager.getConnection("jdbc:mysql://"+SB.toString()+":"+port+"/"+Separacion[Separacion.length-1], user, password);	
+		DBSelected=DBaseServer;
+		
+	}
+
+	private void InicializacionSinPeticionDedatos(DB db) throws SQLException {
+			switch (db) {
+			case DBaseServer:
+				conexion = DriverManager.getConnection(DBaseServer, "ilsaserver", "platano");	
+				DBSelected=DBaseServer;
+				break;
+			case DBaseLocal:
+				DBSelected=DBaseLocal;
+				conexion = DriverManager.getConnection(DBaseLocal, "ilsaserver", "platano");	
+				break;
+			}
+			
 		
 	}
 
@@ -79,6 +139,19 @@ public class MySQLConnection {
 		return instance;
 	}
 	
+	public static MySQLConnection getInstance(DB db)
+	{
+		if (instance==null)
+			instance=new MySQLConnection(db);
+		return instance;
+	}
+	
+	public static MySQLConnection getInstance(String dbNameIP,int port, String user, String password) {
+		if (instance==null)
+			instance=new MySQLConnection(dbNameIP,port,user,password);
+		return instance;	
+	}
+	
 	public static void RunQuerryUPDATE(String querry)
 	{		
 		try {
@@ -106,4 +179,6 @@ public class MySQLConnection {
 public static String getDBSelected() {
 	return DBSelected;
 }
+
+
 }

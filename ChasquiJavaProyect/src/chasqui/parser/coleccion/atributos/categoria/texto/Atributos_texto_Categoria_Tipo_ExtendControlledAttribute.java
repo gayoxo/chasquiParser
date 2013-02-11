@@ -8,10 +8,11 @@ import chasqui.parser.coleccion.atributos.ExtendControlledAttribute;
 import chasqui.parser.coleccion.atributos.ExtendTerm;
 import chasqui.server.msqlconection.MySQLConnection;
 
-public class Atributos_texto_Categoria_Tipo_Valor_ExtendControlledAttribute extends
+public class Atributos_texto_Categoria_Tipo_ExtendControlledAttribute extends
 		ExtendControlledAttribute {
 
-	public Atributos_texto_Categoria_Tipo_Valor_ExtendControlledAttribute(String name,
+
+	public Atributos_texto_Categoria_Tipo_ExtendControlledAttribute(String name,
 			boolean browseable, Attribute father) {
 		super(name, browseable, father);
 		
@@ -27,7 +28,15 @@ public class Atributos_texto_Categoria_Tipo_Valor_ExtendControlledAttribute exte
 	@Override
 	public void process_Vocabulary() {
 		try {
-			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT distinct valor FROM chasqui2.atributos_texto WHERE categoria='"+ Father.getFather().getName() +"' AND nom_atrib='"+Father.getName() + "' ORDER BY valor;");
+			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT distinct valor FROM chasqui2.atributos_texto WHERE categoria='"
+					+ 
+					//Father.getFather().getName()
+						Father.getName()
+					+"' AND nom_atrib='"
+					+
+//					Father.getName()
+						name
+					+ "' ORDER BY valor;");
 			if (rs!=null) 
 			{
 				while (rs.next()) {

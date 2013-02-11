@@ -40,5 +40,25 @@ public class Lector {
        }
 		
 	}
+	
+	public static void fromFile(String Path) {
+		try {
+	          
+            ObjectInputStream file = new ObjectInputStream(new FileInputStream(Path));
+       
+            Chasqui= (ChasquiImplementationExtendCollection) file.readObject();
+            file.close();
+            System.out.println(Chasqui.toString());
+        } catch (ClassNotFoundException ex) {
+             System.out.println(ex);
+        } catch (IOException ex) {
+             System.out.println(ex);
+       }
+		
+	}
+	
+	public static ChasquiImplementationExtendCollection getChasqui() {
+		return Chasqui;
+	}
 
 }

@@ -24,6 +24,7 @@ public class ThreadMio extends Thread {
 		ventana.getSalidaJTextPane().setText(PROCESANDO);
 		String S=Escritor.Ecritor(dbaselocal);
 		ventana.getSalidaJTextPane().setText(S);
+		ventana.setColeccion(Escritor.getChasqui());
 		ventana.enabledButtons();
 	}
 

@@ -110,5 +110,62 @@ public class Escritor {
 		return SB.toString();
 		
 	}
+	
+	public static ChasquiImplementationExtendCollection getChasqui() {
+		return Chasqui;
+	}
+	
+	public static void toFileTXT(String Path) {
+		Calendar c2 = new GregorianCalendar();
+    	String dia = Integer.toString(c2.get(Calendar.DATE));
+    	String mes = Integer.toString(c2.get(Calendar.MONTH)+1);
+    	String annio = Integer.toString(c2.get(Calendar.YEAR));
+    	c2.setTimeZone(TimeZone.getDefault());
+    	String hora = Integer.toString(c2.get(Calendar.HOUR_OF_DAY))+":"+Integer.toString(c2.get(Calendar.MINUTE));
+		FileWriter fichero = null;
+        PrintWriter pw = null;
+        try
+        {
+
+        	
+            fichero = new FileWriter(Path);
+            pw = new PrintWriter(fichero);
+            pw.println("Collection: " + MySQLConnection.getDBSelected() +" At " + dia+"-"+mes+"-"+annio +" " + hora );
+                pw.println(Chasqui.toString());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+           try {
+           if (null != fichero)
+              fichero.close();
+           } catch (Exception e2) {
+              e2.printStackTrace();
+           }
+        }
+		
+	}
+	
+	public static void ToFileDat(String Path) {
+		
+		 try
+			{
+			
+				// Se abre el fichero donde se hará la copia
+				FileOutputStream fileOutput = new FileOutputStream (Path);
+				ObjectOutputStream objectOuput = new ObjectOutputStream(fileOutput);
+				
+				objectOuput.writeObject(Chasqui);
+
+
+				// Cierre de los ficheros
+				objectOuput.close();
+				fileOutput.close();
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+	}
 
 }

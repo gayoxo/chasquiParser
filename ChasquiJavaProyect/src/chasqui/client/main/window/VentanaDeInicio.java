@@ -17,12 +17,14 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 
 import chasqui.client.main.window.thread.ThreadMio;
+import chasqui.parser.coleccion.ChasquiImplementationExtendCollection;
 import chasqui.server.msqlconection.MySQLConnection.DB;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
 import java.awt.Label;
+import java.io.File;
 
 public class VentanaDeInicio {
 
@@ -38,6 +40,8 @@ public class VentanaDeInicio {
 	private JButton dBHorchataJButton;
 	private JButton OtraDB;
 	private JMenu menuAcciones;
+	private File archivo_Abierto;
+	private ChasquiImplementationExtendCollection Coleccion;
 
 	/**
 	 * Launch the application.
@@ -206,6 +210,13 @@ public class VentanaDeInicio {
 		return SalidaJTextPane;
 	}
 	
-	
+public ChasquiImplementationExtendCollection getColeccion() {
+	return Coleccion;
+}
+
+public void setColeccion(ChasquiImplementationExtendCollection coleccion) {
+	Coleccion = coleccion;
+}
+
 
 }

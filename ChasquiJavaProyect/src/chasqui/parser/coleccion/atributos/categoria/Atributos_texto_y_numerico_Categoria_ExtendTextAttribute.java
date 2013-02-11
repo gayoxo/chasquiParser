@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import chasqui.model.collection.attribute.Attribute;
 import chasqui.parser.coleccion.atributos.ExtendTextAttribute;
 import chasqui.parser.coleccion.atributos.categoria.numericos.Atributos_numericos_Categoria_Tipo_ExtendNumericAttribute;
-import chasqui.parser.coleccion.atributos.categoria.texto.Atributos_texto_Categoria_Tipo_ExtendTextAttribute;
+import chasqui.parser.coleccion.atributos.categoria.texto.Atributos_texto_Categoria_Tipo_ExtendControlledAttribute;
 import chasqui.server.msqlconection.MySQLConnection;
 
 public class Atributos_texto_y_numerico_Categoria_ExtendTextAttribute extends ExtendTextAttribute{
@@ -30,7 +30,7 @@ public enum Tabla {ATRIBUTOS_NUMERICOS,ATRIBUTOS_TEXTO};
 					String Dato=rs.getObject("nom_atrib").toString();
 					if (Dato!=null&&!Dato.isEmpty())
 						{
-						Atributos_texto_Categoria_Tipo_ExtendTextAttribute ATCUnidades=new Atributos_texto_Categoria_Tipo_ExtendTextAttribute(Dato, true, this);
+						Atributos_texto_Categoria_Tipo_ExtendControlledAttribute ATCUnidades=new Atributos_texto_Categoria_Tipo_ExtendControlledAttribute(Dato, true, this);
 						Sons.add(ATCUnidades);
 						ATCUnidades.Process();
 

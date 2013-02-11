@@ -5,11 +5,12 @@ import java.sql.SQLException;
 import java.util.Stack;
 
 import chasqui.model.collection.attribute.Attribute;
+import chasqui.parser.coleccion.atributos.ExtendAttribute;
 import chasqui.parser.coleccion.atributos.ExtendTextAttribute;
 import chasqui.server.msqlconection.MySQLConnection;
 
 public class Atributos_metadatos_Categoria_Taxonomias_Taxonomia_ExtendTextAttribute
-		extends ExtendTextAttribute {
+		extends ExtendAttribute {
 
 	private String idov;
 

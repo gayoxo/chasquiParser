@@ -1,12 +1,11 @@
 package chasqui.parser.coleccion.atributos;
 
 import chasqui.model.collection.attribute.Attribute;
-import chasqui.model.collection.attribute.TextAttribute;
 import chasqui.parser.ChasquiParseElement;
 
-public abstract class ExtendTextAttribute extends TextAttribute implements ChasquiParseElement{
+public abstract class ExtendAttribute extends Attribute implements ChasquiParseElement{
 
-	public ExtendTextAttribute(String name, boolean browseable, Attribute father) {
+	public ExtendAttribute(String name, boolean browseable, Attribute father) {
 		super(name, browseable, father);
 	}
 
@@ -35,7 +34,7 @@ public abstract class ExtendTextAttribute extends TextAttribute implements Chasq
 	@Override
 	public String toString(String prefix) {
 		return prefix + 
-		"TextAttribute (Atributo: " + name + ")(Browseable: " + Browseable + ") \n"+processSons(prefix+"...");
+		"Attribute (Atributo: " + name + ")(Browseable: " + Browseable + ") \n"+processSons(prefix+"...");
 		
 	}
 	

@@ -4,10 +4,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import chasqui.client.main.Escritor;
-import chasqui.model.collection.attribute.TextAttribute;
-import chasqui.parser.coleccion.atributos.categoria.Atributos_metadatos_Categoria_ExtendTextAttribute;
-import chasqui.parser.coleccion.atributos.categoria.Atributos_texto_y_numerico_Categoria_ExtendTextAttribute;
-import chasqui.parser.coleccion.atributos.categoria.Atributos_texto_y_numerico_Categoria_ExtendTextAttribute.Tabla;
+import chasqui.model.collection.attribute.Attribute;
+import chasqui.parser.coleccion.atributos.categoria.Atributos_metadatos_Categoria_ExtendAttribute;
+import chasqui.parser.coleccion.atributos.categoria.Atributos_texto_y_numerico_Categoria_ExtendAttribute;
+import chasqui.parser.coleccion.atributos.categoria.Atributos_texto_y_numerico_Categoria_ExtendAttribute.Tabla;
 import chasqui.server.msqlconection.MySQLConnection;
 
 public class ChasquiImplementationExtendCollection extends ExtendCollection{
@@ -40,8 +40,8 @@ public String toString() {
 					String Dato=rs.getObject("categoria").toString();
 					if (Dato!=null&&!Dato.isEmpty())
 						{
-						Atributos_texto_y_numerico_Categoria_ExtendTextAttribute ATCategoria=new Atributos_texto_y_numerico_Categoria_ExtendTextAttribute(Dato,true,null);
-						ATCategoria=(Atributos_texto_y_numerico_Categoria_ExtendTextAttribute)((TextAttribute) addAtributos(ATCategoria));
+						Atributos_texto_y_numerico_Categoria_ExtendAttribute ATCategoria=new Atributos_texto_y_numerico_Categoria_ExtendAttribute(Dato,true,null);
+						ATCategoria=(Atributos_texto_y_numerico_Categoria_ExtendAttribute)((Attribute) addAtributos(ATCategoria));
 						ATCategoria.Process(Tabla.ATRIBUTOS_TEXTO);
 						
 						}
@@ -68,8 +68,8 @@ public String toString() {
 					String Dato=rs.getObject("categoria").toString();
 					if (Dato!=null&&!Dato.isEmpty())
 						{
-						Atributos_texto_y_numerico_Categoria_ExtendTextAttribute ANCategoria=new Atributos_texto_y_numerico_Categoria_ExtendTextAttribute(Dato,true,null);
-						ANCategoria=(Atributos_texto_y_numerico_Categoria_ExtendTextAttribute) ((TextAttribute) addAtributos(ANCategoria));
+						Atributos_texto_y_numerico_Categoria_ExtendAttribute ANCategoria=new Atributos_texto_y_numerico_Categoria_ExtendAttribute(Dato,true,null);
+						ANCategoria=(Atributos_texto_y_numerico_Categoria_ExtendAttribute) ((Attribute) addAtributos(ANCategoria));
 						ANCategoria.Process(Tabla.ATRIBUTOS_NUMERICOS);
 						
 						}
@@ -83,7 +83,7 @@ public String toString() {
 		
 	}
 	private void process_atributos_metadatos() {
-		Atributos_metadatos_Categoria_ExtendTextAttribute AMCategoria = new Atributos_metadatos_Categoria_ExtendTextAttribute("Metadatos",true,null);
+		Atributos_metadatos_Categoria_ExtendAttribute AMCategoria = new Atributos_metadatos_Categoria_ExtendAttribute("Metadatos",true,null);
 		AMCategoria.Process();
 		addAtributos(AMCategoria);
 		

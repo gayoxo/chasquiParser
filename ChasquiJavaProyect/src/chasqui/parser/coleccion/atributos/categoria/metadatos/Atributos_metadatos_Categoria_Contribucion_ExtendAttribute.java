@@ -1,12 +1,13 @@
 package chasqui.parser.coleccion.atributos.categoria.metadatos;
 
 import chasqui.model.collection.attribute.Attribute;
+import chasqui.parser.coleccion.atributos.ExtendAttribute;
 import chasqui.parser.coleccion.atributos.ExtendTextAttribute;
 
-public class Atributos_metadatos_Categoria_Contribucion_ExtendTextAttribute
-		extends ExtendTextAttribute {
+public class Atributos_metadatos_Categoria_Contribucion_ExtendAttribute
+		extends ExtendAttribute {
 
-	public Atributos_metadatos_Categoria_Contribucion_ExtendTextAttribute(
+	public Atributos_metadatos_Categoria_Contribucion_ExtendAttribute(
 			String name, boolean browseable, Attribute father) {
 		super(name, browseable, father);
 	}

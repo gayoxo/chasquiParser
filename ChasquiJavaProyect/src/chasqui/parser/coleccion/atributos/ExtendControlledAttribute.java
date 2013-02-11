@@ -16,7 +16,7 @@ public abstract class ExtendControlledAttribute extends ControlledAttribute impl
 	{
 
 	int counter=0;
-	while (counter<vocabulary.getList().size() && !(remove1(vocabulary.getList().get(counter).getTerm()).toLowerCase().equals(remove1(term.getTerm()).toLowerCase())))
+	while (counter<vocabulary.getList().size() && !(vocabulary.getList().get(counter).getTerm().equals(term.getTerm())))
 		counter++;
 	if (counter==vocabulary.getList().size())
 		{
@@ -55,7 +55,7 @@ public abstract class ExtendControlledAttribute extends ControlledAttribute impl
 	
 	public Attribute addAtributos(Attribute atribute) {
 		int counter=0;
-		while (counter<Sons.size() && !(remove1(Sons.get(counter).getName().toLowerCase()).equals(remove1(atribute.getName()).toLowerCase())))
+		while (counter<Sons.size() && !(Sons.get(counter).getName().equals(atribute.getName())))
 			counter++;
 		if (counter==Sons.size())
 			{
@@ -73,14 +73,4 @@ public abstract class ExtendControlledAttribute extends ControlledAttribute impl
 		return SB.toString();
 	}
 	
-	public static String remove1(String input) {
-	    String original = "áàäéèëíìïóòöúùuñÁÀÄÉÈËÍÌÏÓÒÖÚÙÜÑçÇ";
-	    String ascii = "aaaeeeiiiooouuunAAAEEEIIIOOOUUUNcC";
-	    String output = input;
-	    for (int i=0; i<original.length(); i++) {
-
-	        output = output.replace(original.charAt(i), ascii.charAt(i));
-	    }
-	    return output;
-	}
 }

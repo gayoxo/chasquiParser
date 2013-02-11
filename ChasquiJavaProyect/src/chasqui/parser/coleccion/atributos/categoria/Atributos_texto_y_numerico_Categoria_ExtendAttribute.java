@@ -4,16 +4,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import chasqui.model.collection.attribute.Attribute;
-import chasqui.parser.coleccion.atributos.ExtendTextAttribute;
+import chasqui.parser.coleccion.atributos.ExtendAttribute;
 import chasqui.parser.coleccion.atributos.categoria.numericos.Atributos_numericos_Categoria_Tipo_ExtendNumericAttribute;
 import chasqui.parser.coleccion.atributos.categoria.texto.Atributos_texto_Categoria_Tipo_ExtendControlledAttribute;
 import chasqui.server.msqlconection.MySQLConnection;
 
-public class Atributos_texto_y_numerico_Categoria_ExtendTextAttribute extends ExtendTextAttribute{
+public class Atributos_texto_y_numerico_Categoria_ExtendAttribute extends ExtendAttribute{
 
 public enum Tabla {ATRIBUTOS_NUMERICOS,ATRIBUTOS_TEXTO};
 
-	public Atributos_texto_y_numerico_Categoria_ExtendTextAttribute(String name, boolean browseable,
+	public Atributos_texto_y_numerico_Categoria_ExtendAttribute(String name, boolean browseable,
 			Attribute father) {
 		super(name, browseable, father);
 

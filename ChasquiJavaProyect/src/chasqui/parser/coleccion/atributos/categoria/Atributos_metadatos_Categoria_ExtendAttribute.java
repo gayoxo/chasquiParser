@@ -1,18 +1,19 @@
 package chasqui.parser.coleccion.atributos.categoria;
 
 import chasqui.model.collection.attribute.Attribute;
+import chasqui.parser.coleccion.atributos.ExtendAttribute;
 import chasqui.parser.coleccion.atributos.ExtendTextAttribute;
 import chasqui.parser.coleccion.atributos.categoria.metadatos.Atributos_metadatos_Categoria_Contexto_ExtendControlledAttribute;
-import chasqui.parser.coleccion.atributos.categoria.metadatos.Atributos_metadatos_Categoria_Contribucion_ExtendTextAttribute;
+import chasqui.parser.coleccion.atributos.categoria.metadatos.Atributos_metadatos_Categoria_Contribucion_ExtendAttribute;
 import chasqui.parser.coleccion.atributos.categoria.metadatos.Atributos_metadatos_Categoria_Description_ExtendTextAttribute;
 import chasqui.parser.coleccion.atributos.categoria.metadatos.Atributos_metadatos_Categoria_Keyword_ExtendControlledAttribute;
-import chasqui.parser.coleccion.atributos.categoria.metadatos.catalogo.Atributos_metadatos_Categoria_Catalogos_ExtendTextAttribute;
-import chasqui.parser.coleccion.atributos.categoria.metadatos.taxonomias.Atributos_metadatos_Categoria_Taxonomias_ExtendTextAttribute;
+import chasqui.parser.coleccion.atributos.categoria.metadatos.catalogo.Atributos_metadatos_Categoria_Catalogos_ExtendAttribute;
+import chasqui.parser.coleccion.atributos.categoria.metadatos.taxonomias.Atributos_metadatos_Categoria_Taxonomias_ExtendAttribute;
 
-public class Atributos_metadatos_Categoria_ExtendTextAttribute extends ExtendTextAttribute{
+public class Atributos_metadatos_Categoria_ExtendAttribute extends ExtendAttribute{
 
 
-	public Atributos_metadatos_Categoria_ExtendTextAttribute(String name, boolean browseable,
+	public Atributos_metadatos_Categoria_ExtendAttribute(String name, boolean browseable,
 			Attribute father) {
 		super(name, browseable, father);
 
@@ -23,7 +24,7 @@ public class Atributos_metadatos_Categoria_ExtendTextAttribute extends ExtendTex
 	@Override
 	public String toString(String prefix) {
 		return prefix + 
-		"TextAttribute (Categoria: " + name + ")(Browseable: " + Browseable + ") \n"+processSons(prefix+"...");
+		"Attribute (Categoria: " + name + ")(Browseable: " + Browseable + ") \n"+processSons(prefix+"...");
 		
 	}
 
@@ -39,13 +40,13 @@ public class Atributos_metadatos_Categoria_ExtendTextAttribute extends ExtendTex
 		Atributos_metadatos_Categoria_Description_ExtendTextAttribute AMdescripcion= new Atributos_metadatos_Categoria_Description_ExtendTextAttribute("Descripcion", true, this);
 		Sons.add(AMdescripcion);
 		AMdescripcion.Process();
-		Atributos_metadatos_Categoria_Contribucion_ExtendTextAttribute AMcontribucion= new Atributos_metadatos_Categoria_Contribucion_ExtendTextAttribute("Contribucion",true, this);
+		Atributos_metadatos_Categoria_Contribucion_ExtendAttribute AMcontribucion= new Atributos_metadatos_Categoria_Contribucion_ExtendAttribute("Contribucion",true, this);
 		Sons.add(AMcontribucion);
 		AMcontribucion.Process();
-		Atributos_metadatos_Categoria_Catalogos_ExtendTextAttribute AMCatalogo= new Atributos_metadatos_Categoria_Catalogos_ExtendTextAttribute("Catalogos",true, this);
+		Atributos_metadatos_Categoria_Catalogos_ExtendAttribute AMCatalogo= new Atributos_metadatos_Categoria_Catalogos_ExtendAttribute("Catalogos",true, this);
 		Sons.add(AMCatalogo);
 		AMCatalogo.Process();
-		Atributos_metadatos_Categoria_Taxonomias_ExtendTextAttribute AMTaxonimias= new Atributos_metadatos_Categoria_Taxonomias_ExtendTextAttribute("Taxonomias",true, this);
+		Atributos_metadatos_Categoria_Taxonomias_ExtendAttribute AMTaxonimias= new Atributos_metadatos_Categoria_Taxonomias_ExtendAttribute("Taxonomias",true, this);
 		Sons.add(AMTaxonimias);
 		AMTaxonimias.Process();
 		

@@ -12,7 +12,7 @@ public abstract class ExtendNumericAttribute extends NumericAttribute  implement
 
 	public Attribute addAtributos(Attribute atribute) {
 		int counter=0;
-		while (counter<Sons.size() && !Sons.get(counter).getName().equals(atribute))
+		while (counter<Sons.size() && !Sons.get(counter).getName().equals(atribute.getName()))
 			counter++;
 		if (counter==Sons.size())
 			{

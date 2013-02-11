@@ -4,13 +4,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import chasqui.model.collection.attribute.Attribute;
+import chasqui.parser.coleccion.atributos.ExtendAttribute;
 import chasqui.parser.coleccion.atributos.ExtendTextAttribute;
 import chasqui.server.msqlconection.MySQLConnection;
 
-public class Atributos_metadatos_Categoria_Catalogos_ExtendTextAttribute extends
-		ExtendTextAttribute {
+public class Atributos_metadatos_Categoria_Catalogos_ExtendAttribute extends
+		ExtendAttribute {
 
-	public Atributos_metadatos_Categoria_Catalogos_ExtendTextAttribute(
+	public Atributos_metadatos_Categoria_Catalogos_ExtendAttribute(
 			String name, boolean browseable, Attribute father) {
 		super(name, browseable, father);
 	}

@@ -60,8 +60,8 @@ public class Atributos_metadatos_Categoria_Taxonomias_ExtendAttribute
 					String[] DatosRutaEntry=num_rutaValid.split("\\.");
 					if (contenido!=null&&num_rutaValid!=null&&!num_rutaValid.isEmpty()&&!contenido.isEmpty()&&DatosRutaSection[4].equals(DatosRutaEntry[4]))
 						{
-						Atributos_metadatos_Categoria_Taxonomias_Taxonomia_ExtendTextAttribute ATCUnidades=new Atributos_metadatos_Categoria_Taxonomias_Taxonomia_ExtendTextAttribute(contenido, true, this,idov);
-						ATCUnidades=(Atributos_metadatos_Categoria_Taxonomias_Taxonomia_ExtendTextAttribute) addAtributos(ATCUnidades);
+						Atributos_metadatos_Categoria_Taxonomias_Taxonomia_ExtendAttribute ATCUnidades=new Atributos_metadatos_Categoria_Taxonomias_Taxonomia_ExtendAttribute(contenido, true, this,idov);
+						ATCUnidades=(Atributos_metadatos_Categoria_Taxonomias_Taxonomia_ExtendAttribute) addAtributos(ATCUnidades);
 						ATCUnidades.setIdov(idov);
 						ATCUnidades.Process();
 						}

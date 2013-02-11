@@ -30,7 +30,7 @@ public class Atributos_metadatos_Categoria_Taxonomias_Taxonomia_Nodo_ExtendContr
 	@Override
 	protected void process_Vocabulary() {
 		try {
-			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT distinct contenido,num_ruta FROM chasqui2.metadatos WHERE (ruta= '/manifest/metadata/lom/classification/taxonpath/taxon/entry/langstring' AND idov='"+idov+"');");
+			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT distinct contenido,num_ruta FROM chasqui2.metadatos WHERE (ruta= '/manifest/metadata/lom/classification/taxonpath/taxon/entry/langstring' AND idov='"+idov+"') ORDER BY contenido;");
 			if (rs!=null) 
 			{
 				while (rs.next()) {

@@ -9,12 +9,12 @@ import chasqui.parser.coleccion.atributos.ExtendAttribute;
 import chasqui.parser.coleccion.atributos.ExtendTextAttribute;
 import chasqui.server.msqlconection.MySQLConnection;
 
-public class Atributos_metadatos_Categoria_Taxonomias_Taxonomia_ExtendTextAttribute
+public class Atributos_metadatos_Categoria_Taxonomias_Taxonomia_ExtendAttribute
 		extends ExtendAttribute {
 
 	private String idov;
 
-	public Atributos_metadatos_Categoria_Taxonomias_Taxonomia_ExtendTextAttribute(
+	public Atributos_metadatos_Categoria_Taxonomias_Taxonomia_ExtendAttribute(
 			String name, boolean browseable, Attribute father,String idov) {
 		super(name, browseable, father);
 		this.idov=idov;
@@ -94,5 +94,12 @@ public class Atributos_metadatos_Categoria_Taxonomias_Taxonomia_ExtendTextAttrib
 	
 	public void setIdov(String idov) {
 		this.idov = idov;
+	}
+	
+	@Override
+	public String toString(String prefix) {
+		return prefix + 
+		"Attribute (Taxonomia: " + name + ")(Browseable: " + Browseable + ") \n"+processSons(prefix+"...");
+		
 	}
 }

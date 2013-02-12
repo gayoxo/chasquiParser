@@ -13,6 +13,7 @@ import chasqui.server.msqlconection.MySQLConnection;
 public class ChasquiImplementationExtendCollection extends ExtendCollection{
 
 	private static final String CATEGORIAS_VACIAS = " Existen filas con categorias vacias";
+	private static final String OBJETOSVIRTUALESERRONEOS = " Objetos virtuales erroneos";
 
 	public ChasquiImplementationExtendCollection() {
 		super();
@@ -25,9 +26,36 @@ public String toString() {
 
 	@Override
 	public void Process() {
+		genera_Objetos_Digitales();
 		process_atributos_numericos();
 		process_atributos_texto();
 		process_atributos_metadatos();
+		
+	}
+	private void genera_Objetos_Digitales() {
+		try {
+			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT * FROM chasqui2.objeto_virtual ORDER BY idov;");
+			if (rs!=null) 
+			{
+				while (rs.next()) {
+					
+					String Dato=rs.getObject("idov").toString();
+					String Descripcion="";
+					//rs.getObject("descripcion").toString();
+					//String Usuario=rs.getObject("idov").toString();
+					if (Dato!=null&&!Dato.isEmpty()&&Descripcion!=null)
+						{
+						ObjetoVirtualExtendDigitalObject OVEDO=new ObjetoVirtualExtendDigitalObject();
+						
+						
+						}
+					else System.out.println(Escritor.WARNING + OBJETOSVIRTUALESERRONEOS);
+				}
+			rs.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	private void process_atributos_texto() {

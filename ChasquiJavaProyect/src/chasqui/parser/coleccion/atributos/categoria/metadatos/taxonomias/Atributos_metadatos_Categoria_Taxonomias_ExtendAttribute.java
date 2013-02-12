@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import chasqui.model.collection.attribute.Attribute;
 import chasqui.parser.coleccion.atributos.ExtendAttribute;
-import chasqui.parser.coleccion.atributos.ExtendTextAttribute;
+import chasqui.parser.coleccion.atributos.ExtendDigitalObject;
 import chasqui.parser.coleccion.atributos.categoria.metadatos.catalogo.Atributos_metadatos_Categoria_Catalogos_Catalogo_ExtendControlledAttribute;
 import chasqui.server.msqlconection.MySQLConnection;
 

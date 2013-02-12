@@ -5,16 +5,11 @@ import chasqui.model.collection.attribute.TextAttribute;
 import chasqui.model.collection.digitalobjects.DigitalObject;
 import chasqui.parser.ChasquiParseElement;
 
-public abstract class ExtendTextAttribute extends TextAttribute implements ChasquiParseElement{
+public abstract class ExtendDigitalObject extends DigitalObject implements ChasquiParseElement{
 
 	
-
-
-
-
-	public ExtendTextAttribute(String name, boolean browseable, Attribute father) {
-		super(name, browseable, father);
-		// TODO Auto-generated constructor stub
+	public ExtendDigitalObject(Integer identifier, String description) {
+		super(identifier, description);
 	}
 
 
@@ -44,7 +39,8 @@ public abstract class ExtendTextAttribute extends TextAttribute implements Chasq
 	@Override
 	public String toString(String prefix) {
 		return prefix + 
-				"NumericAttribute (Atributo: " + name + ")(Browseable: " + Browseable + ") \n"+processSons(prefix+"...");
+		"DigitalObject (Objeto Digital: " + identifier + ") \n" +
+		prefix + "." + "(Descripcion: " + description + ") \n"+processSons(prefix+"...");
 		
 	}
 	

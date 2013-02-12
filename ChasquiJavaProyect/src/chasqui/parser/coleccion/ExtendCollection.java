@@ -1,7 +1,11 @@
 package chasqui.parser.coleccion;
 
+import java.util.Iterator;
+import java.util.Map.Entry;
+
 import chasqui.model.collection.Collection;
 import chasqui.model.collection.attribute.Attribute;
+import chasqui.model.collection.digitalobjects.DigitalObject;
 import chasqui.parser.ChasquiParseElement;
 
 public abstract class ExtendCollection extends Collection implements ChasquiParseElement{
@@ -11,6 +15,9 @@ public abstract class ExtendCollection extends Collection implements ChasquiPars
 		StringBuffer SB=new StringBuffer();
 		for (Attribute hijos : Atributos) {
 			SB.append(((ChasquiParseElement)hijos).toString("..."));
+		}
+		for (Entry<Integer, DigitalObject> hijos : ObjetosDigitales.entrySet()) {
+			SB.append(((ChasquiParseElement)hijos.getValue()).toString("..."));
 		}
 		return SB.toString();
 	}
@@ -26,5 +33,18 @@ public abstract class ExtendCollection extends Collection implements ChasquiPars
 			}
 		else return Atributos.get(counter);
 	}
+	
+	public DigitalObject addDigitalObjects(DigitalObject objetoDigital) {
+		  DigitalObject value = ObjetosDigitales.put( objetoDigital.getIdentifier(), objetoDigital );
+		    if ( value != null )
+		      System.err.println("Objeto Duplicado");
+		  return ObjetosDigitales.get(objetoDigital.getIdentifier());
+	}
+	
+	public DigitalObject getDigitalObject(Integer valor)
+	{
+	return ObjetosDigitales.get(valor);	
+	}
+	
 	
 }

@@ -8,6 +8,7 @@ import chasqui.model.collection.attribute.Attribute;
 import chasqui.parser.coleccion.atributos.categoria.Atributos_metadatos_Categoria_ExtendAttribute;
 import chasqui.parser.coleccion.atributos.categoria.Atributos_texto_y_numerico_Categoria_ExtendAttribute;
 import chasqui.parser.coleccion.atributos.categoria.Atributos_texto_y_numerico_Categoria_ExtendAttribute.Tabla;
+import chasqui.parser.coleccion.objetosdigitales.ObjetoVirtualExtendDigitalObject;
 import chasqui.server.msqlconection.MySQLConnection;
 
 public class ChasquiImplementationExtendCollection extends ExtendCollection{
@@ -40,14 +41,18 @@ public String toString() {
 				while (rs.next()) {
 					
 					String Dato=rs.getObject("idov").toString();
-					String Descripcion="";
+					Object nulable = rs.getObject("descripcion");
+					String Descripcion;
+					if (nulable!=null)
+						Descripcion=nulable.toString();
+					else Descripcion="";
 					//rs.getObject("descripcion").toString();
 					//String Usuario=rs.getObject("idov").toString();
 					if (Dato!=null&&!Dato.isEmpty()&&Descripcion!=null)
 						{
-						ObjetoVirtualExtendDigitalObject OVEDO=new ObjetoVirtualExtendDigitalObject();
-						
-						
+						Integer Idov = Integer.parseInt(Dato);
+						ObjetoVirtualExtendDigitalObject OVEDO=new ObjetoVirtualExtendDigitalObject(Idov,Descripcion);
+						addDigitalObjects(OVEDO);					
 						}
 					else System.out.println(Escritor.WARNING + OBJETOSVIRTUALESERRONEOS);
 				}

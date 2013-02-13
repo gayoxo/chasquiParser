@@ -20,14 +20,6 @@ public class Atributos_metadatos_Categoria_ExtendAttribute extends ExtendAttribu
 		
 	}
 
-
-	@Override
-	public String toString(String prefix) {
-		return prefix + 
-		"Attribute (Categoria: " + name + ")(Browseable: " + Browseable + ") \n"+processSons(prefix+"...");
-		
-	}
-
 	
 	@Override
 	public void Process() {

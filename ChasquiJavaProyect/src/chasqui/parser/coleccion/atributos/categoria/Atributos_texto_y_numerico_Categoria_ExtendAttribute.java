@@ -84,9 +84,5 @@ public enum Tabla {ATRIBUTOS_NUMERICOS,ATRIBUTOS_TEXTO};
 		else prosessSonsNumericos();
 	}
 	
-	public String toString(String prefix) {
-		return prefix + 
-		"TextAttribute (Categoria: " + name + ")(Browseable: " + Browseable + ") \n"+processSons(prefix+"...");
-		
-	}
+	
 }

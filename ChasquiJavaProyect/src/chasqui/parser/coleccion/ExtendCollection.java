@@ -7,15 +7,18 @@ import chasqui.model.collection.Collection;
 import chasqui.model.collection.attribute.Attribute;
 import chasqui.model.collection.digitalobjects.DigitalObject;
 import chasqui.parser.ChasquiParseElement;
+import chasqui.parser.coleccion.objetosdigitales.ExtendDigitalObject;
 
 public abstract class ExtendCollection extends Collection implements ChasquiParseElement{
 
 	@Override
 	public String toString(String prefix) {
 		StringBuffer SB=new StringBuffer();
+		SB.append("#MODELO \n");
 		for (Attribute hijos : Atributos) {
 			SB.append(((ChasquiParseElement)hijos).toString("..."));
 		}
+		SB.append("#OV \n");
 		for (Entry<Integer, DigitalObject> hijos : ObjetosDigitales.entrySet()) {
 			SB.append(((ChasquiParseElement)hijos.getValue()).toString("..."));
 		}
@@ -41,9 +44,9 @@ public abstract class ExtendCollection extends Collection implements ChasquiPars
 		  return ObjetosDigitales.get(objetoDigital.getIdentifier());
 	}
 	
-	public DigitalObject getDigitalObject(Integer valor)
+	public ExtendDigitalObject getDigitalObject(Integer valor)
 	{
-	return ObjetosDigitales.get(valor);	
+	return (ExtendDigitalObject) ObjetosDigitales.get(valor);	
 	}
 	
 	

@@ -3,9 +3,12 @@ package chasqui.parser.coleccion.atributos.categoria.metadatos;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import chasqui.client.main.Escritor;
 import chasqui.model.collection.attribute.Attribute;
 import chasqui.parser.coleccion.atributos.ExtendControlledAttribute;
 import chasqui.parser.coleccion.atributos.ExtendTerm;
+import chasqui.parser.coleccion.intanciasatributos.ExtendControlledAttributeInstance;
+import chasqui.parser.coleccion.objetosdigitales.ExtendDigitalObject;
 import chasqui.server.msqlconection.MySQLConnection;
 
 public class Atributos_metadatos_Categoria_Contribucion_Status_ExtendControlledAttribute
@@ -19,7 +22,7 @@ public class Atributos_metadatos_Categoria_Contribucion_Status_ExtendControlledA
 	@Override
 	public void Process() {
 		process_Vocabulary();
-
+		process_AtributeInstances();
 	}
 
 	@Override
@@ -42,6 +45,33 @@ public class Atributos_metadatos_Categoria_Contribucion_Status_ExtendControlledA
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	private void process_AtributeInstances() {
+		try {
+			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT * FROM chasqui2.metadatos WHERE ruta='/manifest/metadata/lom/lifecycle/status/value/langstring' ORDER BY contenido;");
+			if (rs!=null) 
+			{
+				while (rs.next()) {
+					
+					String idov=rs.getObject("idov").toString();
+					Object temp=rs.getObject("contenido");
+					String Valor="";
+					if (temp!=null)
+						Valor=temp.toString();
+					if (idov!=null&&!idov.isEmpty()&&!Valor.isEmpty())
+						{
+						ExtendDigitalObject DObject= Escritor.getChasqui().getDigitalObject(Integer.parseInt(idov));
+						DObject.getSons().add(new ExtendControlledAttributeInstance(this, pathFather(),findTerm(Valor) ));
+						}
+					
+				}
+			rs.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }

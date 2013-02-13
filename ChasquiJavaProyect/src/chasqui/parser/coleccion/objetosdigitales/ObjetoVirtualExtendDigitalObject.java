@@ -1,6 +1,5 @@
 package chasqui.parser.coleccion.objetosdigitales;
 
-import chasqui.parser.coleccion.atributos.ExtendDigitalObject;
 
 public class ObjetoVirtualExtendDigitalObject extends ExtendDigitalObject {
 

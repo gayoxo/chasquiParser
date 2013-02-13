@@ -2,9 +2,10 @@ package chasqui.parser.coleccion.atributos;
 
 import chasqui.model.collection.attribute.Attribute;
 import chasqui.model.collection.attribute.NumericAttribute;
+import chasqui.parser.AtributeElement;
 import chasqui.parser.ChasquiParseElement;
 
-public abstract class ExtendNumericAttribute extends NumericAttribute  implements ChasquiParseElement{
+public abstract class ExtendNumericAttribute extends NumericAttribute  implements ChasquiParseElement,AtributeElement{
 
 	public ExtendNumericAttribute(String name, boolean browseable, Attribute father) {
 		super(name, browseable, father);
@@ -34,7 +35,16 @@ public abstract class ExtendNumericAttribute extends NumericAttribute  implement
 	@Override
 	public String toString(String prefix) {
 		return prefix + 
-		"NumericAttribute (Atributo: " + name + ")(Browseable: " + Browseable + ") \n"+processSons(prefix+"...");
+		name + "(N) \n"+processSons(prefix+"...");
 		
 	}
+	
+	public String pathFather()
+	{
+		if (Father!=null)
+			return ((AtributeElement)Father).pathFather()+"/" + name ;
+			else return name;
+	}
+	
+	
 }

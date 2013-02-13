@@ -1,36 +1,24 @@
-package chasqui.parser.coleccion.atributos;
+package chasqui.parser.coleccion.objetosdigitales;
 
+import chasqui.model.collection.attibuteInstance.AttributeInstance;
 import chasqui.model.collection.attribute.Attribute;
 import chasqui.model.collection.attribute.TextAttribute;
 import chasqui.model.collection.digitalobjects.DigitalObject;
+import chasqui.parser.AtributeElement;
 import chasqui.parser.ChasquiParseElement;
 
 public abstract class ExtendDigitalObject extends DigitalObject implements ChasquiParseElement{
 
+	private static final String internalprefix="..";
 	
 	public ExtendDigitalObject(Integer identifier, String description) {
 		super(identifier, description);
 	}
 
 
-
-	public Attribute addAtributos(Attribute atribute) {
-		int counter=0;
-		while (counter<Sons.size() && !(Sons.get(counter).getName().equals(atribute.getName())))
-			counter++;
-		if (counter==Sons.size())
-			{
-			Sons.add(atribute);
-			return atribute;
-			}
-		else return Sons.get(counter);
-	}
-	
-
-
 	protected String processSons(String string) {
 		StringBuffer SB=new StringBuffer();
-		for (Attribute son : Sons) {
+		for (AttributeInstance son : Sons) {
 			SB.append(((ChasquiParseElement)son).toString(string));
 		}
 		return SB.toString();
@@ -38,10 +26,13 @@ public abstract class ExtendDigitalObject extends DigitalObject implements Chasq
 	
 	@Override
 	public String toString(String prefix) {
-		return prefix + 
-		"DigitalObject (Objeto Digital: " + identifier + ") \n" +
-		prefix + "." + "(Descripcion: " + description + ") \n"+processSons(prefix+"...");
-		
+		StringBuffer SB=new StringBuffer();
+		SB.append(prefix);
+		SB.append("OV: " + identifier + "\n");
+		SB.append(prefix+internalprefix);
+		SB.append("Descripcion: " + description + " \n");
+		SB.append(processSons(prefix+internalprefix));
+		return SB.toString();
 	}
 	
 //	public static String remove1(String input) {
@@ -54,4 +45,7 @@ public abstract class ExtendDigitalObject extends DigitalObject implements Chasq
 //	    }
 //	    return output;
 //	}
+	
+	
+	
 }

@@ -2,9 +2,10 @@ package chasqui.parser.coleccion.atributos;
 
 import chasqui.model.collection.attribute.Attribute;
 import chasqui.model.collection.attribute.DateAttribute;
+import chasqui.parser.AtributeElement;
 import chasqui.parser.ChasquiParseElement;
 
-public abstract class ExtendDateAttribute extends DateAttribute  implements ChasquiParseElement{
+public abstract class ExtendDateAttribute extends DateAttribute  implements ChasquiParseElement,AtributeElement{
 
 	public ExtendDateAttribute(String name, boolean browseable, Attribute father) {
 		super(name, browseable, father);
@@ -34,7 +35,16 @@ public abstract class ExtendDateAttribute extends DateAttribute  implements Chas
 	@Override
 	public String toString(String prefix) {
 		return prefix + 
-		"DateAttribute (Atributo: " + name + ")(Browseable: " + Browseable + ") \n"+processSons(prefix+"...");
+		name + "(D) \n"+processSons(prefix+"...");
 		
 	}
+	
+	public String pathFather()
+	{
+		if (Father!=null)
+			return ((AtributeElement)Father).pathFather()+"/" + name ;
+			else return name;
+	}
+	
+	
 }

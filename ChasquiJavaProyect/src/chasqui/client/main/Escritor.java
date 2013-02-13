@@ -35,7 +35,6 @@ public class Escritor {
 		MySQLConnection.getInstance();
 		Chasqui=new ChasquiImplementationExtendCollection();
 		Chasqui.Process();
-		System.out.println("Collection:");
 		System.out.println(Chasqui.toString());
 		Calendar c2 = new GregorianCalendar();
     	String dia = Integer.toString(c2.get(Calendar.DATE));
@@ -93,7 +92,6 @@ public class Escritor {
 		MySQLConnection.getInstance(db);
 		Chasqui=new ChasquiImplementationExtendCollection();
 		Chasqui.Process();
-		SB.append("Collection:");
 		SB.append(Chasqui.toString());
 		return SB.toString();
 		
@@ -105,7 +103,6 @@ public class Escritor {
 		MySQLConnection.getInstance(dbNameIP,port,User,Password);
 		Chasqui=new ChasquiImplementationExtendCollection();
 		Chasqui.Process();
-		SB.append("Collection:");
 		SB.append(Chasqui.toString());
 		return SB.toString();
 		

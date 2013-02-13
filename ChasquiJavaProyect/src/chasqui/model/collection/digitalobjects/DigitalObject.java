@@ -3,6 +3,7 @@ package chasqui.model.collection.digitalobjects;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import chasqui.model.collection.attibuteInstance.AttributeInstance;
 import chasqui.model.collection.attribute.Attribute;
 
 public class DigitalObject implements Serializable{
@@ -14,7 +15,7 @@ public class DigitalObject implements Serializable{
 	
 	protected Integer identifier;
 	protected String description;
-	protected ArrayList<Attribute> Sons;
+	protected ArrayList<AttributeInstance> Sons;
 	
 	
 	
@@ -22,7 +23,7 @@ public class DigitalObject implements Serializable{
 		super();
 		this.identifier = identifier;
 		this.description = description;
-		Sons=new ArrayList<Attribute>(); 
+		Sons=new ArrayList<AttributeInstance>(); 
 	}
 	
 	public Integer getIdentifier() {
@@ -38,11 +39,11 @@ public class DigitalObject implements Serializable{
 		this.description = description;
 	}
 	
-	public ArrayList<Attribute> getSons() {
+	public ArrayList<AttributeInstance> getSons() {
 		return Sons;
 	}
 	
-	public void setSons(ArrayList<Attribute> sons) {
+	public void setSons(ArrayList<AttributeInstance> sons) {
 		Sons = sons;
 	}
 	

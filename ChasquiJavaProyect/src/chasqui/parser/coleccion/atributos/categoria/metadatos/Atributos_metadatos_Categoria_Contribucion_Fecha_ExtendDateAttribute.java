@@ -1,7 +1,18 @@
 package chasqui.parser.coleccion.atributos.categoria.metadatos;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import chasqui.client.main.Escritor;
 import chasqui.model.collection.attribute.Attribute;
 import chasqui.parser.coleccion.atributos.ExtendDateAttribute;
+import chasqui.parser.coleccion.intanciasatributos.ExtendDataAttributeInstance;
+import chasqui.parser.coleccion.intanciasatributos.ExtendTextAttributeInstance;
+import chasqui.parser.coleccion.objetosdigitales.ExtendDigitalObject;
+import chasqui.server.msqlconection.MySQLConnection;
 
 public class Atributos_metadatos_Categoria_Contribucion_Fecha_ExtendDateAttribute
 		extends ExtendDateAttribute {
@@ -13,8 +24,43 @@ public class Atributos_metadatos_Categoria_Contribucion_Fecha_ExtendDateAttribut
 
 	@Override
 	public void Process() {
-		
+		process_AtributeInstances();
 		
 	}
 
+	private void process_AtributeInstances() {
+		try {
+			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT * FROM chasqui2.metadatos WHERE ruta='/manifest/metadata/lom/lifecycle/contribute/date/datetime';");
+			if (rs!=null) 
+			{
+				while (rs.next()) {
+					
+					String idov=rs.getObject("idov").toString();
+					Object temp=rs.getObject("contenido");
+					String Valor="";
+					if (temp!=null)
+						Valor=temp.toString();
+					if (idov!=null&&!idov.isEmpty())
+						{
+						ExtendDigitalObject DObject= Escritor.getChasqui().getDigitalObject(Integer.parseInt(idov));
+						 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+						if (!Valor.isEmpty())
+							{
+							Date D= formatter.parse(Valor);
+							DObject.getSons().add(new ExtendDataAttributeInstance(this, pathFather(),D ));
+						
+						}
+						}
+					
+				}
+			rs.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ParseException e) {
+			System.err.println("Fecha incorrecta");
+			e.printStackTrace();
+		}
+		
+	}
 }

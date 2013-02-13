@@ -6,7 +6,7 @@ import java.util.Stack;
 
 import chasqui.model.collection.attribute.Attribute;
 import chasqui.parser.coleccion.atributos.ExtendAttribute;
-import chasqui.parser.coleccion.atributos.ExtendDigitalObject;
+import chasqui.parser.coleccion.objetosdigitales.ExtendDigitalObject;
 import chasqui.server.msqlconection.MySQLConnection;
 
 public class Atributos_metadatos_Categoria_Taxonomias_Taxonomia_ExtendAttribute
@@ -96,10 +96,5 @@ public class Atributos_metadatos_Categoria_Taxonomias_Taxonomia_ExtendAttribute
 		this.idov = idov;
 	}
 	
-	@Override
-	public String toString(String prefix) {
-		return prefix + 
-		"Attribute (Taxonomia: " + name + ")(Browseable: " + Browseable + ") \n"+processSons(prefix+"...");
-		
-	}
+	
 }

@@ -3,9 +3,10 @@ package chasqui.parser.coleccion.atributos;
 import chasqui.model.collection.attribute.Attribute;
 import chasqui.model.collection.attribute.TextAttribute;
 import chasqui.model.collection.digitalobjects.DigitalObject;
+import chasqui.parser.AtributeElement;
 import chasqui.parser.ChasquiParseElement;
 
-public abstract class ExtendTextAttribute extends TextAttribute implements ChasquiParseElement{
+public abstract class ExtendTextAttribute extends TextAttribute implements ChasquiParseElement,AtributeElement{
 
 	
 
@@ -44,7 +45,7 @@ public abstract class ExtendTextAttribute extends TextAttribute implements Chasq
 	@Override
 	public String toString(String prefix) {
 		return prefix + 
-				"NumericAttribute (Atributo: " + name + ")(Browseable: " + Browseable + ") \n"+processSons(prefix+"...");
+				name + "(T)\n"+processSons(prefix+"...");
 		
 	}
 	
@@ -58,4 +59,12 @@ public abstract class ExtendTextAttribute extends TextAttribute implements Chasq
 //	    }
 //	    return output;
 //	}
+	
+	public String pathFather()
+	{
+		if (Father!=null)
+			return ((AtributeElement)Father).pathFather()+"/" + name ;
+			else return name;
+	}
+	
 }

@@ -3,9 +3,10 @@ package chasqui.parser.coleccion.atributos;
 import chasqui.model.collection.attribute.Attribute;
 import chasqui.model.collection.attribute.ControlledAttribute;
 import chasqui.model.collection.attribute.controlled.Term;
+import chasqui.parser.AtributeElement;
 import chasqui.parser.ChasquiParseElement;
 
-public abstract class ExtendControlledAttribute extends ControlledAttribute implements ChasquiParseElement {
+public abstract class ExtendControlledAttribute extends ControlledAttribute implements ChasquiParseElement,AtributeElement {
 
 	public ExtendControlledAttribute(String name, boolean browseable,
 			Attribute father) {
@@ -33,13 +34,13 @@ public abstract class ExtendControlledAttribute extends ControlledAttribute impl
 		StringBuffer SB=new StringBuffer();
 		if (!vocabulary.getList().isEmpty()){
 			SB.append(string);
-			SB.append("Vocabulary: (");
+			SB.append("{");
 			for (Term term : vocabulary.getList()) {
 				SB.append(((ExtendTerm)term).toString(string));
 				SB.append(",");
 			}
 			if ( vocabulary.getList().size()>0) SB.deleteCharAt(SB.length()-1);
-			SB.append(")");
+			SB.append("}");
 			SB.append("\n");
 		}
 		return SB.toString();
@@ -48,7 +49,7 @@ public abstract class ExtendControlledAttribute extends ControlledAttribute impl
 	@Override
 	public String toString(String prefix) {
 		return prefix + 
-				"ControlledAttribute(Atributo: "+name+")(Browseable: " + Browseable + ") \n" + processVocabulary(prefix+".") + processSons(prefix+"...") ;
+				name+"(C) \n" + processVocabulary(prefix+".") + processSons(prefix+"...") ;
 	}
 	
 	protected abstract void process_Vocabulary();
@@ -72,5 +73,33 @@ public abstract class ExtendControlledAttribute extends ControlledAttribute impl
 		}
 		return SB.toString();
 	}
+	
+	public String pathFather()
+	{
+		if (Father!=null)
+			return ((AtributeElement)Father).pathFather()+"/" + name ;
+			else return name;
+	}
+	
+	public Term findTerm(String Termino)
+	{
+		for (Term termino : vocabulary.getList()) {
+			if (remove1(termino.getTerm().toLowerCase()).equals(remove1(Termino.toLowerCase())))
+				return termino;
+		} 
+		
+		return null;
+	}
+	
+	public static String remove1(String input) {
+    String original = "áàäéèëíìïóòöúùuñÁÀÄÉÈËÍÌÏÓÒÖÚÙÜÑçÇ";
+    String ascii = "aaaeeeiiiooouuunAAAEEEIIIOOOUUUNcC";
+    String output = input;
+    for (int i=0; i<original.length(); i++) {
+
+        output = output.replace(original.charAt(i), ascii.charAt(i));
+    }
+    return output;
+}
 	
 }

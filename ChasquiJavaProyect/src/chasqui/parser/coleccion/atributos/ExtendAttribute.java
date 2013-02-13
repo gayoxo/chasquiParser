@@ -1,9 +1,10 @@
 package chasqui.parser.coleccion.atributos;
 
 import chasqui.model.collection.attribute.Attribute;
+import chasqui.parser.AtributeElement;
 import chasqui.parser.ChasquiParseElement;
 
-public abstract class ExtendAttribute extends Attribute implements ChasquiParseElement{
+public abstract class ExtendAttribute extends Attribute implements ChasquiParseElement,AtributeElement{
 
 	public ExtendAttribute(String name, boolean browseable, Attribute father) {
 		super(name, browseable, father);
@@ -34,7 +35,7 @@ public abstract class ExtendAttribute extends Attribute implements ChasquiParseE
 	@Override
 	public String toString(String prefix) {
 		return prefix + 
-		"Attribute (Atributo: " + name + ")(Browseable: " + Browseable + ") \n"+processSons(prefix+"...");
+		name + "() \n"+processSons(prefix+"...");
 		
 	}
 	
@@ -48,4 +49,11 @@ public abstract class ExtendAttribute extends Attribute implements ChasquiParseE
 //	    }
 //	    return output;
 //	}
+	
+	public String pathFather()
+	{
+		if (Father!=null)
+		return ((AtributeElement)Father).pathFather()+"/" + name ;
+		else return name;
+	}
 }

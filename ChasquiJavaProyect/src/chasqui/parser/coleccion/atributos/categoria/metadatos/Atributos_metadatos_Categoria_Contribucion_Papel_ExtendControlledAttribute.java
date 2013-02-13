@@ -67,7 +67,7 @@ public class Atributos_metadatos_Categoria_Contribucion_Papel_ExtendControlledAt
 					if (idov!=null&&!idov.isEmpty()&&!Valor.isEmpty())
 						{
 						ExtendDigitalObject DObject= Escritor.getChasqui().getDigitalObject(Integer.parseInt(idov));
-						DObject.getSons().add(new ExtendControlledAttributeInstance(this, pathFather(),findTerm(Valor) ));
+						DObject.getSons().add(new ExtendControlledAttributeInstance(this, pathFather(),findTerm(Valor),DObject  ));
 						}
 					
 				}

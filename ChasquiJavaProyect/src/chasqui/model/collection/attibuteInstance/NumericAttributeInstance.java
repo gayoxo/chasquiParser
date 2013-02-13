@@ -1,6 +1,7 @@
 package chasqui.model.collection.attibuteInstance;
 
 import chasqui.model.collection.attribute.NumericAttribute;
+import chasqui.model.collection.digitalobjects.DigitalObject;
 
 public abstract class NumericAttributeInstance extends AttributeInstance {
 
@@ -11,8 +12,8 @@ public abstract class NumericAttributeInstance extends AttributeInstance {
 	protected float valor;
 	
 	
-	public NumericAttributeInstance(NumericAttribute hasType, String path, float valor) {
-		super(hasType, path);
+	public NumericAttributeInstance(NumericAttribute hasType, String path, float valor,DigitalObject doDigitalObject) {
+		super(hasType, path, doDigitalObject);
 		this.valor = valor;
 	}
 

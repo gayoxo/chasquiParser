@@ -35,7 +35,7 @@ public class Escritor {
 		MySQLConnection.getInstance();
 		Chasqui=new ChasquiImplementationExtendCollection();
 		Chasqui.Process();
-		System.out.println(Chasqui.toString());
+		//System.out.println(Chasqui.toString());
 		Calendar c2 = new GregorianCalendar();
     	String dia = Integer.toString(c2.get(Calendar.DATE));
     	String mes = Integer.toString(c2.get(Calendar.MONTH)+1);
@@ -82,6 +82,7 @@ public class Escritor {
 			{
 				e.printStackTrace();
 			}
+	        System.out.println("end");
 		
 	}
 

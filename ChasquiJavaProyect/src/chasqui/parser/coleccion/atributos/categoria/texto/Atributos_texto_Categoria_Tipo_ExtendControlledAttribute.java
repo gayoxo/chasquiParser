@@ -58,7 +58,7 @@ public class Atributos_texto_Categoria_Tipo_ExtendControlledAttribute extends
 					if (idov!=null&&!idov.isEmpty())
 						{
 						ExtendDigitalObject DObject= Escritor.getChasqui().getDigitalObject(Integer.parseInt(idov));
-						DObject.getSons().add(new ExtendControlledAttributeInstance(this, pathFather(),findTerm(Valor) ));
+						DObject.getSons().add(new ExtendControlledAttributeInstance(this, pathFather(),findTerm(Valor),DObject  ));
 						}
 					
 				}

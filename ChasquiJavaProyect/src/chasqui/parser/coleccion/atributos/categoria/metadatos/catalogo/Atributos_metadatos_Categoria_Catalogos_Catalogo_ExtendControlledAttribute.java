@@ -3,9 +3,13 @@ package chasqui.parser.coleccion.atributos.categoria.metadatos.catalogo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import chasqui.client.main.Escritor;
 import chasqui.model.collection.attribute.Attribute;
+import chasqui.model.collection.attribute.controlled.Term;
 import chasqui.parser.coleccion.atributos.ExtendControlledAttribute;
 import chasqui.parser.coleccion.atributos.ExtendTerm;
+import chasqui.parser.coleccion.intanciasatributos.ExtendControlledAttributeInstance;
+import chasqui.parser.coleccion.objetosdigitales.ExtendDigitalObject;
 import chasqui.server.msqlconection.MySQLConnection;
 
 public class Atributos_metadatos_Categoria_Catalogos_Catalogo_ExtendControlledAttribute
@@ -56,13 +60,23 @@ public class Atributos_metadatos_Categoria_Catalogos_Catalogo_ExtendControlledAt
 			{
 				while (rs.next()) {
 					String Dato=rs.getObject("num_ruta").toString();
-					String Contenido=rs.getObject("contenido").toString();
+					//RARO MUY ABAJO
+					Object temp=rs.getObject("contenido");
+					String Contenido="";
+					if (temp!=null)
+						Contenido=temp.toString();
 					String[] DatosRutaCatalogo=datoNumRuta.split("\\.");
 					String[] DatosRutaEntry=Dato.split("\\.");
 					if (Dato!=null&&Contenido!=null&&!Contenido.isEmpty()&&!Dato.isEmpty()&&DatosRutaCatalogo[4].equals(DatosRutaEntry[4]))
 						{
 						ExtendTerm TerminoCandidato=new ExtendTerm(Contenido);
-						addTerm(TerminoCandidato);
+						Term T=addTerm(TerminoCandidato);
+						
+						//RARO MUY ABAJO
+						ExtendDigitalObject DObject= Escritor.getChasqui().getDigitalObject(Integer.parseInt(idov));
+						DObject.getSons().add(new ExtendControlledAttributeInstance(this, pathFather(),T,DObject ));
+							
+						
 						}
 					
 				}

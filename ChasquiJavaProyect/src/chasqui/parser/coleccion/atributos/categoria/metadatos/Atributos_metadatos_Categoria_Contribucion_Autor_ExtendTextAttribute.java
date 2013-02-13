@@ -37,7 +37,7 @@ public class Atributos_metadatos_Categoria_Contribucion_Autor_ExtendTextAttribut
 					if (idov!=null&&!idov.isEmpty())
 						{
 						ExtendDigitalObject DObject= Escritor.getChasqui().getDigitalObject(Integer.parseInt(idov));
-						DObject.getSons().add(new ExtendTextAttributeInstance(this, pathFather(),Valor ));
+						DObject.getSons().add(new ExtendTextAttributeInstance(this, pathFather(),Valor,DObject  ));
 						}
 					
 				}

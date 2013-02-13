@@ -3,10 +3,14 @@ package chasqui.parser.coleccion.atributos.categoria.metadatos.taxonomias;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import chasqui.client.main.Escritor;
 import chasqui.model.collection.attribute.Attribute;
 import chasqui.model.collection.attribute.ControlledAttribute;
+import chasqui.model.collection.attribute.controlled.Term;
 import chasqui.parser.coleccion.atributos.ExtendControlledAttribute;
 import chasqui.parser.coleccion.atributos.ExtendTerm;
+import chasqui.parser.coleccion.intanciasatributos.ExtendControlledAttributeInstance;
+import chasqui.parser.coleccion.objetosdigitales.ExtendDigitalObject;
 import chasqui.server.msqlconection.MySQLConnection;
 
 public class Atributos_metadatos_Categoria_Taxonomias_Taxonomia_Nodo_ExtendControlledAttribute
@@ -41,7 +45,11 @@ public class Atributos_metadatos_Categoria_Taxonomias_Taxonomia_Nodo_ExtendContr
 					if (contenido!=null&&num_rutaValid!=null&&!num_rutaValid.isEmpty()&&!contenido.isEmpty()&&DatosRutaSection[4].equals(DatosRutaEntry[4]))
 						{
 						ExtendTerm TerminoCandidato=new ExtendTerm(contenido);
-						addTerm(TerminoCandidato);
+						Term T=addTerm(TerminoCandidato);
+						
+						//RARO MUY ABAJO
+						ExtendDigitalObject DObject= Escritor.getChasqui().getDigitalObject(Integer.parseInt(idov));
+						DObject.getSons().add(new ExtendControlledAttributeInstance(this, pathFather(),T,DObject ));
 						}
 					
 				}

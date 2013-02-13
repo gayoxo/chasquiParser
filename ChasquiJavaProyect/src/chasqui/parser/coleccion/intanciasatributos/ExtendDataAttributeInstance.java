@@ -7,14 +7,15 @@ import java.util.Date;
 
 import chasqui.model.collection.attibuteInstance.DateAttributeInstance;
 import chasqui.model.collection.attribute.DateAttribute;
+import chasqui.model.collection.digitalobjects.DigitalObject;
 import chasqui.parser.ChasquiParseElement;
 
 public class ExtendDataAttributeInstance extends DateAttributeInstance
 		implements ChasquiParseElement {
 
 	public ExtendDataAttributeInstance(DateAttribute hasType, String path,
-			Date fecha) {
-		super(hasType, path, fecha);
+			Date fecha,DigitalObject doDigitalObject) {
+		super(hasType, path, fecha, doDigitalObject);
 	}
 
 	@Override

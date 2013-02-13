@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import chasqui.model.collection.attibuteInstance.AttributeInstance;
 import chasqui.model.collection.attribute.Attribute;
+import chasqui.model.collection.digitalobjects.resources.Resource;
 
 public class DigitalObject implements Serializable{
 
@@ -15,7 +16,8 @@ public class DigitalObject implements Serializable{
 	
 	protected Integer identifier;
 	protected String description;
-	protected ArrayList<AttributeInstance> Sons;
+	protected ArrayList<AttributeInstance> Atributos;
+	protected ArrayList<Resource> Recursos;
 	
 	
 	
@@ -23,7 +25,8 @@ public class DigitalObject implements Serializable{
 		super();
 		this.identifier = identifier;
 		this.description = description;
-		Sons=new ArrayList<AttributeInstance>(); 
+		Atributos=new ArrayList<AttributeInstance>(); 
+		Recursos=new ArrayList<Resource>();
 	}
 	
 	public Integer getIdentifier() {
@@ -40,12 +43,19 @@ public class DigitalObject implements Serializable{
 	}
 	
 	public ArrayList<AttributeInstance> getSons() {
-		return Sons;
+		return Atributos;
 	}
 	
 	public void setSons(ArrayList<AttributeInstance> sons) {
-		Sons = sons;
+		Atributos = sons;
 	}
 	
-
+	public ArrayList<Resource> getRecursos() {
+		return Recursos;
+	}
+	
+	public void setRecursos(ArrayList<Resource> recursos) {
+		Recursos = recursos;
+	}
+	
 }

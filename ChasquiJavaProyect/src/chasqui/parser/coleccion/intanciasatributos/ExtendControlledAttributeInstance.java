@@ -4,6 +4,7 @@ import chasqui.model.collection.attibuteInstance.ControlledAttributeInstance;
 import chasqui.model.collection.attribute.Attribute;
 import chasqui.model.collection.attribute.ControlledAttribute;
 import chasqui.model.collection.attribute.controlled.Term;
+import chasqui.model.collection.digitalobjects.DigitalObject;
 import chasqui.parser.ChasquiParseElement;
 
 public class ExtendControlledAttributeInstance extends
@@ -15,10 +16,8 @@ public class ExtendControlledAttributeInstance extends
 	private static final long serialVersionUID = 389865004857001933L;
 
 	public ExtendControlledAttributeInstance(ControlledAttribute hasType, String path,
-			Term termino) {
-		super(hasType, path, termino);
-		if (termino==null)
-			System.err.println("Error en path" + path);
+			Term termino,DigitalObject doDigitalObject) {
+		super(hasType, path, termino, doDigitalObject);
 	}
 
 	@Override

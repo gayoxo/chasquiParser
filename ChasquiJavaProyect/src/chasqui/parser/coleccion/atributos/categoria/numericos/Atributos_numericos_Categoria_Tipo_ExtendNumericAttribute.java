@@ -50,7 +50,7 @@ ExtendNumericAttribute {
 					if (idov!=null&&!idov.isEmpty())
 						{
 						ExtendDigitalObject DObject= Escritor.getChasqui().getDigitalObject(Integer.parseInt(idov));
-						DObject.getSons().add(new ExtendNumericAttributeInstance(this, pathFather(),Float.parseFloat(Valor)));
+						DObject.getSons().add(new ExtendNumericAttributeInstance(this, pathFather(),Float.parseFloat(Valor),DObject ));
 						}
 					
 				}

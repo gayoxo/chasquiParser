@@ -47,7 +47,7 @@ public class Atributos_metadatos_Categoria_Contribucion_Fecha_ExtendDateAttribut
 						if (!Valor.isEmpty())
 							{
 							Date D= formatter.parse(Valor);
-							DObject.getSons().add(new ExtendDataAttributeInstance(this, pathFather(),D ));
+							DObject.getSons().add(new ExtendDataAttributeInstance(this, pathFather(),D,DObject  ));
 						
 						}
 						}

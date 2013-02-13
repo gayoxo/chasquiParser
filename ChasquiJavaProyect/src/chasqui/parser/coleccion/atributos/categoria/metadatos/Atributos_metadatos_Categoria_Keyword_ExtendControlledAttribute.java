@@ -64,7 +64,7 @@ ExtendControlledAttribute implements ChasquiParseElement {
 					if (idov!=null&&!idov.isEmpty()&&!Unidades.isEmpty())
 						{
 						ExtendDigitalObject DObject= Escritor.getChasqui().getDigitalObject(Integer.parseInt(idov));
-						DObject.getSons().add(new ExtendControlledAttributeInstance(this, pathFather(),findTerm(Unidades)));
+						DObject.getSons().add(new ExtendControlledAttributeInstance(this, pathFather(),findTerm(Unidades),DObject ));
 						}
 					
 				}

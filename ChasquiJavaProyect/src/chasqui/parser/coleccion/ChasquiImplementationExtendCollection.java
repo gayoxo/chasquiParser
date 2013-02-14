@@ -5,7 +5,6 @@ import java.sql.SQLException;
 
 import chasqui.client.main.Escritor;
 import chasqui.model.collection.attribute.Attribute;
-import chasqui.model.collection.digitalobjects.resources.ExtendExternalResource;
 import chasqui.model.collection.digitalobjects.resources.Resource;
 import chasqui.parser.coleccion.atributos.categoria.Atributos_metadatos_Categoria_ExtendAttribute;
 import chasqui.parser.coleccion.atributos.categoria.Atributos_texto_y_numerico_Categoria_ExtendAttribute;
@@ -13,6 +12,7 @@ import chasqui.parser.coleccion.atributos.categoria.Atributos_texto_y_numerico_C
 import chasqui.parser.coleccion.objetosdigitales.ExtendDigitalObject;
 import chasqui.parser.coleccion.objetosdigitales.ObjetoVirtualExtendDigitalObject;
 import chasqui.parser.coleccion.objetosdigitales.recursos.ExtendDOResource;
+import chasqui.parser.coleccion.objetosdigitales.recursos.ExtendExternalResource;
 import chasqui.parser.coleccion.objetosdigitales.recursos.ExtendLocalResource;
 import chasqui.server.msqlconection.MySQLConnection;
 
@@ -64,27 +64,33 @@ public String toString() {
 					 */
 					String Padre=rs.getObject("idov").toString();
 					String Nombre=rs.getObject("nom_rec").toString();
-					String Tipo=rs.getObject("tipo").toString();
-					String visible=rs.getObject("visible").toString();
 					String ruta=rs.getObject("ruta").toString();
 					Object nulable = rs.getObject("descripcion");
 					String Descripcion="";
 					if (nulable!=null)
 						Descripcion=nulable.toString();
 					Object nulable2 = rs.getObject("nom_rec_publico");
-					String displayName="";
+					String displayName=Nombre;
 					if (nulable2!=null)
 						displayName=nulable2.toString();
+					Object nulable3 = rs.getObject("visible");
+					String visible="NO";
+					if (nulable3!=null)
+						visible=nulable3.toString();
 					String IdovRef=ruta.substring(0, ruta.length()-1);
-					if (Padre!=null&&!Padre.isEmpty()&&Nombre!=null&&!Nombre.isEmpty()&&Tipo!=null&&!Tipo.isEmpty()&&
+					if (Padre!=null&&!Padre.isEmpty()&&Nombre!=null&&!Nombre.isEmpty()&&
 							visible!=null&&!visible.isEmpty()&&IdovRef!=null&&!IdovRef.isEmpty())
 						{
 						Integer Idov = Integer.parseInt(Padre);
 						Integer Idovrefe = Integer.parseInt(IdovRef);
 						ExtendDigitalObject OVEDO=getDigitalObject(Idov);
 						ExtendDigitalObject Reference=getDigitalObject(Idovrefe);
-						boolean visiblebol=Boolean.parseBoolean(visible);
-						ExtendDOResource LR=new ExtendDOResource(OVEDO, Nombre, displayName, Descripcion, Tipo, visiblebol,Reference);
+						boolean visiblebol;
+						if (visible.toLowerCase().equals("SI".toLowerCase()))
+							visiblebol=true;
+					else visiblebol=false;
+						if (displayName.isEmpty()) displayName=Nombre;
+						ExtendDOResource LR=new ExtendDOResource(OVEDO, displayName, Descripcion, visiblebol,Reference);
 						OVEDO.getRecursos().add(LR);
 						}
 					else System.out.println(Escritor.WARNING + "categorias vacias");
@@ -116,19 +122,18 @@ public String toString() {
 					 */
 					String Padre=rs.getObject("idov").toString();
 					String Nombre=rs.getObject("nom_rec").toString();
-					String Tipo=rs.getObject("tipo").toString();
 					String ruta=rs.getObject("ruta").toString();
 					Object nulable = rs.getObject("descripcion");
 					String Descripcion="";
 					if (nulable!=null)
 						Descripcion=nulable.toString();
 					Object nulable2 = rs.getObject("nom_rec_publico");
-					String displayName="";
+					String displayName=Nombre;
 					if (nulable2!=null)
 						displayName=nulable2.toString();
 					String IdovRef=ruta.substring(0, ruta.length()-1);
 					Object nulable3 = rs.getObject("visible");
-					String visible="false";
+					String visible="NO";
 					if (nulable3!=null)
 						visible=nulable3.toString();
 					if (Padre!=null&&!Padre.isEmpty()&&Nombre!=null&&!Nombre.isEmpty()&&IdovRef!=null&&!IdovRef.isEmpty())
@@ -138,8 +143,12 @@ public String toString() {
 						ExtendDigitalObject OVEDO=getDigitalObject(Idov);
 						ExtendDigitalObject Reference=getDigitalObject(Idovrefe);
 						Resource target=Reference.findResource(Nombre);
-						boolean visiblebol=Boolean.parseBoolean(visible);
-						ExtendExternalResource LR=new ExtendExternalResource(OVEDO, Nombre, displayName, Descripcion, Tipo, visiblebol,target);
+						boolean visiblebol;
+						if (visible.toLowerCase().equals("SI".toLowerCase()))
+							visiblebol=true;
+					else visiblebol=false;
+						if (displayName.isEmpty()) displayName=Nombre;
+						ExtendExternalResource LR=new ExtendExternalResource(OVEDO, displayName, Descripcion, visiblebol,target);
 						OVEDO.getRecursos().add(LR);
 						}
 					else 
@@ -172,26 +181,29 @@ public String toString() {
 					 */
 					String Padre=rs.getObject("idov").toString();
 					String Nombre=rs.getObject("nom_rec").toString();
-					String Tipo=rs.getObject("tipo").toString();
 //					String ruta=rs.getObject("ruta").toString();
 					Object nulable = rs.getObject("descripcion");
 					String Descripcion="";
 					if (nulable!=null)
 						Descripcion=nulable.toString();
 					Object nulable2 = rs.getObject("nom_rec_publico");
-					String displayName="";
+					String displayName=Nombre;
 					if (nulable2!=null)
 						displayName=nulable2.toString();
 					Object nulable3 = rs.getObject("visible");
-					String visible="false";
+					String visible="NO";
 					if (nulable3!=null)
 						visible=nulable3.toString();
 					if (Padre!=null&&!Padre.isEmpty()&&Nombre!=null&&!Nombre.isEmpty())
 						{
 						Integer Idov = Integer.parseInt(Padre);
 						ExtendDigitalObject OVEDO=getDigitalObject(Idov);
-						boolean visiblebol=Boolean.parseBoolean(visible);
-						ExtendLocalResource LR=new ExtendLocalResource(OVEDO, Nombre, displayName, Descripcion, Tipo, visiblebol);
+						boolean visiblebol;
+						if (visible.toLowerCase().equals("SI".toLowerCase()))
+								visiblebol=true;
+						else visiblebol=false;
+						if (displayName.isEmpty()) displayName=Nombre;
+						ExtendLocalResource LR=new ExtendLocalResource(OVEDO, Nombre, displayName, Descripcion, visiblebol);
 						OVEDO.getRecursos().add(LR);
 						RecursosGeneral.add(LR);
 						}

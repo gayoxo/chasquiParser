@@ -49,7 +49,9 @@ ExtendControlledAttribute implements ChasquiParseElement {
 	@Override
 	public void Process() {
 		process_Vocabulary();
-		process_AtributeInstances();
+		if (vocabulary.getList().isEmpty())
+			Father.getSons().remove(this);
+			process_AtributeInstances();
 	}
 
 	private void process_AtributeInstances() {

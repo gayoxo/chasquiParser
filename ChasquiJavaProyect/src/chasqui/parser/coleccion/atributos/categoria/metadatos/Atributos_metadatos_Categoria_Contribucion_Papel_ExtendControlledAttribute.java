@@ -26,6 +26,8 @@ public class Atributos_metadatos_Categoria_Contribucion_Papel_ExtendControlledAt
 	@Override
 	public void Process() {
 		process_Vocabulary();
+		if (vocabulary.getList().isEmpty())
+			Father.getSons().remove(this);
 		process_AtributeInstances();
 	}
 

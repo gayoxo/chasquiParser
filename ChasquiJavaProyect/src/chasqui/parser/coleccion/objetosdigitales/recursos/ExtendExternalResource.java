@@ -1,18 +1,19 @@
-package chasqui.model.collection.digitalobjects.resources;
+package chasqui.parser.coleccion.objetosdigitales.recursos;
 
 import chasqui.model.collection.digitalobjects.DigitalObject;
+import chasqui.model.collection.digitalobjects.resources.ExternalResource;
+import chasqui.model.collection.digitalobjects.resources.Resource;
 import chasqui.parser.ChasquiParseElement;
-import chasqui.parser.coleccion.objetosdigitales.recursos.ExternalResource;
 
 public class ExtendExternalResource extends ExternalResource implements
 		ChasquiParseElement {
 
 	private static final String prefixown="..";
 	
-	public ExtendExternalResource(DigitalObject padre, String name,
-			String displayName, String descripcion, String tipo,
+	public ExtendExternalResource(DigitalObject padre,
+			String displayName, String descripcion, 
 			boolean visible, Resource target) {
-		super(padre, name, displayName, descripcion, tipo, visible, target);
+		super(padre, displayName, descripcion,visible, target);
 		
 		if (target==null || target.getPadre()==null)
 		{
@@ -24,20 +25,20 @@ public class ExtendExternalResource extends ExternalResource implements
 	public String toString(String prefix) {
 		StringBuffer SB=new StringBuffer();
 		SB.append(prefix);
-		SB.append("Recurso : Name=" + Name );
-			SB.append(" DisplayNane=" + DisplayName );
+		SB.append("Recurso: Externo");		
 		SB.append("\n");
 		SB.append(prefix+prefixown);
-		SB.append("Descripcion: " + Descripcion);
-		SB.append("\n");
-		SB.append(prefix+prefixown);
-		SB.append("Tipo: " + Tipo);
+		SB.append("Etiqueta=" + DisplayName );
 		SB.append("\n");
 		SB.append(prefix+prefixown);
 		SB.append("Visible: " + visible);
 		SB.append("\n");
 		SB.append(prefix+prefixown);
-		SB.append("Referencia: " + Target.getPadre().getIdentifier());
+		SB.append("OV.Propietario: " + Target.getPadre().getIdentifier());
+		SB.append("\n");
+		SB.append(prefix+prefixown);
+		ExtendLocalResource ELR=(ExtendLocalResource)Target;
+		SB.append("Recurso referido " + ELR.getName());
 		SB.append("\n");
 		return SB.toString();
 	}

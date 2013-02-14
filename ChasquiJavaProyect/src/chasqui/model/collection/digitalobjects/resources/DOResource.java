@@ -15,10 +15,10 @@ public class DOResource extends Resource {
 		this.referencia = referencia;
 	}
 
-	public DOResource(DigitalObject padre, String name, String displayName,
-			String descripcion, String tipo, boolean visible,
+	public DOResource(DigitalObject padre,String displayName,
+			String descripcion, boolean visible,
 			DigitalObject referencia) {
-		super(padre, name, displayName, descripcion, tipo, visible);
+		super(padre, displayName, descripcion, visible);
 		this.referencia = referencia;
 	}
 	

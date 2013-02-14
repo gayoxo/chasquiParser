@@ -31,6 +31,8 @@ public class Atributos_texto_Categoria_Tipo_ExtendControlledAttribute extends
 	@Override
 	public void Process() {
 		process_Vocabulary();
+		if (vocabulary.getList().isEmpty())
+			Father.getSons().remove(this);
 		process_AtributeInstances();
 		
 	}

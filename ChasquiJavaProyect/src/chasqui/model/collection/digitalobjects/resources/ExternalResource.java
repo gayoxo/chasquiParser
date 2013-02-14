@@ -1,7 +1,6 @@
-package chasqui.parser.coleccion.objetosdigitales.recursos;
+package chasqui.model.collection.digitalobjects.resources;
 
 import chasqui.model.collection.digitalobjects.DigitalObject;
-import chasqui.model.collection.digitalobjects.resources.Resource;
 
 public class ExternalResource extends Resource {
 
@@ -19,10 +18,10 @@ public class ExternalResource extends Resource {
 		Target = target;
 	}
 
-	public ExternalResource(DigitalObject padre, String name,
-			String displayName, String descripcion, String tipo,
+	public ExternalResource(DigitalObject padre, 
+			String displayName, String descripcion, 
 			boolean visible, Resource target) {
-		super(padre, name, displayName, descripcion, tipo, visible);
+		super(padre,displayName, descripcion,visible);
 		Target = target;
 	}
 	

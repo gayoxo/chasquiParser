@@ -7,6 +7,7 @@ import chasqui.model.collection.digitalobjects.DigitalObject;
 import chasqui.model.collection.digitalobjects.resources.Resource;
 import chasqui.parser.AtributeElement;
 import chasqui.parser.ChasquiParseElement;
+import chasqui.parser.coleccion.objetosdigitales.recursos.ExtendLocalResource;
 
 public abstract class ExtendDigitalObject extends DigitalObject implements ChasquiParseElement{
 
@@ -43,8 +44,12 @@ public abstract class ExtendDigitalObject extends DigitalObject implements Chasq
 
 	public Resource findResource(String nombre) {
 		for (Resource targetpos : Recursos) {
-			if (remove1(targetpos.getName().toLowerCase()).equals(remove1(nombre.toLowerCase())))
+			if (targetpos instanceof ExtendLocalResource){
+				ExtendLocalResource RecursoLocalOV = (ExtendLocalResource)targetpos;
+			
+			if (remove1(RecursoLocalOV.getName().toLowerCase()).equals(remove1(nombre.toLowerCase())))
 				return targetpos;
+			}
 		}
 		return null;
 	}

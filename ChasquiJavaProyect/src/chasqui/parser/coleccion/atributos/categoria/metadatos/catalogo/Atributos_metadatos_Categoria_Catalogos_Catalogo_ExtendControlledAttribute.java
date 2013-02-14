@@ -25,7 +25,8 @@ public class Atributos_metadatos_Categoria_Catalogos_Catalogo_ExtendControlledAt
 	@Override
 	public void Process() {
 		process_Vocabulary();
-
+		if (vocabulary.getList().isEmpty())
+			Father.getSons().remove(this);
 	}
 
 	@Override

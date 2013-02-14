@@ -5,6 +5,7 @@ import chasqui.parser.coleccion.atributos.ExtendAttribute;
 import chasqui.parser.coleccion.atributos.ExtendTextAttribute;
 import chasqui.parser.coleccion.atributos.categoria.metadatos.Atributos_metadatos_Categoria_Contexto_ExtendControlledAttribute;
 import chasqui.parser.coleccion.atributos.categoria.metadatos.Atributos_metadatos_Categoria_Contribucion_ExtendAttribute;
+import chasqui.parser.coleccion.atributos.categoria.metadatos.Atributos_metadatos_Categoria_Status_ExtendControlledAttribute;
 import chasqui.parser.coleccion.atributos.categoria.metadatos.Atributos_metadatos_Categoria_Description_ExtendTextAttribute;
 import chasqui.parser.coleccion.atributos.categoria.metadatos.Atributos_metadatos_Categoria_Keyword_ExtendControlledAttribute;
 import chasqui.parser.coleccion.atributos.categoria.metadatos.catalogo.Atributos_metadatos_Categoria_Catalogos_ExtendAttribute;
@@ -19,10 +20,13 @@ public class Atributos_metadatos_Categoria_ExtendAttribute extends ExtendAttribu
 
 		
 	}
+	
+	//SELECT idov,count(*) FROM chasqui2.metadatos where ruta='/manifest/metadata/lom/lifecycle/contribute/centity/vcard' group by idov;
 
 	
 	@Override
 	public void Process() {
+		
 		Atributos_metadatos_Categoria_Contexto_ExtendControlledAttribute AMcontenido=new Atributos_metadatos_Categoria_Contexto_ExtendControlledAttribute("Contexto", true, this);
 		Sons.add(AMcontenido);
 		AMcontenido.Process();
@@ -32,6 +36,9 @@ public class Atributos_metadatos_Categoria_ExtendAttribute extends ExtendAttribu
 		Atributos_metadatos_Categoria_Description_ExtendTextAttribute AMdescripcion= new Atributos_metadatos_Categoria_Description_ExtendTextAttribute("Descripcion", true, this);
 		Sons.add(AMdescripcion);
 		AMdescripcion.Process();
+		Atributos_metadatos_Categoria_Status_ExtendControlledAttribute AMstatus=new Atributos_metadatos_Categoria_Status_ExtendControlledAttribute("Estatus", true, this);
+		Sons.add(AMstatus);
+		AMstatus.Process();
 		Atributos_metadatos_Categoria_Contribucion_ExtendAttribute AMcontribucion= new Atributos_metadatos_Categoria_Contribucion_ExtendAttribute("Contribucion",true, this);
 		Sons.add(AMcontribucion);
 		AMcontribucion.Process();

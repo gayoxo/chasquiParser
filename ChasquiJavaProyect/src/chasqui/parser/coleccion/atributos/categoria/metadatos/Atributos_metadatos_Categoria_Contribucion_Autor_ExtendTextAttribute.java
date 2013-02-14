@@ -21,6 +21,7 @@ public class Atributos_metadatos_Categoria_Contribucion_Autor_ExtendTextAttribut
 	@Override
 	public void Process() {
 		process_AtributeInstances();
+		
 	}
 	private void process_AtributeInstances() {
 		try {
@@ -38,6 +39,7 @@ public class Atributos_metadatos_Categoria_Contribucion_Autor_ExtendTextAttribut
 						{
 						ExtendDigitalObject DObject= Escritor.getChasqui().getDigitalObject(Integer.parseInt(idov));
 						DObject.getSons().add(new ExtendTextAttributeInstance(this, pathFather(),Valor,DObject  ));
+						//
 						}
 					
 				}
@@ -48,5 +50,6 @@ public class Atributos_metadatos_Categoria_Contribucion_Autor_ExtendTextAttribut
 		}
 		
 	}
+
 	
 }

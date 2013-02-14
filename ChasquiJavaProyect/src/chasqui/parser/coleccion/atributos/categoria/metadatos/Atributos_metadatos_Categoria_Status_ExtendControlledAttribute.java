@@ -11,10 +11,10 @@ import chasqui.parser.coleccion.intanciasatributos.ExtendControlledAttributeInst
 import chasqui.parser.coleccion.objetosdigitales.ExtendDigitalObject;
 import chasqui.server.msqlconection.MySQLConnection;
 
-public class Atributos_metadatos_Categoria_Contribucion_Status_ExtendControlledAttribute
+public class Atributos_metadatos_Categoria_Status_ExtendControlledAttribute
 		extends ExtendControlledAttribute {
 
-	public Atributos_metadatos_Categoria_Contribucion_Status_ExtendControlledAttribute(
+	public Atributos_metadatos_Categoria_Status_ExtendControlledAttribute(
 			String name, boolean browseable, Attribute father) {
 		super(name, browseable, father);
 	}

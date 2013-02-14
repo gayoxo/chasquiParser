@@ -28,7 +28,7 @@ public class Atributos_metadatos_Categoria_Contribucion_Papel_ExtendControlledAt
 		process_Vocabulary();
 		if (vocabulary.getList().isEmpty())
 			Father.getSons().remove(this);
-		process_AtributeInstances();
+	//	process_AtributeInstances();
 	}
 
 	@Override
@@ -54,31 +54,31 @@ public class Atributos_metadatos_Categoria_Contribucion_Papel_ExtendControlledAt
 
 	}
 	
-	private void process_AtributeInstances() {
-		try {
-			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT * FROM chasqui2.metadatos WHERE ruta='/manifest/metadata/lom/lifecycle/contribute/role/value/langstring' ORDER BY contenido;");
-			if (rs!=null) 
-			{
-				while (rs.next()) {
-					
-					String idov=rs.getObject("idov").toString();
-					Object temp=rs.getObject("contenido");
-					String Valor="";
-					if (temp!=null)
-						Valor=temp.toString();
-					if (idov!=null&&!idov.isEmpty()&&!Valor.isEmpty())
-						{
-						ExtendDigitalObject DObject= Escritor.getChasqui().getDigitalObject(Integer.parseInt(idov));
-						DObject.getSons().add(new ExtendControlledAttributeInstance(this, pathFather(),findTerm(Valor),DObject  ));
-						}
-					
-				}
-			rs.close();
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+//	private void process_AtributeInstances() {
+//		try {
+//			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT * FROM chasqui2.metadatos WHERE ruta='/manifest/metadata/lom/lifecycle/contribute/role/value/langstring' ORDER BY contenido;");
+//			if (rs!=null) 
+//			{
+//				while (rs.next()) {
+//					
+//					String idov=rs.getObject("idov").toString();
+//					Object temp=rs.getObject("contenido");
+//					String Valor="";
+//					if (temp!=null)
+//						Valor=temp.toString();
+//					if (idov!=null&&!idov.isEmpty()&&!Valor.isEmpty())
+//						{
+//						ExtendDigitalObject DObject= Escritor.getChasqui().getDigitalObject(Integer.parseInt(idov));
+//						DObject.getSons().add(new ExtendControlledAttributeInstance(this, pathFather(),findTerm(Valor),DObject  ));
+//						}
+//					
+//				}
+//			rs.close();
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
 		
-	}
+//	}
 
 }

@@ -14,11 +14,15 @@ public class DateAttributeInstance extends AttributeInstance {
 	private static final long serialVersionUID = 5197527830113363682L;
 	protected Date fecha;
 
-	public DateAttributeInstance(DateAttribute hasType, String path, Date fecha,DigitalObject doDigitalObject) {
-		super(hasType, path, doDigitalObject);
+	
+	
+	public DateAttributeInstance(DateAttribute hasType, String path,
+			DigitalObject doDigitalObject, AttributeInstance fatherAtribute,
+			Date fecha) {
+		super(hasType, path, doDigitalObject, fatherAtribute);
 		this.fecha = fecha;
 	}
-	
+
 	public Date getFecha() {
 		return fecha;
 	}

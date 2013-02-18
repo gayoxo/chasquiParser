@@ -5,6 +5,10 @@ import chasqui.model.collection.digitalobjects.DigitalObject;
 public class DOResource extends Resource {
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7330760902226864765L;
 	protected DigitalObject referencia;
 
 	public DigitalObject getReferencia() {

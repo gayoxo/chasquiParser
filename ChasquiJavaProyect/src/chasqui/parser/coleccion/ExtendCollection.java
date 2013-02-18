@@ -1,6 +1,5 @@
 package chasqui.parser.coleccion;
 
-import java.util.Iterator;
 import java.util.Map.Entry;
 
 import chasqui.model.collection.Collection;
@@ -10,6 +9,11 @@ import chasqui.parser.ChasquiParseElement;
 import chasqui.parser.coleccion.objetosdigitales.ExtendDigitalObject;
 
 public abstract class ExtendCollection extends Collection implements ChasquiParseElement{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 924575690968035690L;
 
 	@Override
 	public String toString(String prefix) {

@@ -1,7 +1,5 @@
 package chasqui.client.main.window.thread;
 
-import javax.swing.JTextPane;
-
 import chasqui.client.main.Escritor;
 import chasqui.client.main.window.VentanaDeInicio;
 import chasqui.server.msqlconection.MySQLConnection.DB;

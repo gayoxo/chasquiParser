@@ -1,10 +1,10 @@
 package chasqui.parser.coleccion.intanciasatributos;
 
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import chasqui.model.collection.attibuteInstance.AttributeInstance;
 import chasqui.model.collection.attibuteInstance.DateAttributeInstance;
 import chasqui.model.collection.attribute.DateAttribute;
 import chasqui.model.collection.digitalobjects.DigitalObject;
@@ -13,9 +13,18 @@ import chasqui.parser.ChasquiParseElement;
 public class ExtendDataAttributeInstance extends DateAttributeInstance
 		implements ChasquiParseElement {
 
+	
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7995692529122651680L;
+
 	public ExtendDataAttributeInstance(DateAttribute hasType, String path,
-			Date fecha,DigitalObject doDigitalObject) {
-		super(hasType, path, fecha, doDigitalObject);
+			DigitalObject doDigitalObject, AttributeInstance fatherAtribute,
+			Date fecha) {
+		super(hasType, path, doDigitalObject, fatherAtribute, fecha);
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override

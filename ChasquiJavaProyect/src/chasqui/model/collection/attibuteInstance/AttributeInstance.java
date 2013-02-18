@@ -13,14 +13,18 @@ public class AttributeInstance implements Serializable{
 	private static final long serialVersionUID = -2802291375297143517L;
 	protected Attribute hasType;
 	protected String Path;
-	protected DigitalObject doDigitalObject;
+	protected DigitalObject doDigitalObject;	
+	protected AttributeInstance fatherAtribute; 
 	
 	
-	public AttributeInstance(Attribute hasType, String path, DigitalObject oDigitalObject) {
+	
+	public AttributeInstance(Attribute hasType, String path,
+			DigitalObject doDigitalObject, AttributeInstance fatherAtribute) {
 		super();
 		this.hasType = hasType;
 		Path = path;
-		doDigitalObject=oDigitalObject;
+		this.doDigitalObject = doDigitalObject;
+		this.fatherAtribute = fatherAtribute;
 	}
 
 	public String getPath() {
@@ -38,4 +42,13 @@ public class AttributeInstance implements Serializable{
 	public void setHasType(Attribute hasType) {
 		this.hasType = hasType;
 	}
+	
+	public AttributeInstance getFatherAtribute() {
+		return fatherAtribute;
+	}
+	
+	public void setFatherAtribute(AttributeInstance fatherAtribute) {
+		this.fatherAtribute = fatherAtribute;
+	}
+	
 }

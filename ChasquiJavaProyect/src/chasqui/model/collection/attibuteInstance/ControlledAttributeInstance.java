@@ -12,9 +12,14 @@ public class ControlledAttributeInstance extends AttributeInstance {
 	 */
 	private static final long serialVersionUID = 5197527830113363682L;
 	protected Term termino;
+	
+
+	
+
 	public ControlledAttributeInstance(ControlledAttribute hasType, String path,
-			Term termino,DigitalObject doDigitalObject) {
-		super(hasType, path, doDigitalObject);
+			DigitalObject doDigitalObject, AttributeInstance fatherAtribute,
+			Term termino) {
+		super(hasType, path, doDigitalObject, fatherAtribute);
 		this.termino = termino;
 	}
 

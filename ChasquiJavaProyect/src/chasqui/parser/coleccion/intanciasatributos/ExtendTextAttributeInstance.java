@@ -1,5 +1,6 @@
 package chasqui.parser.coleccion.intanciasatributos;
 
+import chasqui.model.collection.attibuteInstance.AttributeInstance;
 import chasqui.model.collection.attibuteInstance.TextAttributeInstance;
 import chasqui.model.collection.attribute.TextAttribute;
 import chasqui.model.collection.digitalobjects.DigitalObject;
@@ -7,9 +8,17 @@ import chasqui.parser.ChasquiParseElement;
 
 public class ExtendTextAttributeInstance extends TextAttributeInstance implements ChasquiParseElement{
 
+
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6786082254018690171L;
+
 	public ExtendTextAttributeInstance(TextAttribute hasType, String path,
-			String valor,DigitalObject doDigitalObject) {
-		super(hasType, path, valor, doDigitalObject);
+			DigitalObject doDigitalObject, AttributeInstance fatherAtribute,
+			String valor) {
+		super(hasType, path, doDigitalObject, fatherAtribute, valor);
 		// TODO Auto-generated constructor stub
 	}
 

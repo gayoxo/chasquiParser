@@ -4,8 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import chasqui.client.main.Escritor;
-import chasqui.model.collection.attribute.Attribute;
-import chasqui.model.collection.attribute.controlled.Term;
+import chasqui.model.collection.attribute.NumericAttribute;
 import chasqui.parser.ChasquiParseElement;
 import chasqui.parser.coleccion.atributos.ExtendControlledAttribute;
 import chasqui.parser.coleccion.atributos.ExtendTerm;
@@ -17,8 +16,13 @@ import chasqui.server.msqlconection.MySQLConnection;
 public class Atributos_numericos_Categoria_Unidades_ExtendControlledAttribute extends
 		ExtendControlledAttribute implements ChasquiParseElement {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6251627006544684372L;
+
 	public Atributos_numericos_Categoria_Unidades_ExtendControlledAttribute(String name,
-			boolean browseable, Attribute father) {
+			boolean browseable, NumericAttribute father) {
 		super(name, browseable, father);
 		
 	}
@@ -69,10 +73,17 @@ public class Atributos_numericos_Categoria_Unidades_ExtendControlledAttribute ex
 					String Unidades="";
 					if (temp!=null)
 						Unidades=temp.toString();
-					if (idov!=null&&!idov.isEmpty()&&!Unidades.isEmpty())
+					Object temp2=rs.getObject("valor");
+					String Valor="";
+					if (temp2!=null)
+						Valor=temp2.toString();
+					if (idov!=null&&!idov.isEmpty()&&!Unidades.isEmpty()&&!Valor.isEmpty())
 						{
 						ExtendDigitalObject DObject= Escritor.getChasqui().getDigitalObject(Integer.parseInt(idov));
-						DObject.getSons().add(new ExtendControlledAttributeInstance(this, pathFather(),findTerm(Unidades),DObject ));
+						ExtendNumericAttributeInstance ENAI = new ExtendNumericAttributeInstance((NumericAttribute) this.getFather(), pathFather(),DObject,null,Float.parseFloat(Valor));
+						DObject.getSons().add(ENAI);
+						ExtendControlledAttributeInstance ECAI=new ExtendControlledAttributeInstance(this, pathFather(),DObject,ENAI,findTerm(Unidades));
+						DObject.getSons().add(ECAI);
 						}
 					
 				}

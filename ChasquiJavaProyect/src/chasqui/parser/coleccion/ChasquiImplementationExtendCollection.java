@@ -18,6 +18,10 @@ import chasqui.server.msqlconection.MySQLConnection;
 
 public class ChasquiImplementationExtendCollection extends ExtendCollection{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -660414354602387594L;
 	private static final String CATEGORIAS_VACIAS = " Existen filas con categorias vacias";
 	private static final String OBJETOSVIRTUALESERRONEOS = " Objetos virtuales erroneos";
 

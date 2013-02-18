@@ -1,6 +1,5 @@
 package chasqui.client.main;
 
-import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.ObjectOutputStream;

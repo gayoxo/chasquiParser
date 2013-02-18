@@ -12,8 +12,12 @@ public abstract class NumericAttributeInstance extends AttributeInstance {
 	protected float valor;
 	
 	
-	public NumericAttributeInstance(NumericAttribute hasType, String path, float valor,DigitalObject doDigitalObject) {
-		super(hasType, path, doDigitalObject);
+	
+
+	public NumericAttributeInstance(NumericAttribute hasType, String path,
+			DigitalObject doDigitalObject, AttributeInstance fatherAtribute,
+			float valor) {
+		super(hasType, path, doDigitalObject, fatherAtribute);
 		this.valor = valor;
 	}
 

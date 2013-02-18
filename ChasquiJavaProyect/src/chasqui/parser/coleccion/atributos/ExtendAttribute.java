@@ -5,7 +5,7 @@ import chasqui.parser.AtributeElement;
 import chasqui.parser.ChasquiParseElement;
 
 public abstract class ExtendAttribute extends Attribute implements ChasquiParseElement,AtributeElement{
-
+	
 	public ExtendAttribute(String name, boolean browseable, Attribute father) {
 		super(name, browseable, father);
 	}

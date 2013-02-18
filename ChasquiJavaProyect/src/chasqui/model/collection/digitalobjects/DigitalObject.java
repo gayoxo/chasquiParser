@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import chasqui.model.collection.attibuteInstance.AttributeInstance;
-import chasqui.model.collection.attribute.Attribute;
 import chasqui.model.collection.digitalobjects.resources.Resource;
 
 public class DigitalObject implements Serializable{

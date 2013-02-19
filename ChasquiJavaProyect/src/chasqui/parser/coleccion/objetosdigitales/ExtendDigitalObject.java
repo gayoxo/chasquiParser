@@ -1,5 +1,7 @@
 package chasqui.parser.coleccion.objetosdigitales;
 
+import java.util.ArrayList;
+
 import chasqui.model.collection.attibuteInstance.AttributeInstance;
 import chasqui.model.collection.attribute.Attribute;
 import chasqui.model.collection.attribute.TextAttribute;
@@ -7,10 +9,16 @@ import chasqui.model.collection.digitalobjects.DigitalObject;
 import chasqui.model.collection.digitalobjects.resources.Resource;
 import chasqui.parser.AtributeElement;
 import chasqui.parser.ChasquiParseElement;
+import chasqui.parser.coleccion.atributos.categoria.numericos.ExtendAttributeInstance;
+import chasqui.parser.coleccion.intanciasatributos.ExtendNumericAttributeInstance;
 import chasqui.parser.coleccion.objetosdigitales.recursos.ExtendLocalResource;
 
 public abstract class ExtendDigitalObject extends DigitalObject implements ChasquiParseElement{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7082722970187677052L;
 	private static final String internalprefix="..";
 	
 	public ExtendDigitalObject(Integer identifier, String description) {
@@ -65,6 +73,15 @@ public abstract class ExtendDigitalObject extends DigitalObject implements Chasq
 	    return output;
 	}
 	
+	public AttributeInstance saveAtributo(AttributeInstance Atribute) {
+		for (AttributeInstance targetpos : Atributos) {
+			if (targetpos.getPath().equals(Atribute.getPath())&&Atribute instanceof ExtendAttributeInstance)
+				return targetpos;
+				
+		}
+		getSons().add(Atribute);
+		return Atribute;
+	}
 	
 	
 }

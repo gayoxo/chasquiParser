@@ -6,7 +6,9 @@ import java.sql.SQLException;
 import chasqui.client.main.Escritor;
 import chasqui.model.collection.attribute.Attribute;
 import chasqui.parser.ChasquiParseElement;
+import chasqui.parser.coleccion.atributos.ExtendAttribute;
 import chasqui.parser.coleccion.atributos.ExtendTextAttribute;
+import chasqui.parser.coleccion.atributos.categoria.numericos.ExtendAttributeInstance;
 import chasqui.parser.coleccion.intanciasatributos.ExtendTextAttributeInstance;
 import chasqui.parser.coleccion.objetosdigitales.ExtendDigitalObject;
 import chasqui.server.msqlconection.MySQLConnection;
@@ -14,6 +16,10 @@ import chasqui.server.msqlconection.MySQLConnection;
 public class Atributos_metadatos_Categoria_Description_ExtendTextAttribute extends ExtendTextAttribute implements ChasquiParseElement{
 
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5800433597359054807L;
 	public Atributos_metadatos_Categoria_Description_ExtendTextAttribute(String name, boolean browseable,
 			Attribute father) {
 		super(name, browseable, father);
@@ -41,7 +47,10 @@ public class Atributos_metadatos_Categoria_Description_ExtendTextAttribute exten
 					if (idov!=null&&!idov.isEmpty())
 						{
 						ExtendDigitalObject DObject= Escritor.getChasqui().getDigitalObject(Integer.parseInt(idov));
-						DObject.getSons().add(new ExtendTextAttributeInstance(this, pathFather(),Valor,DObject  ));
+						ExtendAttributeInstance EAI = new ExtendAttributeInstance(this.getFather(), ((ExtendAttribute) this.getFather()).pathFather(),DObject,null);
+						EAI=(ExtendAttributeInstance) DObject.saveAtributo(EAI);
+						ExtendTextAttributeInstance ETAI=new ExtendTextAttributeInstance(this, pathFather(),DObject,EAI,Valor);
+						ETAI=(ExtendTextAttributeInstance) DObject.saveAtributo(ETAI);
 						}
 					
 				}

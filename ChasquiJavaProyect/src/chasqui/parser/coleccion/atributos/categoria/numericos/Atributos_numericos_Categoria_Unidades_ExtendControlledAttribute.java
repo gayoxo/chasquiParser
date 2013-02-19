@@ -6,7 +6,9 @@ import java.sql.SQLException;
 import chasqui.client.main.Escritor;
 import chasqui.model.collection.attribute.NumericAttribute;
 import chasqui.parser.ChasquiParseElement;
+import chasqui.parser.coleccion.atributos.ExtendAttribute;
 import chasqui.parser.coleccion.atributos.ExtendControlledAttribute;
+import chasqui.parser.coleccion.atributos.ExtendNumericAttribute;
 import chasqui.parser.coleccion.atributos.ExtendTerm;
 import chasqui.parser.coleccion.intanciasatributos.ExtendControlledAttributeInstance;
 import chasqui.parser.coleccion.intanciasatributos.ExtendNumericAttributeInstance;
@@ -80,10 +82,12 @@ public class Atributos_numericos_Categoria_Unidades_ExtendControlledAttribute ex
 					if (idov!=null&&!idov.isEmpty()&&!Unidades.isEmpty()&&!Valor.isEmpty())
 						{
 						ExtendDigitalObject DObject= Escritor.getChasqui().getDigitalObject(Integer.parseInt(idov));
-						ExtendNumericAttributeInstance ENAI = new ExtendNumericAttributeInstance((NumericAttribute) this.getFather(), pathFather(),DObject,null,Float.parseFloat(Valor));
-						DObject.getSons().add(ENAI);
+						ExtendAttributeInstance EAI = new ExtendAttributeInstance(this.getFather().getFather(), ((ExtendAttribute) this.getFather().getFather()).pathFather(),DObject,null);
+						EAI=(ExtendAttributeInstance) DObject.saveAtributo(EAI);
+						ExtendNumericAttributeInstance ENAI = new ExtendNumericAttributeInstance((NumericAttribute) this.getFather(), ((ExtendNumericAttribute) this.getFather()).pathFather(),DObject,EAI,Float.parseFloat(Valor));
+						ENAI=(ExtendNumericAttributeInstance) DObject.saveAtributo(ENAI);
 						ExtendControlledAttributeInstance ECAI=new ExtendControlledAttributeInstance(this, pathFather(),DObject,ENAI,findTerm(Unidades));
-						DObject.getSons().add(ECAI);
+						ECAI=(ExtendControlledAttributeInstance) DObject.saveAtributo(ECAI);
 						}
 					
 				}

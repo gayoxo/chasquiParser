@@ -14,6 +14,11 @@ import chasqui.parser.coleccion.atributos.categoria.metadatos.taxonomias.Atribut
 public class Atributos_metadatos_Categoria_ExtendAttribute extends ExtendAttribute{
 
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6201865586344180458L;
+
 	public Atributos_metadatos_Categoria_ExtendAttribute(String name, boolean browseable,
 			Attribute father) {
 		super(name, browseable, father);
@@ -42,12 +47,12 @@ public class Atributos_metadatos_Categoria_ExtendAttribute extends ExtendAttribu
 		Atributos_metadatos_Categoria_Contribucion_ExtendAttribute AMcontribucion= new Atributos_metadatos_Categoria_Contribucion_ExtendAttribute("Contribucion",true, this);
 		Sons.add(AMcontribucion);
 		AMcontribucion.Process();
-		Atributos_metadatos_Categoria_Catalogos_ExtendAttribute AMCatalogo= new Atributos_metadatos_Categoria_Catalogos_ExtendAttribute("Catalogos",true, this);
-		Sons.add(AMCatalogo);
-		AMCatalogo.Process();
-		Atributos_metadatos_Categoria_Taxonomias_ExtendAttribute AMTaxonimias= new Atributos_metadatos_Categoria_Taxonomias_ExtendAttribute("Taxonomias",true, this);
-		Sons.add(AMTaxonimias);
-		AMTaxonimias.Process();
+//		Atributos_metadatos_Categoria_Catalogos_ExtendAttribute AMCatalogo= new Atributos_metadatos_Categoria_Catalogos_ExtendAttribute("Catalogos",true, this);
+//		Sons.add(AMCatalogo);
+//		AMCatalogo.Process();
+//		Atributos_metadatos_Categoria_Taxonomias_ExtendAttribute AMTaxonimias= new Atributos_metadatos_Categoria_Taxonomias_ExtendAttribute("Taxonomias",true, this);
+//		Sons.add(AMTaxonimias);
+//		AMTaxonimias.Process();
 		
 	}
 }

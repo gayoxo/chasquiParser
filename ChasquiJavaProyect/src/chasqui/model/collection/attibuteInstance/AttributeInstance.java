@@ -1,6 +1,8 @@
 package chasqui.model.collection.attibuteInstance;
 
 import java.io.Serializable;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 import chasqui.model.collection.attribute.Attribute;
 import chasqui.model.collection.digitalobjects.DigitalObject;
@@ -15,6 +17,7 @@ public class AttributeInstance implements Serializable{
 	protected String Path;
 	protected DigitalObject doDigitalObject;	
 	protected AttributeInstance fatherAtribute; 
+	protected ArrayList<AttributeInstance> sons;
 	
 	
 	
@@ -25,6 +28,7 @@ public class AttributeInstance implements Serializable{
 		Path = path;
 		this.doDigitalObject = doDigitalObject;
 		this.fatherAtribute = fatherAtribute;
+		sons=new ArrayList<AttributeInstance>();
 	}
 
 	public String getPath() {
@@ -57,6 +61,14 @@ public class AttributeInstance implements Serializable{
 	
 	public void setDoDigitalObject(DigitalObject doDigitalObject) {
 		this.doDigitalObject = doDigitalObject;
+	}
+	
+	public ArrayList<AttributeInstance> getSons() {
+		return sons;
+	}
+	
+	public void setSons(ArrayList<AttributeInstance> sons) {
+		this.sons = sons;
 	}
 	
 }

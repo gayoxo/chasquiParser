@@ -6,9 +6,10 @@ import chasqui.model.collection.attribute.ControlledAttribute;
 import chasqui.model.collection.attribute.controlled.Term;
 import chasqui.model.collection.digitalobjects.DigitalObject;
 import chasqui.parser.ChasquiParseElement;
+import chasqui.parser.InstanceAttribute;
 
 public class ExtendControlledAttributeInstance extends
-		ControlledAttributeInstance implements ChasquiParseElement{
+		ControlledAttributeInstance implements ChasquiParseElement,InstanceAttribute{
 
 	/**
 	 * 
@@ -25,12 +26,12 @@ public class ExtendControlledAttributeInstance extends
 	@Override
 	public String toString(String prefix) {
 		StringBuffer SB=new StringBuffer();
-		SB.append(prefix);
-		SB.append("Atributo : " + Path );
-		SB.append(" =");
-		if (termino!=null)
-			SB.append(termino.getTerm());
-		SB.append("\n");
+//		SB.append(prefix);
+//		SB.append("Atributo : " + Path );
+//		SB.append(" =");
+//		if (termino!=null)
+//			SB.append(termino.getTerm());
+//		SB.append("\n");
 		return SB.toString();
 	}
 
@@ -39,5 +40,26 @@ public class ExtendControlledAttributeInstance extends
 		// TODO Auto-generated method stub
 		
 	}
+	
 
+	@Override
+	public String toStringinterno(String prefix) {
+		StringBuffer SB=new StringBuffer();
+		SB.append(prefix);
+		SB.append("Atributo : " + hasType.getName() );
+		SB.append(" =");
+		if (termino!=null)
+			SB.append(termino.getTerm());
+		SB.append("\n");
+		SB.append(processSons(prefix+".."));
+		return SB.toString();
+	}
+
+	private Object processSons(String prefixheredado) {
+		StringBuffer SB=new StringBuffer();
+		for (AttributeInstance element : sons) {
+			SB.append(((InstanceAttribute)element).toStringinterno(prefixheredado));
+		} 
+		return SB.toString();
+	}
 }

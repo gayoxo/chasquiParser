@@ -4,8 +4,9 @@ import chasqui.model.collection.attibuteInstance.AttributeInstance;
 import chasqui.model.collection.attribute.Attribute;
 import chasqui.model.collection.digitalobjects.DigitalObject;
 import chasqui.parser.ChasquiParseElement;
+import chasqui.parser.InstanceAttribute;
 
-public class ExtendAttributeInstance extends AttributeInstance  implements ChasquiParseElement{
+public class ExtendAttributeInstance extends AttributeInstance  implements ChasquiParseElement,InstanceAttribute{
 
 	/**
 	 * 
@@ -21,13 +22,30 @@ public class ExtendAttributeInstance extends AttributeInstance  implements Chasq
 	@Override
 	public String toString(String prefix) {
 
-		return "";
+		return toStringinterno(prefix);
 	}
 
 	@Override
 	public void Process() {
-		// TODO Auto-generated method stub
-		
+	
+	}
+
+	@Override
+	public String toStringinterno(String prefix) {
+		StringBuffer SB=new StringBuffer();
+		SB.append(prefix);
+		SB.append("Categoria : " + hasType.getName());
+		SB.append("\n");
+		SB.append(processSons(prefix+".."));
+		return SB.toString();
+	}
+
+	private Object processSons(String prefixheredado) {
+		StringBuffer SB=new StringBuffer();
+		for (AttributeInstance element : sons) {
+			SB.append(((InstanceAttribute)element).toStringinterno(prefixheredado));
+		} 
+		return SB.toString();
 	}
 
 }

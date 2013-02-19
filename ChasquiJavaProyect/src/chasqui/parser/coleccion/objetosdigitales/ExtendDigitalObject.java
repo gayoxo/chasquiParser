@@ -91,15 +91,26 @@ public abstract class ExtendDigitalObject extends DigitalObject implements Chasq
 				else if (Ext.getTermino()==null || Ext2.getTermino().getTerm().equals(Ext.getTermino().getTerm()))
 						return targetpos;
 					else {
-						getSons().add(Atribute);
+						save(Atribute);
+						
 						return Atribute;
 					}
 				}
 				
 		}
-		getSons().add(Atribute);
+		save(Atribute);
 		return Atribute;
 	}
+
+
+	private void save(AttributeInstance atribute) {
+		getSons().add(atribute);
+		if (atribute.getFatherAtribute()!=null)
+			atribute.getFatherAtribute().getSons().add(atribute);
+		
+	}
+
+
 	
 	
 }

@@ -5,8 +5,9 @@ import chasqui.model.collection.attibuteInstance.NumericAttributeInstance;
 import chasqui.model.collection.attribute.NumericAttribute;
 import chasqui.model.collection.digitalobjects.DigitalObject;
 import chasqui.parser.ChasquiParseElement;
+import chasqui.parser.InstanceAttribute;
 
-public class ExtendNumericAttributeInstance extends NumericAttributeInstance implements ChasquiParseElement {
+public class ExtendNumericAttributeInstance extends NumericAttributeInstance implements ChasquiParseElement,InstanceAttribute {
 
 	
 
@@ -24,10 +25,10 @@ public class ExtendNumericAttributeInstance extends NumericAttributeInstance imp
 	@Override
 	public String toString(String prefix) {
 		StringBuffer SB=new StringBuffer();
-		SB.append(prefix);
-		SB.append("Atributo : " + Path );
-		SB.append(" =" + valor);
-		SB.append("\n");
+//		SB.append(prefix);
+//		SB.append("Atributo : " + Path );
+//		SB.append(" =" + valor);
+//		SB.append("\n");
 		return SB.toString();
 	}
 
@@ -37,4 +38,22 @@ public class ExtendNumericAttributeInstance extends NumericAttributeInstance imp
 		
 	}
 
+	@Override
+	public String toStringinterno(String prefix) {
+		StringBuffer SB=new StringBuffer();
+		SB.append(prefix);
+		SB.append("Atributo : " + hasType.getName() );
+		SB.append(" =" + valor);
+		SB.append("\n");
+		SB.append(processSons(prefix+".."));
+		return SB.toString();
+	}
+
+	private Object processSons(String prefixheredado) {
+		StringBuffer SB=new StringBuffer();
+		for (AttributeInstance element : sons) {
+			SB.append(((InstanceAttribute)element).toStringinterno(prefixheredado));
+		} 
+		return SB.toString();
+	}
 }

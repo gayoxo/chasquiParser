@@ -51,4 +51,12 @@ public class AttributeInstance implements Serializable{
 		this.fatherAtribute = fatherAtribute;
 	}
 	
+	public DigitalObject getDoDigitalObject() {
+		return doDigitalObject;
+	}
+	
+	public void setDoDigitalObject(DigitalObject doDigitalObject) {
+		this.doDigitalObject = doDigitalObject;
+	}
+	
 }

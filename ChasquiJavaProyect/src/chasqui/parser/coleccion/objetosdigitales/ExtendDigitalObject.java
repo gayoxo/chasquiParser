@@ -10,6 +10,7 @@ import chasqui.model.collection.digitalobjects.resources.Resource;
 import chasqui.parser.AtributeElement;
 import chasqui.parser.ChasquiParseElement;
 import chasqui.parser.coleccion.atributos.categoria.numericos.ExtendAttributeInstance;
+import chasqui.parser.coleccion.intanciasatributos.ExtendControlledAttributeInstance;
 import chasqui.parser.coleccion.intanciasatributos.ExtendNumericAttributeInstance;
 import chasqui.parser.coleccion.objetosdigitales.recursos.ExtendLocalResource;
 
@@ -77,6 +78,23 @@ public abstract class ExtendDigitalObject extends DigitalObject implements Chasq
 		for (AttributeInstance targetpos : Atributos) {
 			if (targetpos.getPath().equals(Atribute.getPath())&&Atribute instanceof ExtendAttributeInstance)
 				return targetpos;
+			if (targetpos.getPath().equals(Atribute.getPath())&&Atribute instanceof ExtendControlledAttributeInstance
+					&&targetpos instanceof ExtendControlledAttributeInstance)
+				{
+				ExtendControlledAttributeInstance Ext=(ExtendControlledAttributeInstance)Atribute;
+				ExtendControlledAttributeInstance Ext2=(ExtendControlledAttributeInstance)targetpos;
+				if (Ext2.getTermino()==null) 
+						{
+					Ext2.setTermino(Ext.getTermino());
+					return targetpos;
+						}
+				else if (Ext.getTermino()==null || Ext2.getTermino().getTerm().equals(Ext.getTermino().getTerm()))
+						return targetpos;
+					else {
+						getSons().add(Atribute);
+						return Atribute;
+					}
+				}
 				
 		}
 		getSons().add(Atribute);

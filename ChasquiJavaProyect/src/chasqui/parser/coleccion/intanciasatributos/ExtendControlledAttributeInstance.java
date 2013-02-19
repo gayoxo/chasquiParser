@@ -27,7 +27,9 @@ public class ExtendControlledAttributeInstance extends
 		StringBuffer SB=new StringBuffer();
 		SB.append(prefix);
 		SB.append("Atributo : " + Path );
-		SB.append(" =" + termino.getTerm());
+		SB.append(" =");
+		if (termino!=null)
+			SB.append(termino.getTerm());
 		SB.append("\n");
 		return SB.toString();
 	}

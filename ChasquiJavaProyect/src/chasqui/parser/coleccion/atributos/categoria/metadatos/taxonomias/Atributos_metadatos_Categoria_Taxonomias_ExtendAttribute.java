@@ -12,6 +12,11 @@ import chasqui.server.msqlconection.MySQLConnection;
 public class Atributos_metadatos_Categoria_Taxonomias_ExtendAttribute
 		extends ExtendAttribute {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1249795878552703612L;
+
 	public Atributos_metadatos_Categoria_Taxonomias_ExtendAttribute(
 			String name, boolean browseable, Attribute father) {
 		super(name, browseable, father);

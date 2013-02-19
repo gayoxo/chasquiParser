@@ -16,6 +16,10 @@ import chasqui.server.msqlconection.MySQLConnection;
 public class Atributos_metadatos_Categoria_Taxonomias_Taxonomia_Nodo_ExtendControlledAttribute
 		extends ExtendControlledAttribute {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2077419087634758554L;
 	private String num_ruta;
 	private String idov;
 
@@ -45,11 +49,12 @@ public class Atributos_metadatos_Categoria_Taxonomias_Taxonomia_Nodo_ExtendContr
 					if (contenido!=null&&num_rutaValid!=null&&!num_rutaValid.isEmpty()&&!contenido.isEmpty()&&DatosRutaSection[4].equals(DatosRutaEntry[4]))
 						{
 						ExtendTerm TerminoCandidato=new ExtendTerm(contenido);
-						Term T=addTerm(TerminoCandidato);
-						
-						//RARO MUY ABAJO
-						ExtendDigitalObject DObject= Escritor.getChasqui().getDigitalObject(Integer.parseInt(idov));
-						DObject.getSons().add(new ExtendControlledAttributeInstance(this, pathFather(),T,DObject ));
+//						Term T=
+								addTerm(TerminoCandidato);
+//						
+//						//RARO MUY ABAJO
+//						ExtendDigitalObject DObject= Escritor.getChasqui().getDigitalObject(Integer.parseInt(idov));
+//						DObject.getSons().add(new ExtendControlledAttributeInstance(this, pathFather(),T,DObject ));
 						}
 					
 				}

@@ -6,8 +6,10 @@ import java.sql.SQLException;
 import chasqui.client.main.Escritor;
 import chasqui.model.collection.attribute.Attribute;
 import chasqui.model.collection.attribute.controlled.Term;
+import chasqui.parser.coleccion.atributos.ExtendAttribute;
 import chasqui.parser.coleccion.atributos.ExtendControlledAttribute;
 import chasqui.parser.coleccion.atributos.ExtendTerm;
+import chasqui.parser.coleccion.atributos.categoria.numericos.ExtendAttributeInstance;
 import chasqui.parser.coleccion.intanciasatributos.ExtendControlledAttributeInstance;
 import chasqui.parser.coleccion.objetosdigitales.ExtendDigitalObject;
 import chasqui.server.msqlconection.MySQLConnection;
@@ -55,6 +57,11 @@ public class Atributos_metadatos_Categoria_Catalogos_Catalogo_ExtendControlledAt
 
 
 	private void processCatalogForIdov(String idov, String datoNumRuta) {
+		ExtendDigitalObject DObject= Escritor.getChasqui().getDigitalObject(Integer.parseInt(idov));
+		ExtendAttributeInstance EAI = new ExtendAttributeInstance(this.getFather().getFather(), ((ExtendAttribute) this.getFather().getFather()).pathFather(),DObject,null);
+		EAI=(ExtendAttributeInstance) DObject.saveAtributo(EAI);
+		ExtendAttributeInstance EAICategoria = new ExtendAttributeInstance(this.getFather(), ((ExtendAttribute) this.getFather()).pathFather(),DObject,EAI);
+		EAICategoria=(ExtendAttributeInstance) DObject.saveAtributo(EAICategoria);
 		try {
 			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT distinct contenido,num_ruta FROM chasqui2.metadatos WHERE ruta='/manifest/metadata/lom/general/catalogentry/entry/langstring' AND idov='"+idov+"' ORDER BY num_ruta;");
 			if (rs!=null) 
@@ -72,10 +79,8 @@ public class Atributos_metadatos_Categoria_Catalogos_Catalogo_ExtendControlledAt
 						{
 						ExtendTerm TerminoCandidato=new ExtendTerm(Contenido);
 						Term T=addTerm(TerminoCandidato);
-						
-						//RARO MUY ABAJO
-						ExtendDigitalObject DObject= Escritor.getChasqui().getDigitalObject(Integer.parseInt(idov));
-						DObject.getSons().add(new ExtendControlledAttributeInstance(this, pathFather(),T,DObject ));
+						ExtendControlledAttributeInstance ECAI=new ExtendControlledAttributeInstance(this, pathFather(),DObject,EAICategoria,T );
+						ECAI=(ExtendControlledAttributeInstance) DObject.saveAtributo(ECAI);
 							
 						
 						}

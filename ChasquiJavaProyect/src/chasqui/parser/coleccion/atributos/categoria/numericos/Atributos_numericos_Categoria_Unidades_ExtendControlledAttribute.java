@@ -10,6 +10,7 @@ import chasqui.parser.coleccion.atributos.ExtendAttribute;
 import chasqui.parser.coleccion.atributos.ExtendControlledAttribute;
 import chasqui.parser.coleccion.atributos.ExtendNumericAttribute;
 import chasqui.parser.coleccion.atributos.ExtendTerm;
+import chasqui.parser.coleccion.intanciasatributos.ExtendAttributeInstance;
 import chasqui.parser.coleccion.intanciasatributos.ExtendControlledAttributeInstance;
 import chasqui.parser.coleccion.intanciasatributos.ExtendNumericAttributeInstance;
 import chasqui.parser.coleccion.objetosdigitales.ExtendDigitalObject;

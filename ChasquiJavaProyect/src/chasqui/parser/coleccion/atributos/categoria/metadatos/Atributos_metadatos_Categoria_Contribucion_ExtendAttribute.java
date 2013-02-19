@@ -13,7 +13,7 @@ import chasqui.parser.ChasquiParseElement;
 import chasqui.parser.coleccion.atributos.ExtendAttribute;
 import chasqui.parser.coleccion.atributos.ExtendTerm;
 import chasqui.parser.coleccion.atributos.ExtendTextAttribute;
-import chasqui.parser.coleccion.atributos.categoria.numericos.ExtendAttributeInstance;
+import chasqui.parser.coleccion.intanciasatributos.ExtendAttributeInstance;
 import chasqui.parser.coleccion.intanciasatributos.ExtendControlledAttributeInstance;
 import chasqui.parser.coleccion.intanciasatributos.ExtendDataAttributeInstance;
 import chasqui.parser.coleccion.intanciasatributos.ExtendTextAttributeInstance;

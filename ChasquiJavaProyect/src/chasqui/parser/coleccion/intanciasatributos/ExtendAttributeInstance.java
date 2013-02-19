@@ -1,4 +1,4 @@
-package chasqui.parser.coleccion.atributos.categoria.numericos;
+package chasqui.parser.coleccion.intanciasatributos;
 
 import chasqui.model.collection.attibuteInstance.AttributeInstance;
 import chasqui.model.collection.attribute.Attribute;

@@ -9,7 +9,7 @@ import chasqui.model.collection.digitalobjects.DigitalObject;
 import chasqui.model.collection.digitalobjects.resources.Resource;
 import chasqui.parser.AtributeElement;
 import chasqui.parser.ChasquiParseElement;
-import chasqui.parser.coleccion.atributos.categoria.numericos.ExtendAttributeInstance;
+import chasqui.parser.coleccion.intanciasatributos.ExtendAttributeInstance;
 import chasqui.parser.coleccion.intanciasatributos.ExtendControlledAttributeInstance;
 import chasqui.parser.coleccion.intanciasatributos.ExtendNumericAttributeInstance;
 import chasqui.parser.coleccion.objetosdigitales.recursos.ExtendLocalResource;

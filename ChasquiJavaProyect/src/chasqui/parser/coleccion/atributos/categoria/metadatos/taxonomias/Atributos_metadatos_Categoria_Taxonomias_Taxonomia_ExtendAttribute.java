@@ -9,7 +9,7 @@ import chasqui.model.collection.attribute.Attribute;
 import chasqui.model.collection.attribute.controlled.Term;
 import chasqui.parser.coleccion.atributos.ExtendAttribute;
 import chasqui.parser.coleccion.atributos.ExtendTerm;
-import chasqui.parser.coleccion.atributos.categoria.numericos.ExtendAttributeInstance;
+import chasqui.parser.coleccion.intanciasatributos.ExtendAttributeInstance;
 import chasqui.parser.coleccion.intanciasatributos.ExtendControlledAttributeInstance;
 import chasqui.parser.coleccion.objetosdigitales.ExtendDigitalObject;
 import chasqui.server.msqlconection.MySQLConnection;

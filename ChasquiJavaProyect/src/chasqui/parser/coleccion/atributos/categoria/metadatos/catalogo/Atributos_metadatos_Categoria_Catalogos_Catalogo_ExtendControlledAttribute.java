@@ -11,6 +11,7 @@ import chasqui.parser.coleccion.atributos.ExtendControlledAttribute;
 import chasqui.parser.coleccion.atributos.ExtendTerm;
 import chasqui.parser.coleccion.intanciasatributos.ExtendAttributeInstance;
 import chasqui.parser.coleccion.intanciasatributos.ExtendControlledAttributeInstance;
+import chasqui.parser.coleccion.intanciasatributos.ExtendNoShowAttributeInstance;
 import chasqui.parser.coleccion.objetosdigitales.ExtendDigitalObject;
 import chasqui.server.msqlconection.MySQLConnection;
 
@@ -60,8 +61,8 @@ public class Atributos_metadatos_Categoria_Catalogos_Catalogo_ExtendControlledAt
 		ExtendDigitalObject DObject= Escritor.getChasqui().getDigitalObject(Integer.parseInt(idov));
 		ExtendAttributeInstance EAI = new ExtendAttributeInstance(this.getFather().getFather(), ((ExtendAttribute) this.getFather().getFather()).pathFather(),DObject,null);
 		EAI=(ExtendAttributeInstance) DObject.saveAtributo(EAI);
-		ExtendAttributeInstance EAICategoria = new ExtendAttributeInstance(this.getFather(), ((ExtendAttribute) this.getFather()).pathFather(),DObject,EAI);
-		EAICategoria=(ExtendAttributeInstance) DObject.saveAtributo(EAICategoria);
+		ExtendNoShowAttributeInstance EAICategoria = new ExtendNoShowAttributeInstance(this.getFather(), ((ExtendAttribute) this.getFather()).pathFather(),DObject,EAI);
+		EAICategoria=(ExtendNoShowAttributeInstance) DObject.saveAtributo(EAICategoria);
 		try {
 			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT distinct contenido,num_ruta FROM chasqui2.metadatos WHERE ruta='/manifest/metadata/lom/general/catalogentry/entry/langstring' AND idov='"+idov+"' ORDER BY num_ruta;");
 			if (rs!=null) 

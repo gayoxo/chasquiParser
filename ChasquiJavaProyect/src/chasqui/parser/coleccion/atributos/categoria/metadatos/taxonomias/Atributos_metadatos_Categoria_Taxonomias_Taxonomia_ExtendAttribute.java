@@ -11,6 +11,7 @@ import chasqui.parser.coleccion.atributos.ExtendAttribute;
 import chasqui.parser.coleccion.atributos.ExtendTerm;
 import chasqui.parser.coleccion.intanciasatributos.ExtendAttributeInstance;
 import chasqui.parser.coleccion.intanciasatributos.ExtendControlledAttributeInstance;
+import chasqui.parser.coleccion.intanciasatributos.ExtendNoShowAttributeInstance;
 import chasqui.parser.coleccion.objetosdigitales.ExtendDigitalObject;
 import chasqui.server.msqlconection.MySQLConnection;
 
@@ -72,10 +73,10 @@ public class Atributos_metadatos_Categoria_Taxonomias_Taxonomia_ExtendAttribute
 			ExtendDigitalObject DObject= Escritor.getChasqui().getDigitalObject(Integer.parseInt(idov));
 			ExtendAttributeInstance EAIMetadatos = new ExtendAttributeInstance(this.getFather().getFather(), ((ExtendAttribute) this.getFather().getFather()).pathFather(),DObject,null);
 			EAIMetadatos=(ExtendAttributeInstance) DObject.saveAtributo(EAIMetadatos);
-			ExtendAttributeInstance EAITaxonSS = new ExtendAttributeInstance(this.getFather(), ((ExtendAttribute) this.getFather()).pathFather(),DObject,EAIMetadatos);
-			EAITaxonSS=(ExtendAttributeInstance) DObject.saveAtributo(EAITaxonSS);
-			ExtendAttributeInstance EAITaxon = new ExtendAttributeInstance(this,pathFather(),DObject,EAITaxonSS);
-			EAITaxon=(ExtendAttributeInstance) DObject.saveAtributo(EAITaxon);
+			ExtendNoShowAttributeInstance EAITaxonSS = new ExtendNoShowAttributeInstance(this.getFather(), ((ExtendAttribute) this.getFather()).pathFather(),DObject,EAIMetadatos);
+			EAITaxonSS=(ExtendNoShowAttributeInstance) DObject.saveAtributo(EAITaxonSS);
+			ExtendNoShowAttributeInstance EAITaxon = new ExtendNoShowAttributeInstance(this,pathFather(),DObject,EAITaxonSS);
+			EAITaxon=(ExtendNoShowAttributeInstance) DObject.saveAtributo(EAITaxon);
 			String NodoNew=recorrio.pop();
 			Atributos_metadatos_Categoria_Taxonomias_Taxonomia_Nodo_ExtendControlledAttribute ATCUnidades=new Atributos_metadatos_Categoria_Taxonomias_Taxonomia_Nodo_ExtendControlledAttribute(NodoNew, true, this,num_ruta,idov);
 			ATCUnidades=(Atributos_metadatos_Categoria_Taxonomias_Taxonomia_Nodo_ExtendControlledAttribute) addAtributos(ATCUnidades);

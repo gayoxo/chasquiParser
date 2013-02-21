@@ -38,5 +38,21 @@ public abstract class Attribute implements Serializable{
 		return Sons;
 	}
 	
+	public void setFather(Attribute father) {
+		Father = father;
+	}
 	
+	public void setBrowseable(boolean browseable) {
+		Browseable = browseable;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public void setSons(ArrayList<Attribute> sons) {
+		Sons = sons;
+	}
+	
+		
 }

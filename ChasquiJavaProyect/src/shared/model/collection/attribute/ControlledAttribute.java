@@ -15,4 +15,11 @@ public abstract class ControlledAttribute extends Attribute {
 		vocabulary=new Vocabulary();
 	}
 
+	public Vocabulary getVocabulary() {
+		return vocabulary;
+	}
+	
+	public void setVocabulary(Vocabulary vocabulary) {
+		this.vocabulary = vocabulary;
+	}
 }

@@ -2,10 +2,13 @@ package oda.parser;
 
 import general.server.msqlconection.MySQLConnectionOdA;
 
+import java.awt.AWTEventMulticaster;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
 import shared.model.collection.Collection;
+import shared.model.collection.attibuteInstance.AttributeInstance;
 import shared.model.collection.digitalobjects.DigitalObject;
 
 
@@ -19,12 +22,19 @@ public class OdA {
 
 	public void preocess() {
 		
-		processOV(toOda.getObjetosDigitales());
+		PreProceso p=new PreProceso();
+		ArrayList<DigitalObject> DO=p.preproccesModel(toOda);
+		
+	//	processOV(DO);
 	}
 
-	private void processOV(HashMap<Integer, DigitalObject> hashMap) {
-		for (Entry<Integer, DigitalObject> digitalObject : hashMap.entrySet()) {
-			saveOV(digitalObject.getValue());
+	
+
+
+
+	private void processOV(ArrayList<DigitalObject> dO) {
+		for (DigitalObject digitalObject : dO) {
+			saveOV(digitalObject);
 		}
 		
 	}

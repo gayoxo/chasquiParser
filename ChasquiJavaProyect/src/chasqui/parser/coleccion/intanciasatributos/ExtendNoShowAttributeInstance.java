@@ -1,8 +1,8 @@
 package chasqui.parser.coleccion.intanciasatributos;
 
-import chasqui.model.collection.attibuteInstance.AttributeInstance;
-import chasqui.model.collection.attribute.Attribute;
-import chasqui.model.collection.digitalobjects.DigitalObject;
+import shared.model.collection.attibuteInstance.AttributeInstance;
+import shared.model.collection.attribute.Attribute;
+import shared.model.collection.digitalobjects.DigitalObject;
 
 public class ExtendNoShowAttributeInstance extends ExtendAttributeInstance {
 

@@ -1,8 +1,8 @@
 package chasqui.parser.coleccion.atributos;
 
-import chasqui.model.collection.attribute.Attribute;
-import chasqui.model.collection.attribute.TextAttribute;
-import chasqui.model.collection.digitalobjects.DigitalObject;
+import shared.model.collection.attribute.Attribute;
+import shared.model.collection.attribute.TextAttribute;
+import shared.model.collection.digitalobjects.DigitalObject;
 import chasqui.parser.AtributeElement;
 import chasqui.parser.ChasquiParseElement;
 

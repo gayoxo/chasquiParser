@@ -1,6 +1,6 @@
 package chasqui.parser.coleccion.atributos.categoria;
 
-import chasqui.model.collection.attribute.Attribute;
+import shared.model.collection.attribute.Attribute;
 import chasqui.parser.coleccion.atributos.ExtendAttribute;
 import chasqui.parser.coleccion.atributos.ExtendTextAttribute;
 import chasqui.parser.coleccion.atributos.categoria.metadatos.Atributos_metadatos_Categoria_Contexto_ExtendControlledAttribute;

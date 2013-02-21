@@ -1,10 +1,13 @@
 package chasqui.parser.coleccion.atributos.categoria.numericos;
 
+import general.client.main.ChasquiToFIle;
+import general.server.msqlconection.MySQLConnectionChasqui;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import chasqui.client.main.Escritor;
-import chasqui.model.collection.attribute.NumericAttribute;
+import shared.model.collection.attribute.NumericAttribute;
+
 import chasqui.parser.ChasquiParseElement;
 import chasqui.parser.coleccion.atributos.ExtendAttribute;
 import chasqui.parser.coleccion.atributos.ExtendControlledAttribute;
@@ -14,7 +17,6 @@ import chasqui.parser.coleccion.intanciasatributos.ExtendAttributeInstance;
 import chasqui.parser.coleccion.intanciasatributos.ExtendControlledAttributeInstance;
 import chasqui.parser.coleccion.intanciasatributos.ExtendNumericAttributeInstance;
 import chasqui.parser.coleccion.objetosdigitales.ExtendDigitalObject;
-import chasqui.server.msqlconection.MySQLConnection;
 
 public class Atributos_numericos_Categoria_Unidades_ExtendControlledAttribute extends
 		ExtendControlledAttribute implements ChasquiParseElement {
@@ -32,7 +34,7 @@ public class Atributos_numericos_Categoria_Unidades_ExtendControlledAttribute ex
 
 	protected void process_Vocabulary() {
 		try {
-			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT distinct unidades FROM chasqui2.atributos_numericos WHERE categoria='"+ Father.getFather().getName() +"' AND nom_atrib='"+Father.getName()+"' ORDER BY unidades;");
+			ResultSet rs=MySQLConnectionChasqui.RunQuerrySELECT("SELECT distinct unidades FROM chasqui2.atributos_numericos WHERE categoria='"+ Father.getFather().getName() +"' AND nom_atrib='"+Father.getName()+"' ORDER BY unidades;");
 			if (rs!=null) 
 			{
 				while (rs.next()) {
@@ -66,7 +68,7 @@ public class Atributos_numericos_Categoria_Unidades_ExtendControlledAttribute ex
 	private void process_AtributeInstances() {
 		try {
 			
-			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT * FROM chasqui2.atributos_numericos WHERE categoria='" +  Father.getFather().getName() +"' AND nom_atrib='" + Father.getName() + "' ORDER BY idov;");
+			ResultSet rs=MySQLConnectionChasqui.RunQuerrySELECT("SELECT * FROM chasqui2.atributos_numericos WHERE categoria='" +  Father.getFather().getName() +"' AND nom_atrib='" + Father.getName() + "' ORDER BY idov;");
 			if (rs!=null) 
 			{
 				while (rs.next()) {
@@ -82,7 +84,7 @@ public class Atributos_numericos_Categoria_Unidades_ExtendControlledAttribute ex
 						Valor=temp2.toString();
 					if (idov!=null&&!idov.isEmpty()&&!Unidades.isEmpty()&&!Valor.isEmpty())
 						{
-						ExtendDigitalObject DObject= Escritor.getChasqui().getDigitalObject(Integer.parseInt(idov));
+						ExtendDigitalObject DObject= ChasquiToFIle.getChasqui().getDigitalObject(Integer.parseInt(idov));
 						ExtendAttributeInstance EAI = new ExtendAttributeInstance(this.getFather().getFather(), ((ExtendAttribute) this.getFather().getFather()).pathFather(),DObject,null);
 						EAI=(ExtendAttributeInstance) DObject.saveAtributo(EAI);
 						ExtendNumericAttributeInstance ENAI = new ExtendNumericAttributeInstance((NumericAttribute) this.getFather(), ((ExtendNumericAttribute) this.getFather()).pathFather(),DObject,EAI,Float.parseFloat(Valor));

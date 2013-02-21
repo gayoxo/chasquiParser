@@ -1,17 +1,19 @@
 package chasqui.parser.coleccion.atributos.categoria.metadatos.taxonomias;
 
+import general.client.main.ChasquiToFIle;
+import general.server.msqlconection.MySQLConnectionChasqui;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import chasqui.client.main.Escritor;
-import chasqui.model.collection.attribute.Attribute;
-import chasqui.model.collection.attribute.ControlledAttribute;
-import chasqui.model.collection.attribute.controlled.Term;
+import shared.model.collection.attribute.Attribute;
+import shared.model.collection.attribute.ControlledAttribute;
+import shared.model.collection.attribute.controlled.Term;
+
 import chasqui.parser.coleccion.atributos.ExtendControlledAttribute;
 import chasqui.parser.coleccion.atributos.ExtendTerm;
 import chasqui.parser.coleccion.intanciasatributos.ExtendControlledAttributeInstance;
 import chasqui.parser.coleccion.objetosdigitales.ExtendDigitalObject;
-import chasqui.server.msqlconection.MySQLConnection;
 
 public class Atributos_metadatos_Categoria_Taxonomias_Taxonomia_Nodo_ExtendControlledAttribute
 		extends ExtendControlledAttribute {
@@ -38,7 +40,7 @@ public class Atributos_metadatos_Categoria_Taxonomias_Taxonomia_Nodo_ExtendContr
 	@Override
 	protected void process_Vocabulary() {
 		try {
-			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT distinct contenido,num_ruta FROM chasqui2.metadatos WHERE (ruta= '/manifest/metadata/lom/classification/taxonpath/taxon/entry/langstring' AND idov='"+idov+"') ORDER BY contenido;");
+			ResultSet rs=MySQLConnectionChasqui.RunQuerrySELECT("SELECT distinct contenido,num_ruta FROM chasqui2.metadatos WHERE (ruta= '/manifest/metadata/lom/classification/taxonpath/taxon/entry/langstring' AND idov='"+idov+"') ORDER BY contenido;");
 			if (rs!=null) 
 			{
 				while (rs.next()) {

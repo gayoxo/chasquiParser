@@ -1,6 +1,6 @@
 package chasqui.parser.coleccion.atributos;
 
-import chasqui.model.collection.attribute.Attribute;
+import shared.model.collection.attribute.Attribute;
 import chasqui.parser.AtributeElement;
 import chasqui.parser.ChasquiParseElement;
 

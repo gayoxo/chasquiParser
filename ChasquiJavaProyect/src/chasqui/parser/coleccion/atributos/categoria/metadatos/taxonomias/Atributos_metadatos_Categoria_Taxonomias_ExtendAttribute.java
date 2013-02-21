@@ -1,13 +1,15 @@
 package chasqui.parser.coleccion.atributos.categoria.metadatos.taxonomias;
 
+import general.server.msqlconection.MySQLConnectionChasqui;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import chasqui.model.collection.attribute.Attribute;
+import shared.model.collection.attribute.Attribute;
+
 import chasqui.parser.coleccion.atributos.ExtendAttribute;
 import chasqui.parser.coleccion.atributos.categoria.metadatos.catalogo.Atributos_metadatos_Categoria_Catalogos_Catalogo_ExtendControlledAttribute;
 import chasqui.parser.coleccion.objetosdigitales.ExtendDigitalObject;
-import chasqui.server.msqlconection.MySQLConnection;
 
 public class Atributos_metadatos_Categoria_Taxonomias_ExtendAttribute
 		extends ExtendAttribute {
@@ -31,7 +33,7 @@ public class Atributos_metadatos_Categoria_Taxonomias_ExtendAttribute
 
 	private void processAllCategorias() {
 		try {
-			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT distinct idov,num_ruta FROM chasqui2.metadatos WHERE (ruta= '/manifest/metadata/lom/classification/taxonpath/source/langstring' AND contenido='Sección/Sección');");
+			ResultSet rs=MySQLConnectionChasqui.RunQuerrySELECT("SELECT distinct idov,num_ruta FROM chasqui2.metadatos WHERE (ruta= '/manifest/metadata/lom/classification/taxonpath/source/langstring' AND contenido='Sección/Sección');");
 			if (rs!=null) 
 			{
 				while (rs.next()) {
@@ -55,7 +57,7 @@ public class Atributos_metadatos_Categoria_Taxonomias_ExtendAttribute
 	private void findTaxonomy(String idov, String num_ruta) {
 		//SELECT distinct idov,ruta,contenido,num_ruta FROM chasqui2.metadatos WHERE (ruta= '/manifest/metadata/lom/classification/taxonpath/taxon/entry/langstring' AND idov='836');
 		try {
-			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT distinct contenido,num_ruta FROM chasqui2.metadatos WHERE (ruta= '/manifest/metadata/lom/classification/taxonpath/taxon/entry/langstring' AND idov='"+idov+"');");
+			ResultSet rs=MySQLConnectionChasqui.RunQuerrySELECT("SELECT distinct contenido,num_ruta FROM chasqui2.metadatos WHERE (ruta= '/manifest/metadata/lom/classification/taxonpath/taxon/entry/langstring' AND idov='"+idov+"');");
 			if (rs!=null) 
 			{
 				while (rs.next()) {

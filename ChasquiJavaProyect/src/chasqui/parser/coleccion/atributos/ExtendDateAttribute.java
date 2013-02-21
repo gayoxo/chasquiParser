@@ -1,7 +1,7 @@
 package chasqui.parser.coleccion.atributos;
 
-import chasqui.model.collection.attribute.Attribute;
-import chasqui.model.collection.attribute.DateAttribute;
+import shared.model.collection.attribute.Attribute;
+import shared.model.collection.attribute.DateAttribute;
 import chasqui.parser.AtributeElement;
 import chasqui.parser.ChasquiParseElement;
 

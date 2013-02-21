@@ -1,10 +1,10 @@
 package chasqui.parser.coleccion.intanciasatributos;
 
-import chasqui.model.collection.attibuteInstance.AttributeInstance;
-import chasqui.model.collection.attibuteInstance.ControlledAttributeInstance;
-import chasqui.model.collection.attribute.ControlledAttribute;
-import chasqui.model.collection.attribute.controlled.Term;
-import chasqui.model.collection.digitalobjects.DigitalObject;
+import shared.model.collection.attibuteInstance.AttributeInstance;
+import shared.model.collection.attibuteInstance.ControlledAttributeInstance;
+import shared.model.collection.attribute.ControlledAttribute;
+import shared.model.collection.attribute.controlled.Term;
+import shared.model.collection.digitalobjects.DigitalObject;
 import chasqui.parser.ChasquiParseElement;
 import chasqui.parser.InstanceAttribute;
 

@@ -1,8 +1,8 @@
 package chasqui.parser.coleccion.atributos;
 
-import chasqui.model.collection.attribute.Attribute;
-import chasqui.model.collection.attribute.ControlledAttribute;
-import chasqui.model.collection.attribute.controlled.Term;
+import shared.model.collection.attribute.Attribute;
+import shared.model.collection.attribute.ControlledAttribute;
+import shared.model.collection.attribute.controlled.Term;
 import chasqui.parser.AtributeElement;
 import chasqui.parser.ChasquiParseElement;
 

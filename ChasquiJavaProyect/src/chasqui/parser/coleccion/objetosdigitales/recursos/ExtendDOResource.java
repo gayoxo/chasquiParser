@@ -1,7 +1,7 @@
 package chasqui.parser.coleccion.objetosdigitales.recursos;
 
-import chasqui.model.collection.digitalobjects.DigitalObject;
-import chasqui.model.collection.digitalobjects.resources.DOResource;
+import shared.model.collection.digitalobjects.DigitalObject;
+import shared.model.collection.digitalobjects.resources.DOResource;
 import chasqui.parser.ChasquiParseElement;
 
 public class ExtendDOResource extends DOResource implements ChasquiParseElement {

@@ -2,11 +2,12 @@ package chasqui.parser.coleccion.objetosdigitales;
 
 import java.util.ArrayList;
 
-import chasqui.model.collection.attibuteInstance.AttributeInstance;
-import chasqui.model.collection.attribute.Attribute;
-import chasqui.model.collection.attribute.TextAttribute;
-import chasqui.model.collection.digitalobjects.DigitalObject;
-import chasqui.model.collection.digitalobjects.resources.Resource;
+import shared.model.collection.attibuteInstance.AttributeInstance;
+import shared.model.collection.attribute.Attribute;
+import shared.model.collection.attribute.TextAttribute;
+import shared.model.collection.digitalobjects.DigitalObject;
+import shared.model.collection.digitalobjects.resources.Resource;
+
 import chasqui.parser.AtributeElement;
 import chasqui.parser.ChasquiParseElement;
 import chasqui.parser.coleccion.intanciasatributos.ExtendAttributeInstance;

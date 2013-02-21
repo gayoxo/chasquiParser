@@ -1,11 +1,14 @@
 package chasqui.parser.coleccion;
 
+import general.client.main.ChasquiToFIle;
+import general.server.msqlconection.MySQLConnectionChasqui;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import chasqui.client.main.Escritor;
-import chasqui.model.collection.attribute.Attribute;
-import chasqui.model.collection.digitalobjects.resources.Resource;
+import shared.model.collection.attribute.Attribute;
+import shared.model.collection.digitalobjects.resources.Resource;
+
 import chasqui.parser.coleccion.atributos.categoria.Atributos_metadatos_Categoria_ExtendAttribute;
 import chasqui.parser.coleccion.atributos.categoria.Atributos_texto_y_numerico_Categoria_ExtendAttribute;
 import chasqui.parser.coleccion.atributos.categoria.Atributos_texto_y_numerico_Categoria_ExtendAttribute.Tabla;
@@ -14,7 +17,6 @@ import chasqui.parser.coleccion.objetosdigitales.ObjetoVirtualExtendDigitalObjec
 import chasqui.parser.coleccion.objetosdigitales.recursos.ExtendDOResource;
 import chasqui.parser.coleccion.objetosdigitales.recursos.ExtendExternalResource;
 import chasqui.parser.coleccion.objetosdigitales.recursos.ExtendLocalResource;
-import chasqui.server.msqlconection.MySQLConnection;
 
 public class ChasquiImplementationExtendCollection extends ExtendCollection{
 
@@ -51,7 +53,7 @@ public String toString() {
 	}
 	private void process_recursos_OV() {
 		try {
-			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT * FROM chasqui2.recursos WHERE tipo='OV'");
+			ResultSet rs=MySQLConnectionChasqui.RunQuerrySELECT("SELECT * FROM chasqui2.recursos WHERE tipo='OV'");
 			if (rs!=null) 
 			{
 				while (rs.next()) {
@@ -97,7 +99,7 @@ public String toString() {
 						ExtendDOResource LR=new ExtendDOResource(OVEDO, displayName, Descripcion, visiblebol,Reference);
 						OVEDO.getRecursos().add(LR);
 						}
-					else System.out.println(Escritor.WARNING + "categorias vacias");
+					else System.out.println(ChasquiToFIle.WARNING + "categorias vacias");
 
 				}
 			rs.close();
@@ -109,7 +111,7 @@ public String toString() {
 	}
 	private void process_recursos_linkeados() {
 		try {
-			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT * FROM chasqui2.recursos WHERE tipo!='OV' AND ruta!='/'");
+			ResultSet rs=MySQLConnectionChasqui.RunQuerrySELECT("SELECT * FROM chasqui2.recursos WHERE tipo!='OV' AND ruta!='/'");
 			if (rs!=null) 
 			{
 				while (rs.next()) {
@@ -156,7 +158,7 @@ public String toString() {
 						OVEDO.getRecursos().add(LR);
 						}
 					else 
-						System.out.println(Escritor.WARNING + "categorias vacias");
+						System.out.println(ChasquiToFIle.WARNING + "categorias vacias");
 
 				}
 			rs.close();
@@ -168,7 +170,7 @@ public String toString() {
 	}
 	private void process_recursos_propios() {
 		try {
-			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT * FROM chasqui2.recursos WHERE tipo!='OV' AND ruta='/';");
+			ResultSet rs=MySQLConnectionChasqui.RunQuerrySELECT("SELECT * FROM chasqui2.recursos WHERE tipo!='OV' AND ruta='/';");
 			if (rs!=null) 
 			{
 				while (rs.next()) {
@@ -211,7 +213,7 @@ public String toString() {
 						OVEDO.getRecursos().add(LR);
 						RecursosGeneral.add(LR);
 						}
-					else System.out.println(Escritor.WARNING + "categorias vacias");
+					else System.out.println(ChasquiToFIle.WARNING + "categorias vacias");
 
 				}
 			rs.close();
@@ -223,7 +225,7 @@ public String toString() {
 	}
 	private void genera_Objetos_Digitales() {
 		try {
-			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT * FROM chasqui2.objeto_virtual ORDER BY idov;");
+			ResultSet rs=MySQLConnectionChasqui.RunQuerrySELECT("SELECT * FROM chasqui2.objeto_virtual ORDER BY idov;");
 			if (rs!=null) 
 			{
 				while (rs.next()) {
@@ -242,7 +244,7 @@ public String toString() {
 						ObjetoVirtualExtendDigitalObject OVEDO=new ObjetoVirtualExtendDigitalObject(Idov,Descripcion);
 						addDigitalObjects(OVEDO);					
 						}
-					else System.out.println(Escritor.WARNING + OBJETOSVIRTUALESERRONEOS);
+					else System.out.println(ChasquiToFIle.WARNING + OBJETOSVIRTUALESERRONEOS);
 				}
 			rs.close();
 			}
@@ -253,7 +255,7 @@ public String toString() {
 	}
 	private void process_atributos_texto() {
 		try {
-			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT distinct categoria FROM chasqui2.atributos_texto ORDER BY categoria;");
+			ResultSet rs=MySQLConnectionChasqui.RunQuerrySELECT("SELECT distinct categoria FROM chasqui2.atributos_texto ORDER BY categoria;");
 			if (rs!=null) 
 			{
 				while (rs.next()) {
@@ -266,7 +268,7 @@ public String toString() {
 						ATCategoria.Process(Tabla.ATRIBUTOS_TEXTO);
 						
 						}
-					else System.out.println(Escritor.WARNING + CATEGORIAS_VACIAS);
+					else System.out.println(ChasquiToFIle.WARNING + CATEGORIAS_VACIAS);
 				}
 			rs.close();
 			}
@@ -280,7 +282,7 @@ public String toString() {
 
 	private void process_atributos_numericos() {
 		try {
-			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT distinct categoria FROM chasqui2.atributos_numericos;");
+			ResultSet rs=MySQLConnectionChasqui.RunQuerrySELECT("SELECT distinct categoria FROM chasqui2.atributos_numericos;");
 			if (rs!=null) 
 			{
 				while (rs.next()) {
@@ -294,7 +296,7 @@ public String toString() {
 						ANCategoria.Process(Tabla.ATRIBUTOS_NUMERICOS);
 						
 						}
-					else System.out.println(Escritor.WARNING + CATEGORIAS_VACIAS);
+					else System.out.println(ChasquiToFIle.WARNING + CATEGORIAS_VACIAS);
 				}
 			rs.close();
 			}

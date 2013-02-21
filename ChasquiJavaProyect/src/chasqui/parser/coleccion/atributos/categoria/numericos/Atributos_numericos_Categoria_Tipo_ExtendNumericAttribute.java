@@ -1,6 +1,6 @@
 package chasqui.parser.coleccion.atributos.categoria.numericos;
 
-import chasqui.model.collection.attribute.Attribute;
+import shared.model.collection.attribute.Attribute;
 import chasqui.parser.coleccion.atributos.ExtendNumericAttribute;
 
 public class Atributos_numericos_Categoria_Tipo_ExtendNumericAttribute extends

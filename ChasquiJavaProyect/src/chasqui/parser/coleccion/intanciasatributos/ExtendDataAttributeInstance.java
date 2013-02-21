@@ -4,10 +4,11 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import chasqui.model.collection.attibuteInstance.AttributeInstance;
-import chasqui.model.collection.attibuteInstance.DateAttributeInstance;
-import chasqui.model.collection.attribute.DateAttribute;
-import chasqui.model.collection.digitalobjects.DigitalObject;
+import shared.model.collection.attibuteInstance.AttributeInstance;
+import shared.model.collection.attibuteInstance.DateAttributeInstance;
+import shared.model.collection.attribute.DateAttribute;
+import shared.model.collection.digitalobjects.DigitalObject;
+
 import chasqui.parser.ChasquiParseElement;
 import chasqui.parser.InstanceAttribute;
 

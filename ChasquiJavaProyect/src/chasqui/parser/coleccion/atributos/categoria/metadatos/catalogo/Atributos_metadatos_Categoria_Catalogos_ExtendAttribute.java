@@ -1,12 +1,14 @@
 package chasqui.parser.coleccion.atributos.categoria.metadatos.catalogo;
 
+import general.server.msqlconection.MySQLConnectionChasqui;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import chasqui.model.collection.attribute.Attribute;
+import shared.model.collection.attribute.Attribute;
+
 import chasqui.parser.coleccion.atributos.ExtendAttribute;
 import chasqui.parser.coleccion.objetosdigitales.ExtendDigitalObject;
-import chasqui.server.msqlconection.MySQLConnection;
 
 public class Atributos_metadatos_Categoria_Catalogos_ExtendAttribute extends
 		ExtendAttribute {
@@ -24,7 +26,7 @@ public class Atributos_metadatos_Categoria_Catalogos_ExtendAttribute extends
 
 	private void processAllCategorias() {
 		try {
-			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT distinct contenido FROM chasqui2.metadatos WHERE ruta='/manifest/metadata/lom/general/catalogentry/catalog'  ORDER BY contenido;");
+			ResultSet rs=MySQLConnectionChasqui.RunQuerrySELECT("SELECT distinct contenido FROM chasqui2.metadatos WHERE ruta='/manifest/metadata/lom/general/catalogentry/catalog'  ORDER BY contenido;");
 			if (rs!=null) 
 			{
 				while (rs.next()) {

@@ -1,9 +1,9 @@
 package chasqui.parser.coleccion.intanciasatributos;
 
-import chasqui.model.collection.attibuteInstance.AttributeInstance;
-import chasqui.model.collection.attibuteInstance.NumericAttributeInstance;
-import chasqui.model.collection.attribute.NumericAttribute;
-import chasqui.model.collection.digitalobjects.DigitalObject;
+import shared.model.collection.attibuteInstance.AttributeInstance;
+import shared.model.collection.attibuteInstance.NumericAttributeInstance;
+import shared.model.collection.attribute.NumericAttribute;
+import shared.model.collection.digitalobjects.DigitalObject;
 import chasqui.parser.ChasquiParseElement;
 import chasqui.parser.InstanceAttribute;
 

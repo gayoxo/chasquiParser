@@ -1,14 +1,17 @@
 package chasqui.parser.coleccion.atributos.categoria.metadatos;
 
+import general.client.main.ChasquiToFIle;
+import general.server.msqlconection.MySQLConnectionChasqui;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import chasqui.client.main.Escritor;
-import chasqui.model.collection.attribute.Attribute;
-import chasqui.model.collection.attribute.controlled.Term;
+import shared.model.collection.attribute.Attribute;
+import shared.model.collection.attribute.controlled.Term;
+
 import chasqui.parser.ChasquiParseElement;
 import chasqui.parser.coleccion.atributos.ExtendAttribute;
 import chasqui.parser.coleccion.atributos.ExtendTerm;
@@ -18,7 +21,6 @@ import chasqui.parser.coleccion.intanciasatributos.ExtendControlledAttributeInst
 import chasqui.parser.coleccion.intanciasatributos.ExtendDataAttributeInstance;
 import chasqui.parser.coleccion.intanciasatributos.ExtendTextAttributeInstance;
 import chasqui.parser.coleccion.objetosdigitales.ExtendDigitalObject;
-import chasqui.server.msqlconection.MySQLConnection;
 
 public class Atributos_metadatos_Categoria_Contribucion_ExtendAttribute
 		extends ExtendAttribute {
@@ -58,7 +60,7 @@ public class Atributos_metadatos_Categoria_Contribucion_ExtendAttribute
 	
 	private void process_AtributeInstances() {
 		try {
-			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT distinct idov,num_ruta FROM chasqui2.metadatos WHERE ruta='/manifest/metadata/lom/lifecycle/contribute/role/source/langstring';");
+			ResultSet rs=MySQLConnectionChasqui.RunQuerrySELECT("SELECT distinct idov,num_ruta FROM chasqui2.metadatos WHERE ruta='/manifest/metadata/lom/lifecycle/contribute/role/source/langstring';");
 			if (rs!=null) 
 			{
 				while (rs.next()) {
@@ -83,14 +85,14 @@ public class Atributos_metadatos_Categoria_Contribucion_ExtendAttribute
 
 	private void procesaContributor(String idov, String num_ruta) {
 		
-		ExtendDigitalObject DObject= Escritor.getChasqui().getDigitalObject(Integer.parseInt(idov));
+		ExtendDigitalObject DObject= ChasquiToFIle.getChasqui().getDigitalObject(Integer.parseInt(idov));
 		ExtendAttributeInstance EAI = new ExtendAttributeInstance(this.getFather(), ((ExtendAttribute) this.getFather()).pathFather(),DObject,null);
 		EAI=(ExtendAttributeInstance) DObject.saveAtributo(EAI);
 		ExtendAttributeInstance EAIContributor = new ExtendAttributeInstance(this, pathFather(),DObject,EAI);
 		//Le añado a pelo todos son iguales y distintas contribuciones
 		DObject.getSons().add((EAIContributor));
 		try {
-			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT * FROM chasqui2.metadatos WHERE ("+
+			ResultSet rs=MySQLConnectionChasqui.RunQuerrySELECT("SELECT * FROM chasqui2.metadatos WHERE ("+
 					"ruta='/manifest/metadata/lom/lifecycle/contribute/role/value/langstring' OR "+
 					"ruta='/manifest/metadata/lom/lifecycle/contribute/centity/vcard' OR "+
 					"ruta='/manifest/metadata/lom/lifecycle/contribute/date/datetime') AND idov="+idov );

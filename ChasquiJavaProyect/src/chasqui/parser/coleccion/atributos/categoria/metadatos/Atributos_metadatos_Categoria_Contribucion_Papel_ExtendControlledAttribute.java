@@ -1,19 +1,21 @@
 package chasqui.parser.coleccion.atributos.categoria.metadatos;
 
+import general.client.main.ChasquiToFIle;
+import general.server.msqlconection.MySQLConnectionChasqui;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import chasqui.client.main.Escritor;
-import chasqui.model.collection.attribute.Attribute;
+import shared.model.collection.attribute.Attribute;
+
 import chasqui.parser.coleccion.atributos.ExtendControlledAttribute;
 import chasqui.parser.coleccion.atributos.ExtendTerm;
 import chasqui.parser.coleccion.intanciasatributos.ExtendControlledAttributeInstance;
 import chasqui.parser.coleccion.intanciasatributos.ExtendDataAttributeInstance;
 import chasqui.parser.coleccion.objetosdigitales.ExtendDigitalObject;
-import chasqui.server.msqlconection.MySQLConnection;
 
 public class Atributos_metadatos_Categoria_Contribucion_Papel_ExtendControlledAttribute
 		extends ExtendControlledAttribute {
@@ -34,7 +36,7 @@ public class Atributos_metadatos_Categoria_Contribucion_Papel_ExtendControlledAt
 	@Override
 	protected void process_Vocabulary() {
 		try {
-			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT distinct contenido FROM chasqui2.metadatos WHERE ruta='/manifest/metadata/lom/lifecycle/contribute/role/value/langstring' ORDER BY contenido;");
+			ResultSet rs=MySQLConnectionChasqui.RunQuerrySELECT("SELECT distinct contenido FROM chasqui2.metadatos WHERE ruta='/manifest/metadata/lom/lifecycle/contribute/role/value/langstring' ORDER BY contenido;");
 			if (rs!=null) 
 			{
 				while (rs.next()) {

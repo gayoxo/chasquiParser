@@ -1,7 +1,7 @@
 package chasqui.parser.coleccion.atributos;
 
-import chasqui.model.collection.attribute.Attribute;
-import chasqui.model.collection.attribute.NumericAttribute;
+import shared.model.collection.attribute.Attribute;
+import shared.model.collection.attribute.NumericAttribute;
 import chasqui.parser.AtributeElement;
 import chasqui.parser.ChasquiParseElement;
 

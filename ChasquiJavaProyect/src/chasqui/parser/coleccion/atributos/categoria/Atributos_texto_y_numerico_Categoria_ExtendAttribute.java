@@ -1,13 +1,15 @@
 package chasqui.parser.coleccion.atributos.categoria;
 
+import general.server.msqlconection.MySQLConnectionChasqui;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import chasqui.model.collection.attribute.Attribute;
+import shared.model.collection.attribute.Attribute;
+
 import chasqui.parser.coleccion.atributos.ExtendAttribute;
 import chasqui.parser.coleccion.atributos.categoria.numericos.Atributos_numericos_Categoria_Tipo_ExtendNumericAttribute;
 import chasqui.parser.coleccion.atributos.categoria.texto.Atributos_texto_Categoria_Tipo_ExtendControlledAttribute;
-import chasqui.server.msqlconection.MySQLConnection;
 
 public class Atributos_texto_y_numerico_Categoria_ExtendAttribute extends ExtendAttribute{
 
@@ -23,7 +25,7 @@ public enum Tabla {ATRIBUTOS_NUMERICOS,ATRIBUTOS_TEXTO};
 
 	private void prosessSonsTexto() {
 		try {
-			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT distinct nom_atrib FROM chasqui2.atributos_texto WHERE categoria='" + name +"' ORDER BY nom_atrib;");
+			ResultSet rs=MySQLConnectionChasqui.RunQuerrySELECT("SELECT distinct nom_atrib FROM chasqui2.atributos_texto WHERE categoria='" + name +"' ORDER BY nom_atrib;");
 			if (rs!=null) 
 			{
 				while (rs.next()) {
@@ -47,7 +49,7 @@ public enum Tabla {ATRIBUTOS_NUMERICOS,ATRIBUTOS_TEXTO};
 	
 	private void prosessSonsNumericos() {
 		try {
-			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT distinct nom_atrib FROM chasqui2.atributos_numericos WHERE categoria='" + name +"' ORDER BY nom_atrib;");
+			ResultSet rs=MySQLConnectionChasqui.RunQuerrySELECT("SELECT distinct nom_atrib FROM chasqui2.atributos_numericos WHERE categoria='" + name +"' ORDER BY nom_atrib;");
 			if (rs!=null) 
 			{
 				while (rs.next()) {

@@ -2,9 +2,10 @@ package chasqui.parser.coleccion;
 
 import java.util.Map.Entry;
 
-import chasqui.model.collection.Collection;
-import chasqui.model.collection.attribute.Attribute;
-import chasqui.model.collection.digitalobjects.DigitalObject;
+import shared.model.collection.Collection;
+import shared.model.collection.attribute.Attribute;
+import shared.model.collection.digitalobjects.DigitalObject;
+
 import chasqui.parser.ChasquiParseElement;
 import chasqui.parser.coleccion.objetosdigitales.ExtendDigitalObject;
 

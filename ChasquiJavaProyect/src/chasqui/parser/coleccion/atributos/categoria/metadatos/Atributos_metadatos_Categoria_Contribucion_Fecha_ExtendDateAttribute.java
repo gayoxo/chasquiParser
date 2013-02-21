@@ -1,18 +1,20 @@
 package chasqui.parser.coleccion.atributos.categoria.metadatos;
 
+import general.client.main.ChasquiToFIle;
+import general.server.msqlconection.MySQLConnectionChasqui;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import chasqui.client.main.Escritor;
-import chasqui.model.collection.attribute.Attribute;
+import shared.model.collection.attribute.Attribute;
+
 import chasqui.parser.coleccion.atributos.ExtendDateAttribute;
 import chasqui.parser.coleccion.intanciasatributos.ExtendDataAttributeInstance;
 import chasqui.parser.coleccion.intanciasatributos.ExtendTextAttributeInstance;
 import chasqui.parser.coleccion.objetosdigitales.ExtendDigitalObject;
-import chasqui.server.msqlconection.MySQLConnection;
 
 public class Atributos_metadatos_Categoria_Contribucion_Fecha_ExtendDateAttribute
 		extends ExtendDateAttribute {

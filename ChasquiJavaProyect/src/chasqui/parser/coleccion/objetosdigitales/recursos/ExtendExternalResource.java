@@ -1,8 +1,8 @@
 package chasqui.parser.coleccion.objetosdigitales.recursos;
 
-import chasqui.model.collection.digitalobjects.DigitalObject;
-import chasqui.model.collection.digitalobjects.resources.ExternalResource;
-import chasqui.model.collection.digitalobjects.resources.Resource;
+import shared.model.collection.digitalobjects.DigitalObject;
+import shared.model.collection.digitalobjects.resources.ExternalResource;
+import shared.model.collection.digitalobjects.resources.Resource;
 import chasqui.parser.ChasquiParseElement;
 
 public class ExtendExternalResource extends ExternalResource implements

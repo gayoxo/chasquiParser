@@ -1,19 +1,21 @@
 package chasqui.parser.coleccion.atributos.categoria.metadatos.taxonomias;
 
+import general.client.main.ChasquiToFIle;
+import general.server.msqlconection.MySQLConnectionChasqui;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Stack;
 
-import chasqui.client.main.Escritor;
-import chasqui.model.collection.attribute.Attribute;
-import chasqui.model.collection.attribute.controlled.Term;
+import shared.model.collection.attribute.Attribute;
+import shared.model.collection.attribute.controlled.Term;
+
 import chasqui.parser.coleccion.atributos.ExtendAttribute;
 import chasqui.parser.coleccion.atributos.ExtendTerm;
 import chasqui.parser.coleccion.intanciasatributos.ExtendAttributeInstance;
 import chasqui.parser.coleccion.intanciasatributos.ExtendControlledAttributeInstance;
 import chasqui.parser.coleccion.intanciasatributos.ExtendNoShowAttributeInstance;
 import chasqui.parser.coleccion.objetosdigitales.ExtendDigitalObject;
-import chasqui.server.msqlconection.MySQLConnection;
 
 public class Atributos_metadatos_Categoria_Taxonomias_Taxonomia_ExtendAttribute
 		extends ExtendAttribute {
@@ -35,7 +37,7 @@ public class Atributos_metadatos_Categoria_Taxonomias_Taxonomia_ExtendAttribute
 	private void processTaxons() {
 		try {
 			//TODO Reparar cada vez que lo suba
-			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT distinct contenido,num_ruta FROM chasqui2.metadatos WHERE ruta='/manifest/metadata/lom/classification/taxonpath/source/langstring' AND contenido!='Sección/Sección' AND idov='"+idov+"' ORDER BY num_ruta;");
+			ResultSet rs=MySQLConnectionChasqui.RunQuerrySELECT("SELECT distinct contenido,num_ruta FROM chasqui2.metadatos WHERE ruta='/manifest/metadata/lom/classification/taxonpath/source/langstring' AND contenido!='Sección/Sección' AND idov='"+idov+"' ORDER BY num_ruta;");
 			if (rs!=null) 
 			{
 				while (rs.next()) {
@@ -70,7 +72,7 @@ public class Atributos_metadatos_Categoria_Taxonomias_Taxonomia_ExtendAttribute
 	private void CreacionDeNodos(Stack<String> recorrio, String num_ruta, String idov) {
 		if (!recorrio.isEmpty())
 			{
-			ExtendDigitalObject DObject= Escritor.getChasqui().getDigitalObject(Integer.parseInt(idov));
+			ExtendDigitalObject DObject= ChasquiToFIle.getChasqui().getDigitalObject(Integer.parseInt(idov));
 			ExtendAttributeInstance EAIMetadatos = new ExtendAttributeInstance(this.getFather().getFather(), ((ExtendAttribute) this.getFather().getFather()).pathFather(),DObject,null);
 			EAIMetadatos=(ExtendAttributeInstance) DObject.saveAtributo(EAIMetadatos);
 			ExtendNoShowAttributeInstance EAITaxonSS = new ExtendNoShowAttributeInstance(this.getFather(), ((ExtendAttribute) this.getFather()).pathFather(),DObject,EAIMetadatos);
@@ -96,7 +98,7 @@ public class Atributos_metadatos_Categoria_Taxonomias_Taxonomia_ExtendAttribute
 		if (!recorrio.isEmpty())
 		{
 		String NodoNew=recorrio.pop();
-		ExtendDigitalObject DObject= Escritor.getChasqui().getDigitalObject(Integer.parseInt(idov));
+		ExtendDigitalObject DObject= ChasquiToFIle.getChasqui().getDigitalObject(Integer.parseInt(idov));
 		Atributos_metadatos_Categoria_Taxonomias_Taxonomia_Nodo_ExtendControlledAttribute ATCUnidades=new Atributos_metadatos_Categoria_Taxonomias_Taxonomia_Nodo_ExtendControlledAttribute(NodoNew, true, padre,num_ruta,idov);
 		ATCUnidades=(Atributos_metadatos_Categoria_Taxonomias_Taxonomia_Nodo_ExtendControlledAttribute) padre.addAtributos(ATCUnidades);
 		ExtendControlledAttributeInstance ECAI=new ExtendControlledAttributeInstance(ATCUnidades, ATCUnidades.pathFather(),DObject,eCAI,null);
@@ -119,7 +121,7 @@ public class Atributos_metadatos_Categoria_Taxonomias_Taxonomia_ExtendAttribute
 	
 	protected void process_nodo(Atributos_metadatos_Categoria_Taxonomias_Taxonomia_Nodo_ExtendControlledAttribute padre, String idov2, String num_ruta, ExtendControlledAttributeInstance eCAI) {
 		try {
-			ResultSet rs=MySQLConnection.RunQuerrySELECT("SELECT distinct contenido,num_ruta FROM chasqui2.metadatos WHERE (ruta= '/manifest/metadata/lom/classification/taxonpath/taxon/entry/langstring' AND idov='"+idov+"') ORDER BY contenido;");
+			ResultSet rs=MySQLConnectionChasqui.RunQuerrySELECT("SELECT distinct contenido,num_ruta FROM chasqui2.metadatos WHERE (ruta= '/manifest/metadata/lom/classification/taxonpath/taxon/entry/langstring' AND idov='"+idov+"') ORDER BY contenido;");
 			if (rs!=null) 
 			{
 				while (rs.next()) {

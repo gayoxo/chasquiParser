@@ -1,6 +1,6 @@
 package chasqui.parser.coleccion.atributos.categoria.metadatos;
 
-import chasqui.model.collection.attribute.Attribute;
+import shared.model.collection.attribute.Attribute;
 import chasqui.parser.coleccion.atributos.ExtendTextAttribute;
 
 public class Atributos_metadatos_Categoria_Contribucion_Autor_ExtendTextAttribute

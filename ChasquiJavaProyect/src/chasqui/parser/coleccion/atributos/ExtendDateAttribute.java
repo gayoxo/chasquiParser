@@ -5,7 +5,12 @@ import shared.model.collection.attribute.DateAttribute;
 import chasqui.parser.AtributeElement;
 import chasqui.parser.ChasquiParseElement;
 
-public abstract class ExtendDateAttribute extends DateAttribute  implements ChasquiParseElement,AtributeElement{
+public class ExtendDateAttribute extends DateAttribute  implements ChasquiParseElement,AtributeElement{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3683992385825766608L;
 
 	public ExtendDateAttribute(String name, boolean browseable, Attribute father) {
 		super(name, browseable, father);
@@ -46,5 +51,15 @@ public abstract class ExtendDateAttribute extends DateAttribute  implements Chas
 			else return name;
 	}
 	
-	
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		return new ExtendDateAttribute(name, Browseable, Father);
+		
+	}
+
+	@Override
+	public void Process() {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -46,13 +46,13 @@ public class Atributos_metadatos_Categoria_Contribucion_ExtendAttribute
 	@Override
 	public void Process() {
 
-		AMAutor=new Atributos_metadatos_Categoria_Contribucion_Autor_ExtendTextAttribute("Autor", true, this);
+		AMAutor=new Atributos_metadatos_Categoria_Contribucion_Autor_ExtendTextAttribute("Autor", false, this);
 		Sons.add(AMAutor);
 		AMAutor.Process();
-		AMpapel=new Atributos_metadatos_Categoria_Contribucion_Papel_ExtendControlledAttribute("Papel", true, this);
+		AMpapel=new Atributos_metadatos_Categoria_Contribucion_Papel_ExtendControlledAttribute("Papel", false, this);
 		Sons.add(AMpapel);
 		AMpapel.Process();
-		AMFecha=new Atributos_metadatos_Categoria_Contribucion_Fecha_ExtendDateAttribute("Fecha", true, this);
+		AMFecha=new Atributos_metadatos_Categoria_Contribucion_Fecha_ExtendDateAttribute("Fecha", false, this);
 		Sons.add(AMFecha);
 		AMFecha.Process();
 		process_AtributeInstances();

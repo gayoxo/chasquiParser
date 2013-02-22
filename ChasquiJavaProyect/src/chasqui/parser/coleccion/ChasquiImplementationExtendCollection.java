@@ -263,7 +263,7 @@ public String toString() {
 					String Dato=rs.getObject("categoria").toString();
 					if (Dato!=null&&!Dato.isEmpty())
 						{
-						Atributos_texto_y_numerico_Categoria_ExtendAttribute ATCategoria=new Atributos_texto_y_numerico_Categoria_ExtendAttribute(Dato,true,null);
+						Atributos_texto_y_numerico_Categoria_ExtendAttribute ATCategoria=new Atributos_texto_y_numerico_Categoria_ExtendAttribute(Dato,false,null);
 						ATCategoria=(Atributos_texto_y_numerico_Categoria_ExtendAttribute)((Attribute) addAtributos(ATCategoria));
 						ATCategoria.Process(Tabla.ATRIBUTOS_TEXTO);
 						

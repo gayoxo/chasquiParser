@@ -154,15 +154,21 @@ public class MySQLConnectionOdA {
 		return instance;	
 	}
 	
-	public static void RunQuerryINSERT(String querry)
+	public static int RunQuerryINSERT(String querry)
 	{
+		int risultato=2;
 		try {
 			Statement st = instance.conexion.createStatement();
-			st.executeUpdate(querry);
+			st.executeUpdate(querry, Statement.RETURN_GENERATED_KEYS);
+			ResultSet rs = st.getGeneratedKeys();
+	        if (rs.next()){
+	            risultato = rs.getInt(1);
+	        }
 		} catch (SQLException e) {
 			System.err.println(ErrorInsert + querry);
 			e.printStackTrace();
 		}
+		return risultato;
 	}
 	
 	

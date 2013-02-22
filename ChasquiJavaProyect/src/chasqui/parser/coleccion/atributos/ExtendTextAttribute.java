@@ -2,14 +2,15 @@ package chasqui.parser.coleccion.atributos;
 
 import shared.model.collection.attribute.Attribute;
 import shared.model.collection.attribute.TextAttribute;
-import shared.model.collection.digitalobjects.DigitalObject;
 import chasqui.parser.AtributeElement;
 import chasqui.parser.ChasquiParseElement;
 
-public abstract class ExtendTextAttribute extends TextAttribute implements ChasquiParseElement,AtributeElement{
+public class ExtendTextAttribute extends TextAttribute implements ChasquiParseElement,AtributeElement{
 
-	
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3274307539763274304L;
 
 
 
@@ -65,6 +66,19 @@ public abstract class ExtendTextAttribute extends TextAttribute implements Chasq
 		if (Father!=null)
 			return ((AtributeElement)Father).pathFather()+"/" + name ;
 			else return name;
+	}
+	
+	public Object clone() throws CloneNotSupportedException {
+		return new ExtendTextAttribute(name, Browseable, Father);
+		
+	}
+
+
+
+	@Override
+	public void Process() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

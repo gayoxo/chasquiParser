@@ -7,6 +7,11 @@ import chasqui.parser.ChasquiParseElement;
 
 public class ExtendTerm extends Term implements ChasquiParseElement,AtributeElement{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1900667780589163302L;
+
 	public ExtendTerm(String name) {
 		super(name);
 	}

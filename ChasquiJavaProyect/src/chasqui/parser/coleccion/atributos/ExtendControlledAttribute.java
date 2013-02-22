@@ -3,16 +3,28 @@ package chasqui.parser.coleccion.atributos;
 import shared.model.collection.attribute.Attribute;
 import shared.model.collection.attribute.ControlledAttribute;
 import shared.model.collection.attribute.controlled.Term;
+import shared.model.collection.attribute.controlled.Vocabulary;
 import chasqui.parser.AtributeElement;
 import chasqui.parser.ChasquiParseElement;
 
-public abstract class ExtendControlledAttribute extends ControlledAttribute implements ChasquiParseElement,AtributeElement {
+public class ExtendControlledAttribute extends ControlledAttribute implements ChasquiParseElement,AtributeElement {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2888181872877303931L;
 
 	public ExtendControlledAttribute(String name, boolean browseable,
 			Attribute father) {
 		super(name, browseable, father);
 	}
 	
+	public ExtendControlledAttribute(String name, boolean browseable,
+			Attribute father, Vocabulary vocabulary) {
+		super(name, browseable, father);
+		this.vocabulary=vocabulary;
+	}
+
 	public Term addTerm(Term term)
 	{
 
@@ -52,7 +64,8 @@ public abstract class ExtendControlledAttribute extends ControlledAttribute impl
 				name+"(C) \n" + processVocabulary(prefix+".") + processSons(prefix+"...") ;
 	}
 	
-	protected abstract void process_Vocabulary();
+	protected void process_Vocabulary() {
+	}
 	
 	public Attribute addAtributos(Attribute atribute) {
 		int counter=0;
@@ -101,5 +114,16 @@ public abstract class ExtendControlledAttribute extends ControlledAttribute impl
     }
     return output;
 }
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		return new ExtendControlledAttribute(name, Browseable, Father,vocabulary);
+		
+	}
+
+	@Override
+	public void Process() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

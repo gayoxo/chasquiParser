@@ -89,7 +89,7 @@ public abstract class ExtendDigitalObject extends DigitalObject implements Chasq
 					Ext2.setTermino(Ext.getTermino());
 					return targetpos;
 						}
-				else if (Ext.getTermino()==null || Ext2.getTermino().getTerm().equals(Ext.getTermino().getTerm()))
+				else if (Ext.getTermino()==null)
 						return targetpos;
 					else {
 						save(Atribute);

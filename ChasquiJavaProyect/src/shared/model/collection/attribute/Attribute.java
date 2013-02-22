@@ -54,5 +54,27 @@ public abstract class Attribute implements Serializable{
 		Sons = sons;
 	}
 	
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		return super.clone();
+	}
+
+	public void ordena() {
+		int in;
+		for (int i = 1 ; i < Sons.size() ; i++) {
+				    Attribute comp = Sons.get(i);
+				    comp.ordena();
+				    in = i;
+				 
+				    while (in > 0 && Sons.get(in - 1).getName().compareTo(comp.getName()) > 0){
+				    	Sons.set(in, Sons.get(in-1));
+				    	in--;
+				 }
+				 
+				    Sons.set(in, comp);
+				  
+
+		} 
 		
+	}
 }

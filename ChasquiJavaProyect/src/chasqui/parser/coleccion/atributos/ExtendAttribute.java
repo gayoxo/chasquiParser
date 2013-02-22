@@ -3,8 +3,9 @@ package chasqui.parser.coleccion.atributos;
 import shared.model.collection.attribute.Attribute;
 import chasqui.parser.AtributeElement;
 import chasqui.parser.ChasquiParseElement;
+import chasqui.parser.coleccion.intanciasatributos.ExtendAttributeInstance;
 
-public abstract class ExtendAttribute extends Attribute implements ChasquiParseElement,AtributeElement{
+public class ExtendAttribute extends Attribute implements ChasquiParseElement,AtributeElement{
 	
 	public ExtendAttribute(String name, boolean browseable, Attribute father) {
 		super(name, browseable, father);
@@ -55,5 +56,16 @@ public abstract class ExtendAttribute extends Attribute implements ChasquiParseE
 		if (Father!=null)
 		return ((AtributeElement)Father).pathFather()+"/" + name ;
 		else return name;
+	}
+	
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		return new ExtendAttribute(name, Browseable, Father);
+	}
+
+	@Override
+	public void Process() {
+
+		
 	}
 }

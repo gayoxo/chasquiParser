@@ -5,7 +5,12 @@ import shared.model.collection.attribute.NumericAttribute;
 import chasqui.parser.AtributeElement;
 import chasqui.parser.ChasquiParseElement;
 
-public abstract class ExtendNumericAttribute extends NumericAttribute  implements ChasquiParseElement,AtributeElement{
+public class ExtendNumericAttribute extends NumericAttribute  implements ChasquiParseElement,AtributeElement{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5212075020986722950L;
 
 	public ExtendNumericAttribute(String name, boolean browseable, Attribute father) {
 		super(name, browseable, father);
@@ -46,5 +51,15 @@ public abstract class ExtendNumericAttribute extends NumericAttribute  implement
 			else return name;
 	}
 	
+	public Object clone() throws CloneNotSupportedException {
+		return new ExtendNumericAttribute(name, Browseable, Father);
+		
+	}
+
+	@Override
+	public void Process() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

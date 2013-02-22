@@ -84,6 +84,10 @@ public class Atributos_numericos_Categoria_Unidades_ExtendControlledAttribute ex
 						Valor=temp2.toString();
 					if (idov!=null&&!idov.isEmpty()&&!Unidades.isEmpty()&&!Valor.isEmpty())
 						{
+//						if (idov.equals("2077")&&(Father.getName().equals("Ancho")))
+//							{
+//							System.out.println("aqui");
+//							}
 						ExtendDigitalObject DObject= ChasquiToFIle.getChasqui().getDigitalObject(Integer.parseInt(idov));
 						ExtendAttributeInstance EAI = new ExtendAttributeInstance(this.getFather().getFather(), ((ExtendAttribute) this.getFather().getFather()).pathFather(),DObject,null);
 						EAI=(ExtendAttributeInstance) DObject.saveAtributo(EAI);

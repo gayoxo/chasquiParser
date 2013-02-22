@@ -50,5 +50,24 @@ public abstract class Collection implements Serializable{
 	public void setRecursosGeneral(ArrayList<Resource> recursosGeneral) {
 		RecursosGeneral = recursosGeneral;
 	}
+
+	public void ordena() {
+		int in;
+		for (int i = 1 ; i < Atributos.size() ; i++) {
+				    Attribute comp = Atributos.get(i);
+				    comp.ordena();
+				    in = i;
+				 
+				    while (in > 0 && Atributos.get(in - 1).getName().compareTo(comp.getName()) > 0){
+				    	Atributos.set(in, Atributos.get(in-1));
+				    	in--;
+				 }
+				 
+				    Atributos.set(in, comp);
+				  
+
+		} 
+		
+	}
 	
 }

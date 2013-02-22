@@ -38,13 +38,13 @@ public class Atributos_metadatos_Categoria_ExtendAttribute extends ExtendAttribu
 		Atributos_metadatos_Categoria_Keyword_ExtendControlledAttribute AMkeyword= new Atributos_metadatos_Categoria_Keyword_ExtendControlledAttribute("Palablas Clave", true, this);
 		Sons.add(AMkeyword);
 		AMkeyword.Process();
-		Atributos_metadatos_Categoria_Description_ExtendTextAttribute AMdescripcion= new Atributos_metadatos_Categoria_Description_ExtendTextAttribute("Descripcion", true, this);
+		Atributos_metadatos_Categoria_Description_ExtendTextAttribute AMdescripcion= new Atributos_metadatos_Categoria_Description_ExtendTextAttribute("Descripcion", false, this);
 		Sons.add(AMdescripcion);
 		AMdescripcion.Process();
-		Atributos_metadatos_Categoria_Status_ExtendControlledAttribute AMstatus=new Atributos_metadatos_Categoria_Status_ExtendControlledAttribute("Estatus", true, this);
+		Atributos_metadatos_Categoria_Status_ExtendControlledAttribute AMstatus=new Atributos_metadatos_Categoria_Status_ExtendControlledAttribute("Estatus", false, this);
 		Sons.add(AMstatus);
 		AMstatus.Process();
-		Atributos_metadatos_Categoria_Contribucion_ExtendAttribute AMcontribucion= new Atributos_metadatos_Categoria_Contribucion_ExtendAttribute("Contribucion",true, this);
+		Atributos_metadatos_Categoria_Contribucion_ExtendAttribute AMcontribucion= new Atributos_metadatos_Categoria_Contribucion_ExtendAttribute("Contribucion",false, this);
 		Sons.add(AMcontribucion);
 		AMcontribucion.Process();
 		Atributos_metadatos_Categoria_Catalogos_ExtendAttribute AMCatalogo= new Atributos_metadatos_Categoria_Catalogos_ExtendAttribute("Catalogos",true, this);

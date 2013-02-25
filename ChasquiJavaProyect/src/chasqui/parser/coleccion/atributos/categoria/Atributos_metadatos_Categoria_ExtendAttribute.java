@@ -32,10 +32,10 @@ public class Atributos_metadatos_Categoria_ExtendAttribute extends ExtendAttribu
 	@Override
 	public void Process() {
 		
-		Atributos_metadatos_Categoria_Contexto_ExtendControlledAttribute AMcontenido=new Atributos_metadatos_Categoria_Contexto_ExtendControlledAttribute("Contexto", true, this);
+		Atributos_metadatos_Categoria_Contexto_ExtendControlledAttribute AMcontenido=new Atributos_metadatos_Categoria_Contexto_ExtendControlledAttribute("Contexto", false, this);
 		Sons.add(AMcontenido);
 		AMcontenido.Process();
-		Atributos_metadatos_Categoria_Keyword_ExtendControlledAttribute AMkeyword= new Atributos_metadatos_Categoria_Keyword_ExtendControlledAttribute("Palablas Clave", true, this);
+		Atributos_metadatos_Categoria_Keyword_ExtendControlledAttribute AMkeyword= new Atributos_metadatos_Categoria_Keyword_ExtendControlledAttribute("Palablas Clave", false, this);
 		Sons.add(AMkeyword);
 		AMkeyword.Process();
 		Atributos_metadatos_Categoria_Description_ExtendTextAttribute AMdescripcion= new Atributos_metadatos_Categoria_Description_ExtendTextAttribute("Descripcion", false, this);
@@ -47,10 +47,10 @@ public class Atributos_metadatos_Categoria_ExtendAttribute extends ExtendAttribu
 		Atributos_metadatos_Categoria_Contribucion_ExtendAttribute AMcontribucion= new Atributos_metadatos_Categoria_Contribucion_ExtendAttribute("Contribucion",false, this);
 		Sons.add(AMcontribucion);
 		AMcontribucion.Process();
-		Atributos_metadatos_Categoria_Catalogos_ExtendAttribute AMCatalogo= new Atributos_metadatos_Categoria_Catalogos_ExtendAttribute("Catalogos",true, this);
+		Atributos_metadatos_Categoria_Catalogos_ExtendAttribute AMCatalogo= new Atributos_metadatos_Categoria_Catalogos_ExtendAttribute("Catalogos",false, this);
 		Sons.add(AMCatalogo);
 		AMCatalogo.Process();
-		Atributos_metadatos_Categoria_Taxonomias_ExtendAttribute AMTaxonimias= new Atributos_metadatos_Categoria_Taxonomias_ExtendAttribute("Taxonomias",true, this);
+		Atributos_metadatos_Categoria_Taxonomias_ExtendAttribute AMTaxonimias= new Atributos_metadatos_Categoria_Taxonomias_ExtendAttribute("Taxonomias",false, this);
 		Sons.add(AMTaxonimias);
 		AMTaxonimias.Process();
 		

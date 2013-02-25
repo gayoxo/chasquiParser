@@ -33,7 +33,7 @@ public class Atributos_metadatos_Categoria_Catalogos_ExtendAttribute extends
 					String Dato=rs.getObject("contenido").toString();
 					if (Dato!=null&&!Dato.isEmpty())
 						{
-						Atributos_metadatos_Categoria_Catalogos_Catalogo_ExtendControlledAttribute ATCUnidades=new Atributos_metadatos_Categoria_Catalogos_Catalogo_ExtendControlledAttribute(Dato, true, this);
+						Atributos_metadatos_Categoria_Catalogos_Catalogo_ExtendControlledAttribute ATCUnidades=new Atributos_metadatos_Categoria_Catalogos_Catalogo_ExtendControlledAttribute(Dato, false, this);
 						ATCUnidades=(Atributos_metadatos_Categoria_Catalogos_Catalogo_ExtendControlledAttribute) addAtributos(ATCUnidades);
 						ATCUnidades.Process();
 

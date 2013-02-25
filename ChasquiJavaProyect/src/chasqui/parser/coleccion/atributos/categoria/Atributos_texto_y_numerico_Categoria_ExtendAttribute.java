@@ -32,7 +32,7 @@ public enum Tabla {ATRIBUTOS_NUMERICOS,ATRIBUTOS_TEXTO};
 					String Dato=rs.getObject("nom_atrib").toString();
 					if (Dato!=null&&!Dato.isEmpty())
 						{
-						Atributos_texto_Categoria_Tipo_ExtendControlledAttribute ATCUnidades=new Atributos_texto_Categoria_Tipo_ExtendControlledAttribute(Dato, true, this);
+						Atributos_texto_Categoria_Tipo_ExtendControlledAttribute ATCUnidades=new Atributos_texto_Categoria_Tipo_ExtendControlledAttribute(Dato, false, this);
 						Sons.add(ATCUnidades);
 						ATCUnidades.Process();
 
@@ -56,7 +56,7 @@ public enum Tabla {ATRIBUTOS_NUMERICOS,ATRIBUTOS_TEXTO};
 					String Dato=rs.getObject("nom_atrib").toString();
 					if (Dato!=null&&!Dato.isEmpty())
 						{
-						Atributos_numericos_Categoria_Tipo_ExtendNumericAttribute ATCUnidades=new Atributos_numericos_Categoria_Tipo_ExtendNumericAttribute(Dato, true, this);
+						Atributos_numericos_Categoria_Tipo_ExtendNumericAttribute ATCUnidades=new Atributos_numericos_Categoria_Tipo_ExtendNumericAttribute(Dato, false, this);
 						Sons.add(ATCUnidades);
 						ATCUnidades.Process();
 

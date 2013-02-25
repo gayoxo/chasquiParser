@@ -156,7 +156,7 @@ public class MySQLConnectionOdA {
 	
 	public static int RunQuerryINSERT(String querry)
 	{
-		int risultato=2;
+		int risultato=-1;
 		try {
 			Statement st = instance.conexion.createStatement();
 			st.executeUpdate(querry, Statement.RETURN_GENERATED_KEYS);

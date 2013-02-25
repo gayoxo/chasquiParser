@@ -291,7 +291,7 @@ public String toString() {
 					String Dato=rs.getObject("categoria").toString();
 					if (Dato!=null&&!Dato.isEmpty())
 						{
-						Atributos_texto_y_numerico_Categoria_ExtendAttribute ANCategoria=new Atributos_texto_y_numerico_Categoria_ExtendAttribute(Dato,true,null);
+						Atributos_texto_y_numerico_Categoria_ExtendAttribute ANCategoria=new Atributos_texto_y_numerico_Categoria_ExtendAttribute(Dato,false,null);
 						ANCategoria=(Atributos_texto_y_numerico_Categoria_ExtendAttribute) ((Attribute) addAtributos(ANCategoria));
 						ANCategoria.Process(Tabla.ATRIBUTOS_NUMERICOS);
 						
@@ -306,7 +306,7 @@ public String toString() {
 		
 	}
 	private void process_atributos_metadatos() {
-		Atributos_metadatos_Categoria_ExtendAttribute AMCategoria = new Atributos_metadatos_Categoria_ExtendAttribute("Metadatos",true,null);
+		Atributos_metadatos_Categoria_ExtendAttribute AMCategoria = new Atributos_metadatos_Categoria_ExtendAttribute("Metadatos",false,null);
 		AMCategoria.Process();
 		addAtributos(AMCategoria);
 		

@@ -22,7 +22,7 @@ ExtendNumericAttribute {
 
 	@Override
 	public void Process() {
-		Atributos_numericos_Categoria_Unidades_ExtendControlledAttribute ATCTU=new Atributos_numericos_Categoria_Unidades_ExtendControlledAttribute("Unidades", true, this);
+		Atributos_numericos_Categoria_Unidades_ExtendControlledAttribute ATCTU=new Atributos_numericos_Categoria_Unidades_ExtendControlledAttribute("Unidades", false, this);
 		ATCTU=(Atributos_numericos_Categoria_Unidades_ExtendControlledAttribute) addAtributos(ATCTU);
 //		process_AtributeInstances();
 		ATCTU.Process();

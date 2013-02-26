@@ -18,6 +18,7 @@ public class DigitalObject implements Serializable{
 	protected String description;
 	protected ArrayList<AttributeInstance> Atributos;
 	protected ArrayList<Resource> Recursos;
+	protected Resource Icono;
 	
 	
 	
@@ -58,4 +59,11 @@ public class DigitalObject implements Serializable{
 		Recursos = recursos;
 	}
 	
+	public Resource getIcono() {
+		return Icono;
+	}
+	
+	public void setIcono(Resource icono) {
+		Icono = icono;
+	}
 }

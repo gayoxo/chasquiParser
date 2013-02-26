@@ -2,16 +2,27 @@ package chasqui.parser.coleccion.objetosdigitales.recursos;
 
 import shared.model.collection.digitalobjects.DigitalObject;
 import shared.model.collection.digitalobjects.resources.LocalResource;
+import shared.model.collection.digitalobjects.resources.Resource;
 import chasqui.parser.ChasquiParseElement;
+import chasqui.parser.ResourceComparable;
 
 public class ExtendLocalResource extends LocalResource implements
-		ChasquiParseElement {
+		ChasquiParseElement,ResourceComparable {
 
 	private static final String prefixown="..";
+	private int iden;
+	private String tipo;
 	
+	
+
+	
+
 	public ExtendLocalResource(DigitalObject padre, String name,
-			String displayName, String descripcion,  boolean visible) {
+			String displayName, String descripcion, boolean visible, int iden,
+			String tipo) {
 		super(padre, name, displayName, descripcion, visible);
+		this.iden = iden;
+		this.tipo = tipo;
 	}
 
 	@Override
@@ -38,7 +49,29 @@ public class ExtendLocalResource extends LocalResource implements
 
 	}
 	
+	@Override
+	public Resource compareMenor(Resource candidato) {
+		if (iden<((ResourceComparable)candidato).getiden()) return this;
+		return candidato;
+	}
 	
+	@Override
+	public int getiden() {
+		return iden;
+	}
 	
+	public String getRuta()
+	{
+		return Padre.getIdentifier() + "/" + Name;
+	}
+	
+	@Override
+	public String getTipo() {
+		return tipo;
+	}
+	
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
 
 }

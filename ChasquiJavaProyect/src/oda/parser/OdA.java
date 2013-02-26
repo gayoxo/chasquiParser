@@ -188,6 +188,10 @@ public class OdA {
 			DigitalObject DO) {
 		int idov=DO.getIdentifier();
 		for (Resource resource : recursos) {
+			String iconoov;
+			if (resource.equals(DO.getIcono()))
+				iconoov="S";
+			else iconoov="N";
 			boolean visBool=resource.isVisible();
 			String VisString;
 			if (visBool) 
@@ -198,12 +202,13 @@ public class OdA {
 			{
 			//MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `oda2011`.`resources` (`idov`, `visible`, `name`, `idov_refered`, `idresource_refered`, `type`) VALUES ('"+idov+"', '"+VisString+"', '"+Name+"', 1, 1,P)");
 				String Name=((LocalResource) resource).getName();
-				MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `oda2011`.`resources` (`idov`, `visible`, `name`, `type`) VALUES ('"+idov+"', '"+VisString+"', '"+Name+"', 'P' )");
+				
+				MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `oda2011`.`resources` (`idov`, `visible`,`iconoov`, `name`, `type`) VALUES ('"+idov+"', '"+VisString+"','"+iconoov+"', '"+Name+"', 'P' )");
 			}
 			else if (resource instanceof DOResource)
 			{
 				Integer idovref = ((DOResource) resource).getReferencia().getIdentifier();
-				MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `oda2011`.`resources` (`idov`, `visible`, `idov_refered`, `type`) VALUES ('"+idov+"', '"+VisString+"', '"+idovref+"','OV')");	
+				MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `oda2011`.`resources` (`idov`, `visible`,`iconoov`, `idov_refered`, `type`) VALUES ('"+idov+"', '"+VisString+"','"+iconoov+"', '"+idovref+"','OV')");	
 			}
 			else if (resource instanceof ExternalResource)
 			{

@@ -4,21 +4,25 @@ import shared.model.collection.digitalobjects.DigitalObject;
 import shared.model.collection.digitalobjects.resources.ExternalResource;
 import shared.model.collection.digitalobjects.resources.Resource;
 import chasqui.parser.ChasquiParseElement;
+import chasqui.parser.ResourceComparable;
 
 public class ExtendExternalResource extends ExternalResource implements
-		ChasquiParseElement {
+		ChasquiParseElement,ResourceComparable {
 
 	private static final String prefixown="..";
+	private int iden;
+	private String tipo;
 	
-	public ExtendExternalResource(DigitalObject padre,
-			String displayName, String descripcion, 
-			boolean visible, Resource target) {
-		super(padre, displayName, descripcion,visible, target);
-		
-		if (target==null || target.getPadre()==null)
-		{
-		System.err.println("error grave");	
-		}
+
+
+
+
+	public ExtendExternalResource(DigitalObject padre, String displayName,
+			String descripcion, boolean visible, Resource target, int iden,
+			String tipo) {
+		super(padre, displayName, descripcion, visible, target);
+		this.iden = iden;
+		this.tipo = tipo;
 	}
 
 	@Override
@@ -48,5 +52,27 @@ public class ExtendExternalResource extends ExternalResource implements
 		// TODO Auto-generated method stub
 
 	}
+	
+	@Override
+	public Resource compareMenor(Resource candidato) {
+		if (iden<((ResourceComparable)candidato).getiden()) return this;
+		return candidato;
+	}
+	
+	@Override
+	public int getiden() {
+		return iden;
+	}
 
+	public String getRuta()
+	{
+		ExtendLocalResource ELR=(ExtendLocalResource)Target;
+		return ELR.getRuta();
+	}
+
+	@Override
+	public String getTipo() {
+		return tipo;
+	}
+	
 }

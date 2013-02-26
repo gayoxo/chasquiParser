@@ -51,6 +51,7 @@ public class ChasquiToFIle {
 		MySQLConnectionChasqui.getInstance();
 		Chasqui=new ChasquiImplementationExtendCollection();
 		Chasqui.Process();
+		String CP=Chasqui.debugPintaiconos();
 		//System.out.println(Chasqui.toString());
 		
 		Calendar c2 = new GregorianCalendar();
@@ -81,6 +82,24 @@ public class ChasquiToFIle {
 	           }
 	        }
 		
+	        try
+	        {
+
+	        	
+	            fichero = new FileWriter("CP"+dia+"-"+mes+"-"+annio+".txt");
+	            pw = new PrintWriter(fichero);
+	                pw.println(CP);
+
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        } finally {
+	           try {
+	           if (null != fichero)
+	              fichero.close();
+	           } catch (Exception e2) {
+	              e2.printStackTrace();
+	           }
+	        }
 	        try
 			{
 			

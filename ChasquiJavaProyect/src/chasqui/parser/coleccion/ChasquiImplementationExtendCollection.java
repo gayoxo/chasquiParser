@@ -5,10 +5,15 @@ import general.server.msqlconection.MySQLConnectionChasqui;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Map.Entry;
 
 import shared.model.collection.attribute.Attribute;
+import shared.model.collection.digitalobjects.DigitalObject;
+import shared.model.collection.digitalobjects.resources.LocalResource;
 import shared.model.collection.digitalobjects.resources.Resource;
 
+import chasqui.parser.ChasquiParseElement;
+import chasqui.parser.ResourceComparable;
 import chasqui.parser.coleccion.atributos.categoria.Atributos_metadatos_Categoria_ExtendAttribute;
 import chasqui.parser.coleccion.atributos.categoria.Atributos_texto_y_numerico_Categoria_ExtendAttribute;
 import chasqui.parser.coleccion.atributos.categoria.Atributos_texto_y_numerico_Categoria_ExtendAttribute.Tabla;
@@ -43,6 +48,74 @@ public String toString() {
 		process_atributos_texto();
 		process_atributos_metadatos();
 		process_recursos();
+		procesa_imagen_OVs();
+		//debugPintaiconos();
+		
+	}
+	public String debugPintaiconos() {
+		StringBuffer SB=new StringBuffer();
+		for (Entry<Integer, DigitalObject> OVindividual : getObjetosDigitales().entrySet()) {
+			if (OVindividual.getValue().getIcono()!=null)
+			{
+				if (OVindividual.getValue().getIcono() instanceof ExtendLocalResource)
+					{
+					SB.append("sudo cp");
+					SB.append(" ");
+					SB.append("\"");
+					SB.append(((ExtendLocalResource) OVindividual.getValue().getIcono()).getRuta());
+					SB.append("\"");
+					SB.append(" ");
+					SB.append("\"");
+					SB.append("iconos/");
+					SB.append(OVindividual.getValue().getIdentifier());
+					SB.append(".");
+					SB.append(((ExtendLocalResource) OVindividual.getValue().getIcono()).getTipo());
+					SB.append("\"");
+					SB.append("\n");
+										
+					}
+				else if (OVindividual.getValue().getIcono() instanceof ExtendExternalResource)
+				{
+					SB.append("sudo cp");
+					SB.append(" ");
+					SB.append("\"");
+				SB.append(((ExtendExternalResource) OVindividual.getValue().getIcono()).getRuta());
+				SB.append("\"");
+				SB.append(" ");
+				SB.append("\"");
+				SB.append("iconos\\");
+				SB.append(OVindividual.getValue().getIdentifier());
+				SB.append(".");
+				SB.append(((ExtendExternalResource) OVindividual.getValue().getIcono()).getTipo());
+				SB.append("\"");
+				SB.append("\n");
+				}
+				else {
+					System.err.println("OV como icono: "+ OVindividual.getValue().getIdentifier() );
+				}
+				
+			}
+			
+		}
+		return SB.toString();
+		
+	}
+	private void procesa_imagen_OVs() {
+		for (Entry<Integer, DigitalObject> OVindividual : getObjetosDigitales().entrySet()) {
+			calculasuIcono(OVindividual.getValue());
+		}
+		
+	}
+	private void calculasuIcono(DigitalObject digitalObject) {
+		Resource Final=null;
+		for (Resource recurso : digitalObject.getRecursos()) {
+			if (((ResourceComparable)recurso).getTipo().toLowerCase().equals("jpg"))
+				if (Final==null)
+					Final=recurso;
+				else
+					Final=((ResourceComparable)Final).compareMenor(recurso);
+		}
+		digitalObject.setIcono(Final);
 		
 	}
 	private void process_recursos() {
@@ -68,6 +141,7 @@ public String toString() {
 		this.visible = visible;
 		this.ruta = ruta;
 					 */
+					String IdS=rs.getObject("id").toString();
 					String Padre=rs.getObject("idov").toString();
 					String Nombre=rs.getObject("nom_rec").toString();
 					String ruta=rs.getObject("ruta").toString();
@@ -84,9 +158,18 @@ public String toString() {
 					if (nulable3!=null)
 						visible=nulable3.toString();
 					String IdovRef=ruta.substring(0, ruta.length()-1);
+					
+					//
+					Object typonull = rs.getObject("tipo");
+					String typoString="OV";
+					if (typonull!=null)
+						typoString=typonull.toString();
+					//
+					
 					if (Padre!=null&&!Padre.isEmpty()&&Nombre!=null&&!Nombre.isEmpty()&&
 							visible!=null&&!visible.isEmpty()&&IdovRef!=null&&!IdovRef.isEmpty())
 						{
+						Integer Id = Integer.parseInt(IdS);
 						Integer Idov = Integer.parseInt(Padre);
 						Integer Idovrefe = Integer.parseInt(IdovRef);
 						ExtendDigitalObject OVEDO=getDigitalObject(Idov);
@@ -96,7 +179,7 @@ public String toString() {
 							visiblebol=true;
 					else visiblebol=false;
 						if (displayName.isEmpty()) displayName=Nombre;
-						ExtendDOResource LR=new ExtendDOResource(OVEDO, displayName, Descripcion, visiblebol,Reference);
+						ExtendDOResource LR=new ExtendDOResource(OVEDO, displayName, Descripcion, visiblebol,Reference,Id,typoString);
 						OVEDO.getRecursos().add(LR);
 						}
 					else System.out.println(ChasquiToFIle.WARNING + "categorias vacias");
@@ -126,6 +209,7 @@ public String toString() {
 		this.visible = visible;
 		this.ruta = ruta;
 					 */
+					String IdS=rs.getObject("id").toString();
 					String Padre=rs.getObject("idov").toString();
 					String Nombre=rs.getObject("nom_rec").toString();
 					String ruta=rs.getObject("ruta").toString();
@@ -142,8 +226,18 @@ public String toString() {
 					String visible="NO";
 					if (nulable3!=null)
 						visible=nulable3.toString();
+					
+					//
+//					Object typonull = rs.getObject("tipo");
+					String typoString="OV";
+//					if (typonull!=null)
+//						typoString=typonull.toString();
+					//
+					
+					
 					if (Padre!=null&&!Padre.isEmpty()&&Nombre!=null&&!Nombre.isEmpty()&&IdovRef!=null&&!IdovRef.isEmpty())
 						{
+						Integer Id = Integer.parseInt(IdS);
 						Integer Idov = Integer.parseInt(Padre);
 						Integer Idovrefe = Integer.parseInt(IdovRef);
 						ExtendDigitalObject OVEDO=getDigitalObject(Idov);
@@ -154,7 +248,7 @@ public String toString() {
 							visiblebol=true;
 					else visiblebol=false;
 						if (displayName.isEmpty()) displayName=Nombre;
-						ExtendExternalResource LR=new ExtendExternalResource(OVEDO, displayName, Descripcion, visiblebol,target);
+						ExtendExternalResource LR=new ExtendExternalResource(OVEDO, displayName, Descripcion, visiblebol,target,Id,typoString);
 						OVEDO.getRecursos().add(LR);
 						}
 					else 
@@ -185,6 +279,7 @@ public String toString() {
 		this.visible = visible;
 		this.ruta = ruta;
 					 */
+					String IdS=rs.getObject("id").toString();
 					String Padre=rs.getObject("idov").toString();
 					String Nombre=rs.getObject("nom_rec").toString();
 //					String ruta=rs.getObject("ruta").toString();
@@ -200,8 +295,18 @@ public String toString() {
 					String visible="NO";
 					if (nulable3!=null)
 						visible=nulable3.toString();
+					
+					//
+					Object typonull = rs.getObject("tipo");
+					String typoString="OV";
+					if (typonull!=null)
+						typoString=typonull.toString();
+					//
+					
+					
 					if (Padre!=null&&!Padre.isEmpty()&&Nombre!=null&&!Nombre.isEmpty())
 						{
+						Integer Id = Integer.parseInt(IdS);
 						Integer Idov = Integer.parseInt(Padre);
 						ExtendDigitalObject OVEDO=getDigitalObject(Idov);
 						boolean visiblebol;
@@ -209,7 +314,7 @@ public String toString() {
 								visiblebol=true;
 						else visiblebol=false;
 						if (displayName.isEmpty()) displayName=Nombre;
-						ExtendLocalResource LR=new ExtendLocalResource(OVEDO, Nombre, displayName, Descripcion, visiblebol);
+						ExtendLocalResource LR=new ExtendLocalResource(OVEDO, Nombre, displayName, Descripcion, visiblebol,Id,typoString);
 						OVEDO.getRecursos().add(LR);
 						RecursosGeneral.add(LR);
 						}

@@ -2,16 +2,25 @@ package chasqui.parser.coleccion.objetosdigitales.recursos;
 
 import shared.model.collection.digitalobjects.DigitalObject;
 import shared.model.collection.digitalobjects.resources.DOResource;
+import shared.model.collection.digitalobjects.resources.Resource;
 import chasqui.parser.ChasquiParseElement;
+import chasqui.parser.ResourceComparable;
 
-public class ExtendDOResource extends DOResource implements ChasquiParseElement {
+public class ExtendDOResource extends DOResource implements ChasquiParseElement,ResourceComparable {
 
 	private static final String prefixown="..";
+	private int iden;
+	private String tipo;
 	
-	public ExtendDOResource(DigitalObject padre,
-			String displayName, String descripcion, 
-			boolean visible, DigitalObject referencia) {
+	
+
+
+	public ExtendDOResource(DigitalObject padre, String displayName,
+			String descripcion, boolean visible, DigitalObject referencia,
+			int iden, String tipo) {
 		super(padre, displayName, descripcion, visible, referencia);
+		this.iden = iden;
+		this.tipo = tipo;
 	}
 
 	@Override
@@ -40,5 +49,22 @@ public class ExtendDOResource extends DOResource implements ChasquiParseElement 
 		// TODO Auto-generated method stub
 
 	}
+
+	@Override
+	public Resource compareMenor(Resource candidato) {
+		if (iden<((ResourceComparable)candidato).getiden()) return this;
+		return candidato;
+	}
+	
+	@Override
+	public int getiden() {
+		return iden;
+	}
+	
+	@Override
+	public String getTipo() {
+		return tipo;
+	}
+	
 
 }

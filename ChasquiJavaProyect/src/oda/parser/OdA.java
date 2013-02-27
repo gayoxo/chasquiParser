@@ -87,10 +87,16 @@ public class OdA {
 				Integer otro=Vocabularios.get(((ControlledAttribute) attribute).getVocabulary());
 				String catalogocomp;
 				if (otro!=null)
-				catalogocomp=otro.toString();
-				else catalogocomp="1";
-				Salida=insertIntoFather(padre,Name,Browser,'C',catalogocomp);
-				Vocabularios.put(((ControlledAttribute) attribute).getVocabulary(),Salida );
+				{
+					catalogocomp=otro.toString();
+					Salida=insertIntoFather(padre,Name,Browser,'C',catalogocomp);
+				}
+				else {
+					catalogocomp="0";
+					Salida=insertIntoFather(padre,Name,Browser,'C',catalogocomp);
+					Vocabularios.put(((ControlledAttribute) attribute).getVocabulary(),Salida );
+				}
+
 			}else{
 				Salida=insertIntoFather(padre,Name,Browser,'X',"0");
 			}
@@ -123,10 +129,16 @@ public class OdA {
 				Integer otro=Vocabularios.get(((ControlledAttribute) attribute).getVocabulary());
 				String catalogocomp;
 				if (otro!=null)
-				catalogocomp=otro.toString();
-				else catalogocomp="1";
-				Salida=MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `section_data` (`idpadre`, `nombre`, `visible`,`orden`, `browseable`, `tipo_valores`, `extensible`, `vocabulario`) VALUES ('"+padre+"','"+Name+"', 'S','"+pos+"','"+Browser+"' , 'C', 'S', '"+catalogocomp+"');");
-				Vocabularios.put(((ControlledAttribute) attribute).getVocabulary(),Salida );
+				{
+					catalogocomp=otro.toString();
+					Salida=insertIntoFather(padre,Name,Browser,'C',catalogocomp);
+				}
+				else {
+					catalogocomp="0";
+					Salida=insertIntoFather(padre,Name,Browser,'C',catalogocomp);
+					Vocabularios.put(((ControlledAttribute) attribute).getVocabulary(),Salida );
+				}
+
 			}else{
 			
 				Salida=MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `section_data` (`idpadre`, `nombre`, `visible`,`orden`, `browseable`, `tipo_valores`, `extensible`, `vocabulario`) VALUES ('"+padre+"','"+Name+"', 'S','"+pos+"','"+Browser+"' , 'X', 'S', '0');");

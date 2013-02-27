@@ -111,13 +111,13 @@ public class OdA {
 			else Browser="N";
 			int Salida=2;
 			if (attribute instanceof TextAttribute){
-				Salida=MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `oda2011`.`section_data` (`idpadre`, `nombre`, `visible`,`orden`, `browseable`, `tipo_valores`, `extensible`, `vocabulario`) VALUES ('"+padre+"','"+Name+"', 'S','"+pos+"','"+Browser+"' , 'T', 'S', '0');");
+				Salida=MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `section_data` (`idpadre`, `nombre`, `visible`,`orden`, `browseable`, `tipo_valores`, `extensible`, `vocabulario`) VALUES ('"+padre+"','"+Name+"', 'S','"+pos+"','"+Browser+"' , 'T', 'S', '0');");
 			}
 			else if (attribute instanceof NumericAttribute){
-				Salida=MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `oda2011`.`section_data` (`idpadre`, `nombre`, `visible`,`orden`, `browseable`, `tipo_valores`, `extensible`, `vocabulario`) VALUES ('"+padre+"','"+Name+"', 'S','"+pos+"','"+Browser+"' , 'N', 'S', '0');");
+				Salida=MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `section_data` (`idpadre`, `nombre`, `visible`,`orden`, `browseable`, `tipo_valores`, `extensible`, `vocabulario`) VALUES ('"+padre+"','"+Name+"', 'S','"+pos+"','"+Browser+"' , 'N', 'S', '0');");
 			}
 			else if (attribute instanceof DateAttribute){
-				Salida=MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `oda2011`.`section_data` (`idpadre`, `nombre`, `visible`,`orden`, `browseable`, `tipo_valores`, `extensible`, `vocabulario`) VALUES ('"+padre+"','"+Name+"', 'S','"+pos+"','"+Browser+"' , 'F', 'S', '0');");
+				Salida=MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `section_data` (`idpadre`, `nombre`, `visible`,`orden`, `browseable`, `tipo_valores`, `extensible`, `vocabulario`) VALUES ('"+padre+"','"+Name+"', 'S','"+pos+"','"+Browser+"' , 'F', 'S', '0');");
 			}
 			else if (attribute instanceof ControlledAttribute){
 				Integer otro=Vocabularios.get(((ControlledAttribute) attribute).getVocabulary());
@@ -125,11 +125,11 @@ public class OdA {
 				if (otro!=null)
 				catalogocomp=otro.toString();
 				else catalogocomp="1";
-				Salida=MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `oda2011`.`section_data` (`idpadre`, `nombre`, `visible`,`orden`, `browseable`, `tipo_valores`, `extensible`, `vocabulario`) VALUES ('"+padre+"','"+Name+"', 'S','"+pos+"','"+Browser+"' , 'C', 'S', '"+catalogocomp+"');");
+				Salida=MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `section_data` (`idpadre`, `nombre`, `visible`,`orden`, `browseable`, `tipo_valores`, `extensible`, `vocabulario`) VALUES ('"+padre+"','"+Name+"', 'S','"+pos+"','"+Browser+"' , 'C', 'S', '"+catalogocomp+"');");
 				Vocabularios.put(((ControlledAttribute) attribute).getVocabulary(),Salida );
 			}else{
 			
-				Salida=MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `oda2011`.`section_data` (`idpadre`, `nombre`, `visible`,`orden`, `browseable`, `tipo_valores`, `extensible`, `vocabulario`) VALUES ('"+padre+"','"+Name+"', 'S','"+pos+"','"+Browser+"' , 'X', 'S', '0');");
+				Salida=MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `section_data` (`idpadre`, `nombre`, `visible`,`orden`, `browseable`, `tipo_valores`, `extensible`, `vocabulario`) VALUES ('"+padre+"','"+Name+"', 'S','"+pos+"','"+Browser+"' , 'X', 'S', '0');");
 			}
 			ModeloOda.put(attribute, Salida);
 			processModelo(attribute.getSons(),Salida);
@@ -150,7 +150,7 @@ public class OdA {
 						Dato=datoO.toString();
 					int orden=Integer.parseInt(Dato);
 					orden++;
-					int Salida= MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `oda2011`.`section_data` (`idpadre`, `nombre`, `visible`,`orden`, `browseable`, `tipo_valores`, `extensible`, `vocabulario`) VALUES ('"+padre+"','"+name+"', 'S','"+orden+"','"+browser+"' , '"+Tipo+"', 'S', '"+catalogo+"');");
+					int Salida= MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `section_data` (`idpadre`, `nombre`, `visible`,`orden`, `browseable`, `tipo_valores`, `extensible`, `vocabulario`) VALUES ('"+padre+"','"+name+"', 'S','"+orden+"','"+browser+"' , '"+Tipo+"', 'S', '"+catalogo+"');");
 				
 			rs.close();
 			return Salida;
@@ -169,11 +169,11 @@ public class OdA {
 	}
 
 	private void saveOV(DigitalObject value) {
-		MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `oda2011`.`virtual_object` (`id`, `ispublic`) VALUES ("+value.getIdentifier()+", 'S');");
+		MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `virtual_object` (`id`, `ispublic`) VALUES ("+value.getIdentifier()+", 'S');");
 		String descripcion=value.getDescription();
 		descripcion=descripcion.replaceAll("'", "\\\\'");
 		//111 Atributo Descripcion
-		MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `oda2011`.`text_data` (`idov`, `idseccion`, `value`) VALUES ("+value.getIdentifier()+", 111, '"+descripcion+"');");
+		MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `text_data` (`idov`, `idseccion`, `value`) VALUES ("+value.getIdentifier()+", 111, '"+descripcion+"');");
 		procesa_Atributos(value.getSons(),value);
 		procesa_recursos(value.getRecursos(),value);
 		procesa_icono();
@@ -200,21 +200,22 @@ public class OdA {
 				VisString="N";
 			if (resource instanceof LocalResource)
 			{
-			//MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `oda2011`.`resources` (`idov`, `visible`, `name`, `idov_refered`, `idresource_refered`, `type`) VALUES ('"+idov+"', '"+VisString+"', '"+Name+"', 1, 1,P)");
+			//MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `resources` (`idov`, `visible`, `name`, `idov_refered`, `idresource_refered`, `type`) VALUES ('"+idov+"', '"+VisString+"', '"+Name+"', 1, 1,P)");
 				String Name=((LocalResource) resource).getName();
 				
-				MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `oda2011`.`resources` (`idov`, `visible`,`iconoov`, `name`, `type`) VALUES ('"+idov+"', '"+VisString+"','"+iconoov+"', '"+Name+"', 'P' )");
+				MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `resources` (`idov`, `visible`,`iconoov`, `name`, `type`) VALUES ('"+idov+"', '"+VisString+"','"+iconoov+"', '"+Name+"', 'P' )");
+				
 			}
 			else if (resource instanceof DOResource)
 			{
 				Integer idovref = ((DOResource) resource).getReferencia().getIdentifier();
-				MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `oda2011`.`resources` (`idov`, `visible`,`iconoov`, `idov_refered`, `type`) VALUES ('"+idov+"', '"+VisString+"','"+iconoov+"', '"+idovref+"','OV')");	
+				MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `resources` (`idov`, `visible`,`iconoov`, `idov_refered`, `type`) VALUES ('"+idov+"', '"+VisString+"','"+iconoov+"', '"+idovref+"','OV')");	
 			}
 			else if (resource instanceof ExternalResource)
 			{
 				String Name=((LocalResource)((ExternalResource) resource).getTarget()).getName();
 				Integer idresource_refered=((LocalResource)((ExternalResource) resource).getTarget()).getPadre().getIdentifier();
-				MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `oda2011`.`resources` (`idov`, `visible`, `name`,`idresource_refered`, `type`) VALUES ('"+idov+"', '"+VisString+"', '"+Name+"', '"+idresource_refered+"','F')");
+				MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `resources` (`idov`, `visible`, `name`,`idresource_refered`, `type`) VALUES ('"+idov+"', '"+VisString+"', '"+Name+"', '"+idresource_refered+"','F')");
 			}
 
 		}
@@ -227,25 +228,25 @@ public class OdA {
 			int seccion=ModeloOda.get(attributeInstance.getHasType());
 			if (attributeInstance instanceof TextAttributeInstance){
 				String value = ((TextAttributeInstance) attributeInstance).getValor();
-				MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `oda2011`.`text_data` (`idov`, `idseccion`, `value`) VALUES ('"+idov+"', '"+seccion+"', '"+value+"');");
+				MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `text_data` (`idov`, `idseccion`, `value`) VALUES ('"+idov+"', '"+seccion+"', '"+value+"');");
 			}
 			else if (attributeInstance instanceof NumericAttributeInstance){
 				
 				float value=((NumericAttributeInstance) attributeInstance).getValor();
-				MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `oda2011`.`numeric_data` (`idov`, `idseccion`, `value`) VALUES ('"+idov+"', '"+seccion+"', '"+value+"');");
+				MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `numeric_data` (`idov`, `idseccion`, `value`) VALUES ('"+idov+"', '"+seccion+"', '"+value+"');");
 			}
 			else if (attributeInstance instanceof DateAttributeInstance){
 				Date valueD = ((DateAttributeInstance) attributeInstance).getFecha();
 				DateFormat df = new SimpleDateFormat ("yyyyMMdd");
 				String value=df.format(valueD);
-				//INSERT INTO `oda2011`.`date_data` (`idov`, `idseccion`, `value`) VALUES (1, 1, 12-10-2020);
-				MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `oda2011`.`date_data` (`idov`, `idseccion`, `value`) VALUES ('"+idov+"', '"+seccion+"', '"+value+"');");
+				//INSERT INTO `date_data` (`idov`, `idseccion`, `value`) VALUES (1, 1, 12-10-2020);
+				MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `date_data` (`idov`, `idseccion`, `value`) VALUES ('"+idov+"', '"+seccion+"', '"+value+"');");
 			}
 			else if (attributeInstance instanceof ControlledAttributeInstance){
 				Term term = ((ControlledAttributeInstance) attributeInstance).getTermino();
 				if (term!=null)
 					{String value = term.getTerm();
-				MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `oda2011`.`controlled_data` (`idov`, `idseccion`, `value`) VALUES ('"+idov+"', '"+seccion+"', '"+value+"');");
+				MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `controlled_data` (`idov`, `idseccion`, `value`) VALUES ('"+idov+"', '"+seccion+"', '"+value+"');");
 					}
 
 			}

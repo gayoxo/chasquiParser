@@ -69,10 +69,11 @@ public class ExtendControlledAttribute extends ControlledAttribute implements Ch
 	
 	public Attribute addAtributos(Attribute atribute) {
 		int counter=0;
-		while (counter<Sons.size() && !(Sons.get(counter).getName().equals(atribute.getName())))
+		while (counter<Sons.size() && !(remove1(Sons.get(counter).getName().toUpperCase()).equals(remove1(atribute.getName().toUpperCase()))))
 			counter++;
 		if (counter==Sons.size())
 			{
+			atribute.setName(remove1(atribute.getName().toUpperCase()));
 			Sons.add(atribute);
 			return atribute;
 			}

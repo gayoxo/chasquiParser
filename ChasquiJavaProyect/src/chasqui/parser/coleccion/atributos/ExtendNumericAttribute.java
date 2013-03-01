@@ -18,10 +18,11 @@ public class ExtendNumericAttribute extends NumericAttribute  implements Chasqui
 
 	public Attribute addAtributos(Attribute atribute) {
 		int counter=0;
-		while (counter<Sons.size() && !Sons.get(counter).getName().equals(atribute.getName()))
+		while (counter<Sons.size() && !(remove1(Sons.get(counter).getName().toUpperCase()).equals(remove1(atribute.getName().toUpperCase()))))
 			counter++;
 		if (counter==Sons.size())
 			{
+			atribute.setName(remove1(atribute.getName().toUpperCase()));
 			Sons.add(atribute);
 			return atribute;
 			}
@@ -60,6 +61,17 @@ public class ExtendNumericAttribute extends NumericAttribute  implements Chasqui
 	public void Process() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public static String remove1(String input) {
+	    String original = "áàäéèëíìïóòöúùuñÁÀÄÉÈËÍÌÏÓÒÖÚÙÜÑçÇ";
+	    String ascii = "aaaeeeiiiooouuunAAAEEEIIIOOOUUUNcC";
+	    String output = input;
+	    for (int i=0; i<original.length(); i++) {
+
+	        output = output.replace(original.charAt(i), ascii.charAt(i));
+	    }
+	    return output;
 	}
 	
 }

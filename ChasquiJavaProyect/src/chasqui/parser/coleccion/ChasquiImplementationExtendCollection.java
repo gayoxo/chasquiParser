@@ -314,7 +314,7 @@ public String toString() {
 								visiblebol=true;
 						else visiblebol=false;
 						if (displayName.isEmpty()) displayName=Nombre;
-						ExtendLocalResource LR=new ExtendLocalResource(OVEDO, Nombre, displayName, Descripcion, visiblebol,Id,typoString);
+						ExtendLocalResource LR=new ExtendLocalResource(OVEDO, Nombre.toLowerCase(), displayName, Descripcion, visiblebol,Id,typoString);
 						OVEDO.getRecursos().add(LR);
 						RecursosGeneral.add(LR);
 						}

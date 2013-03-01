@@ -112,9 +112,10 @@ public class OdA {
 		for (Attribute attribute : modelo) {
 			String Name = attribute.getName().replaceAll("'", "\\\\'");
 			String Browser;
-			if (attribute.isBrowseable())
-				Browser="S";
-			else Browser="N";
+//			if (attribute.isBrowseable())
+//				Browser="S";
+//			else 
+				Browser="N";
 			int Salida=2;
 			if (attribute instanceof TextAttribute){
 				Salida=MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `section_data` (`idpadre`, `nombre`, `visible`,`orden`, `browseable`, `tipo_valores`, `extensible`, `vocabulario`) VALUES ('"+padre+"','"+Name+"', 'S','"+pos+"','"+Browser+"' , 'T', 'S', '0');");
@@ -131,14 +132,14 @@ public class OdA {
 				if (otro!=null)
 				{
 					catalogocomp=otro.toString();
-					Salida=insertIntoFather(padre,Name,Browser,'C',catalogocomp);
+					Salida=MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `section_data` (`idpadre`, `nombre`, `visible`,`orden`, `browseable`, `tipo_valores`, `extensible`, `vocabulario`) VALUES ('"+padre+"','"+Name+"', 'S','"+pos+"','"+Browser+"' , 'C', 'S', '"+catalogocomp+"');");
 				}
 				else {
 					catalogocomp="0";
-					Salida=insertIntoFather(padre,Name,Browser,'C',catalogocomp);
+					Salida=MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `section_data` (`idpadre`, `nombre`, `visible`,`orden`, `browseable`, `tipo_valores`, `extensible`, `vocabulario`) VALUES ('"+padre+"','"+Name+"', 'S','"+pos+"','"+Browser+"' , 'C', 'S', '"+catalogocomp+"');");
 					Vocabularios.put(((ControlledAttribute) attribute).getVocabulary(),Salida );
 				}
-
+				
 			}else{
 			
 				Salida=MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `section_data` (`idpadre`, `nombre`, `visible`,`orden`, `browseable`, `tipo_valores`, `extensible`, `vocabulario`) VALUES ('"+padre+"','"+Name+"', 'S','"+pos+"','"+Browser+"' , 'X', 'S', '0');");
@@ -216,7 +217,6 @@ public class OdA {
 				String Name=((LocalResource) resource).getName();
 				
 				MySQLConnectionOdA.RunQuerryINSERT("INSERT INTO `resources` (`idov`, `visible`,`iconoov`, `name`, `type`) VALUES ('"+idov+"', '"+VisString+"','"+iconoov+"', '"+Name+"', 'P' )");
-				
 			}
 			else if (resource instanceof DOResource)
 			{

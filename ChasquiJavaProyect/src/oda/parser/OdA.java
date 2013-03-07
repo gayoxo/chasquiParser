@@ -154,7 +154,7 @@ public class OdA {
 
 	private int insertIntoFather(int padre, String name, String browser, char Tipo, String catalogo) {
 		try {
-			ResultSet rs=MySQLConnectionOdA.RunQuerrySELECT("SELECT MAX(orden) FROM oda2011.section_data WHERE idpadre="+padre+";");
+			ResultSet rs=MySQLConnectionOdA.RunQuerrySELECT("SELECT MAX(orden) FROM section_data WHERE idpadre="+padre+";");
 			if (rs!=null) 
 			{
 				rs.next();

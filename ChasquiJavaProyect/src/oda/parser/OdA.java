@@ -48,7 +48,10 @@ public class OdA {
 	public void preocess() {
 		
 		PreProceso p=new PreProceso();
-		ArrayList<DigitalObject> DO=p.preproccesModel(toOda);		
+		ArrayList<DigitalObject> DO=p.preproccesModel(toOda);	
+		
+		
+		
 		processModeloIniciales(toOda.getAtributos());
 		processOV(DO);
 		

@@ -17,7 +17,7 @@ public class MySQLConnectionChasqui {
 	
 	private static MySQLConnectionChasqui instance;
 	private Connection conexion;
-	private static final String DBaseServer="jdbc:mysql://horchata.fdi.ucm.es:3306/chasqui2";
+	private static final String DBaseServer="jdbc:mysql://a-note.fdi.ucm.es:3306/chasqui2";
 	private static final String DBaseLocal="jdbc:mysql://localhost:3306/chasqui2";
 	
 	private static String DBSelected;

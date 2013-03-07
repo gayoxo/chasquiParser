@@ -17,7 +17,7 @@ public class MySQLConnectionOdA {
 	
 	private static MySQLConnectionOdA instance;
 	private Connection conexion;
-	private static final String DBaseServer="jdbc:mysql://horchata.fdi.ucm.es:3306/chasquioda";
+	private static final String DBaseServer="jdbc:mysql://a-note.fdi.ucm.es:3306/chasquioda";
 	private static final String DBaseLocal="jdbc:mysql://localhost:3306/chasquioda";
 	
 	private static String DBSelected;

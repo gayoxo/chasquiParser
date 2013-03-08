@@ -18,7 +18,7 @@ import chasqui.parser.coleccion.atributos.ExtendTerm;
 import chasqui.parser.coleccion.atributos.ExtendTextAttribute;
 import chasqui.parser.coleccion.intanciasatributos.ExtendAttributeInstance;
 import chasqui.parser.coleccion.intanciasatributos.ExtendControlledAttributeInstance;
-import chasqui.parser.coleccion.intanciasatributos.ExtendDataAttributeInstance;
+import chasqui.parser.coleccion.intanciasatributos.ExtendDateAttributeInstance;
 import chasqui.parser.coleccion.intanciasatributos.ExtendTextAttributeInstance;
 import chasqui.parser.coleccion.objetosdigitales.ExtendDigitalObject;
 
@@ -122,8 +122,8 @@ public class Atributos_metadatos_Categoria_Contribucion_ExtendAttribute
 							if (!contenido.isEmpty())
 								{
 								Date D= formatter.parse(contenido);
-								ExtendDataAttributeInstance EDAI=new ExtendDataAttributeInstance(AMFecha, AMFecha.pathFather(),DObject,EAIContributor,D);
-								EDAI=(ExtendDataAttributeInstance) DObject.saveAtributo(EDAI);
+								ExtendDateAttributeInstance EDAI=new ExtendDateAttributeInstance(AMFecha, AMFecha.pathFather(),DObject,EAIContributor,D);
+								EDAI=(ExtendDateAttributeInstance) DObject.saveAtributo(EDAI);
 							}
 							}
 						}

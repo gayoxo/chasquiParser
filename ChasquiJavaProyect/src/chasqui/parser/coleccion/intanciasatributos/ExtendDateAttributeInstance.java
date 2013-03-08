@@ -12,7 +12,7 @@ import shared.model.collection.digitalobjects.DigitalObject;
 import chasqui.parser.ChasquiParseElement;
 import chasqui.parser.InstanceAttribute;
 
-public class ExtendDataAttributeInstance extends DateAttributeInstance
+public class ExtendDateAttributeInstance extends DateAttributeInstance
 		implements ChasquiParseElement,InstanceAttribute {
 
 	
@@ -22,7 +22,7 @@ public class ExtendDataAttributeInstance extends DateAttributeInstance
 	 */
 	private static final long serialVersionUID = 7995692529122651680L;
 
-	public ExtendDataAttributeInstance(DateAttribute hasType, String path,
+	public ExtendDateAttributeInstance(DateAttribute hasType, String path,
 			DigitalObject doDigitalObject, AttributeInstance fatherAtribute,
 			Date fecha) {
 		super(hasType, path, doDigitalObject, fatherAtribute, fecha);

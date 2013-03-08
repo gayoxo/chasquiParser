@@ -12,7 +12,7 @@ import java.util.Date;
 import shared.model.collection.attribute.Attribute;
 
 import chasqui.parser.coleccion.atributos.ExtendDateAttribute;
-import chasqui.parser.coleccion.intanciasatributos.ExtendDataAttributeInstance;
+import chasqui.parser.coleccion.intanciasatributos.ExtendDateAttributeInstance;
 import chasqui.parser.coleccion.intanciasatributos.ExtendTextAttributeInstance;
 import chasqui.parser.coleccion.objetosdigitales.ExtendDigitalObject;
 

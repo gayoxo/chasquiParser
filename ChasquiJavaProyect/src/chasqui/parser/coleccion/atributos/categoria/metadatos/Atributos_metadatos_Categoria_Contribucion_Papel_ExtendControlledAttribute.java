@@ -14,7 +14,7 @@ import shared.model.collection.attribute.Attribute;
 import chasqui.parser.coleccion.atributos.ExtendControlledAttribute;
 import chasqui.parser.coleccion.atributos.ExtendTerm;
 import chasqui.parser.coleccion.intanciasatributos.ExtendControlledAttributeInstance;
-import chasqui.parser.coleccion.intanciasatributos.ExtendDataAttributeInstance;
+import chasqui.parser.coleccion.intanciasatributos.ExtendDateAttributeInstance;
 import chasqui.parser.coleccion.objetosdigitales.ExtendDigitalObject;
 
 public class Atributos_metadatos_Categoria_Contribucion_Papel_ExtendControlledAttribute

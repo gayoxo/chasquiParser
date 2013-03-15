@@ -1,7 +1,5 @@
 package oda.parser;
 
-import general.client.main.ChasquiToFIle;
-import general.server.msqlconection.MySQLConnectionChasqui;
 import general.server.msqlconection.MySQLConnectionOdA;
 
 import java.sql.ResultSet;
@@ -11,8 +9,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 
-import chasqui.parser.coleccion.objetosdigitales.ObjetoVirtualExtendDigitalObject;
 import shared.model.collection.Collection;
 import shared.model.collection.attibuteInstance.AttributeInstance;
 import shared.model.collection.attibuteInstance.ControlledAttributeInstance;
@@ -38,11 +36,15 @@ public class OdA {
 	private Collection toOda;
 	private HashMap<Attribute, Integer> ModeloOda;
 	private HashMap<Vocabulary, Integer> Vocabularios;
+	private HashSet<Vocabulary> VocabulariosCompartidos;
+	private HashSet<Vocabulary> Procesed;
 
 	public OdA(Collection coleccion) {
 		toOda=coleccion;
 		ModeloOda=new HashMap<Attribute, Integer>();
 		Vocabularios=new HashMap<Vocabulary, Integer>();
+		VocabulariosCompartidos=new HashSet<Vocabulary>();
+		Procesed=new HashSet<Vocabulary>();
 	}
 
 	public void preocess() {
@@ -62,6 +64,7 @@ public class OdA {
 
 
 	private void processModeloIniciales(ArrayList<Attribute> modelo) {
+		rellenaTablaVocabularios(modelo);
 		for (Attribute attribute : modelo) {
 			int Salida=3;
 			if (attribute.getName().equals("Metadatos"))
@@ -95,9 +98,16 @@ public class OdA {
 					Salida=insertIntoFather(padre,Name,Browser,'C',catalogocomp);
 				}
 				else {
-					catalogocomp="0";
+					if (VocabulariosCompartidos.contains(((ControlledAttribute) attribute).getVocabulary()))
+					{
+					catalogocomp="1";
 					Salida=insertIntoFather(padre,Name,Browser,'C',catalogocomp);
 					Vocabularios.put(((ControlledAttribute) attribute).getVocabulary(),Salida );
+					}
+				else {
+				catalogocomp="0";
+				Salida=insertIntoFather(padre,Name,Browser,'C',catalogocomp);
+				}
 				}
 
 			}else{
@@ -137,9 +147,16 @@ public class OdA {
 					Salida=insertIntoFather(padre,Name,Browser,'C',catalogocomp);
 				}
 				else {
-					catalogocomp="0";
+					if (VocabulariosCompartidos.contains(((ControlledAttribute) attribute).getVocabulary()))
+					{
+					catalogocomp="1";
 					Salida=insertIntoFather(padre,Name,Browser,'C',catalogocomp);
 					Vocabularios.put(((ControlledAttribute) attribute).getVocabulary(),Salida );
+					}
+				else {
+				catalogocomp="0";
+				Salida=insertIntoFather(padre,Name,Browser,'C',catalogocomp);
+				}
 				}
 
 			}else{
@@ -152,6 +169,20 @@ public class OdA {
 		} 
 	}
 
+	
+	private void rellenaTablaVocabularios(ArrayList<Attribute> modelo) {
+		for (Attribute attribute : modelo) {
+			if (attribute instanceof ControlledAttribute)
+				if (!(Procesed.contains(((ControlledAttribute) attribute).getVocabulary())))
+					Procesed.add(((ControlledAttribute) attribute).getVocabulary());
+				else
+				VocabulariosCompartidos.add(((ControlledAttribute) attribute).getVocabulary());
+			
+			rellenaTablaVocabularios(attribute.getSons());
+		}
+	}
+	
+	
 	private int insertIntoFather(int padre, String name, String browser, char Tipo, String catalogo) {
 		try {
 			ResultSet rs=MySQLConnectionOdA.RunQuerrySELECT("SELECT MAX(orden) FROM section_data WHERE idpadre="+padre+";");
